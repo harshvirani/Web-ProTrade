@@ -153,7 +153,7 @@
                         <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
                         <td class="mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
                         <td class="mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
-                        <td><button onclick="document.location.href = '<?php echo base_url() . 'market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                        <td><button onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                             <i class="material-icons mdl-button--colored">delete</i>
                                         </button>
                                     </td>

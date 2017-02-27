@@ -35,12 +35,12 @@
             <li class="dropdown">
                 <ul id="settings-dropdown" class="dropdown-menu">
                     <li>
-                        <a href="#" tabindex="-1">
+                        <a href="<?php echo base_url() . NAV_PROFILE; ?>" tabindex="-1">
                             Profile
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url() . NAV_LOGOUT ?>" tabindex="-1">
+                        <a href="<?php echo base_url() . NAV_LOGOUT; ?>" tabindex="-1">
                             Log Out
                         </a>
                     </li>

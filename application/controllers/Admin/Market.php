@@ -56,7 +56,7 @@ class Market extends CI_Controller {
 
     public function removeSymbol($sid, $mid) {
         $res = $this->symbol_m->removeSymbol($sid);
-        redirect(base_url() . NAV_MARKETS . '?mid=' . $mid);
+        redirect(base_url() . NAV_MARKETS  . $mid);
     }
 
 }

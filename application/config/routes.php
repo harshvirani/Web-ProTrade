@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['marketview/(:num)'] = 'Admin/Market/MarketView/$1';
 $route['users'] = 'Admin/users';
+$route['profile'] = 'user/profile';
