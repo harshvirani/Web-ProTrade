@@ -51,13 +51,18 @@ class User extends CI_Controller {
     }
 
     public function profile() {
+        if (isset($_SESSION['type'])) {
         $data = array(
             'title' => 'Profile'
         );
+        
         $this->load->view('Default/header_v', $data);
         $this->load->view('Default/sidebar_v');
         $this->load->view('User/profile_v');
         $this->load->view('Default/footer_v');
+        }else{
+            redirect(base_url());
+        }
     }
 
     public function Register() {
