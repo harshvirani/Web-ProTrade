@@ -51,7 +51,7 @@ class Market extends CI_Controller {
             'price_quote' => $this->input->post('price')
         );
         $res = $this->symbol_m->addSymbol($mar);
-        redirect(base_url() . NAV_MARKETS);
+        redirect(base_url() . NAV_MARKETS.$mar['market_id']);
     }
 
     public function removeSymbol($sid, $mid) {

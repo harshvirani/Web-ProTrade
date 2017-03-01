@@ -72,7 +72,7 @@
                                 <div class="text-right" >
 
         <!--onclick="document.location.href='<?php echo base_url() . NAV_USERS . '/removeUser/' . $row['id']; ?>'"-->
-                                    <a href="#"><i class="material-icons">delete</i></a>
+                                    <a href="<?php echo base_url() . NAV_USERS . '/removeUser/' . $row['id']; ?>"><i class="material-icons">delete</i></a>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                                     <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                                 <div class="text-right">
-                                    <a href="#"><i class="material-icons">delete</i></a>
+                                    <a href="<?php echo base_url() . 'users/removeUser/' . $row['id']; ?>"><i class="material-icons">delete</i></a>
                                 </div>
                             </div>
                         </div>

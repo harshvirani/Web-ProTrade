@@ -94,6 +94,6 @@ define('NAV_LOGIN', "user");
 define('NAV_LOGOUT', "user/logout");
 define('NAV_HOME', "home");
 define('NAV_ADMIN', "Admin/dashboard");
-define('NAV_USERS', "users");
+define('NAV_USERS', "usersview");
 define('NAV_MARKETS', "marketview/");
 define('NAV_PROFILE', "profile/");
