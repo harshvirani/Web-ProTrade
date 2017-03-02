@@ -8,4 +8,5 @@
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/4579/list.min.js'></script>
 
     <script src="<?php echo base_url().NAV_ASSETS; ?>js/search.js"></script>
+      
     </body></html>
