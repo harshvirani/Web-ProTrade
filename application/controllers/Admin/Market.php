@@ -19,7 +19,7 @@ class Market extends CI_Controller {
             $data['symbols'] = $this->symbol_m->getSymbol($data['market_id']);
 
             $this->load->view('Admin/admin_header', $data);
-            $this->load->view('Admin/market_header_nav');
+//            $this->load->view('Admin/market_header_nav');
             $this->load->view('Admin/admin_sidebar');
             $this->load->view('Admin/admin_market_v');
             $this->load->view('Default/footer_v');

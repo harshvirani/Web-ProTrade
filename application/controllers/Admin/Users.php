@@ -24,7 +24,7 @@ class Users extends CI_Controller {
             $data['users'] = $this->user_m->all_user();
 
             $this->load->view('Admin/admin_header', $data);
-            $this->load->view('Admin/admin_header_nav');
+//            $this->load->view('Admin/admin_header_nav');
             $this->load->view('Admin/admin_sidebar');
             $this->load->view('Admin/admin_user_v');
             $this->load->view('Default/footer_v');

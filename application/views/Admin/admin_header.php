@@ -38,7 +38,7 @@
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>styles.css">
 
         <!--New Sidebar-->
@@ -333,7 +333,7 @@
                 <div class="mdl-layout__header-row">
                     <div class="mdl-layout-spacer"></div>
 
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused">
+<!--                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused">
                         <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
                             <i class="material-icons">search</i>
                         </label>
@@ -341,14 +341,14 @@
                             <input class="mdl-textfield__input search" type="text" id="search">
                             <label class="mdl-textfield__label" for="sample-expandable">Enter your query...</label>
                         </div>
-                    </div>
-                    <button id="insrt" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect">
+                    </div>-->
+<!--                    <button id="insrt" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect">
                         <i class="material-icons">add</i>
                     </button>
                     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"  for="insrt">
                         <li class="mdl-menu__item" data-toggle="modal" data-target="#addStaff" >Add Staff Member</li>
-                                                <!--<li disabled class="mdl-menu__item">Snooze</li>-->
-                    </ul>
+                                                <li disabled class="mdl-menu__item">Snooze</li>
+                    </ul>-->
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
                         <i class="material-icons">more_vert</i>
                     </button>
@@ -357,6 +357,8 @@
                         <li class="mdl-menu__item">Contact</li>
                         <li class="mdl-menu__item">Legal information</li>
                     </ul>
-                </div><hr class="head">
+                </div>
                 <!-- <div class="mdl-tabs mdl-js-tabs "> -->
+                      
+</header>
 

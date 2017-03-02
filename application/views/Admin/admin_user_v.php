@@ -40,8 +40,8 @@
 
     <!-- TAB_1 START -->
     <section class="mdl-layout__tab-panel is-active " id="tab1-panel">
-
-        <div class="row client-row">
+<!--<div class="mdl-grid">-->
+        <div class="row client-row mdl-grid">
 
 
             <!--One Client Card-->

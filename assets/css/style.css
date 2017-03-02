@@ -8,6 +8,9 @@
   font-weight: normal;
   font-style: normal;
 }
+hr{
+    margin: 0;
+}
 [class^="md-"],
 [class*=" md-"] {
   display: inline-block;
@@ -186,7 +189,6 @@ body {
 .sidebar .sidebar-header {
   position: relative;
   height: 157.5px;
-  margin-bottom: 8px;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -368,7 +370,7 @@ body {
   padding-right: 56px;
   text-decoration: none;
   clear: both;
-  font-weight: 500;
+  font-weight: 400;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -392,6 +394,8 @@ body {
   position: absolute;
   right: 16px;
   top: 12px;
+  font-size: 12px;
+  border-radius: 50%;
 }
 .sidebar .sidebar-nav li a:hover {
   background: transparent;
@@ -497,7 +501,7 @@ body {
   background-color: #e0e0e0;
 }
 .sidebar-inverse {
-  background-color: #212121;
+  background-color: #383838;/*212121*/
 }
 .sidebar-inverse .sidebar-header {
   background-color: #eceff1;
@@ -507,17 +511,17 @@ body {
   background-color: transparent;
 }
 .sidebar-inverse .sidebar-brand {
-  color: #757575;
+  color: white;
   background-color: transparent;
 }
 .sidebar-inverse .sidebar-brand:hover,
 .sidebar-inverse .sidebar-brand:focus {
-  color: #212121;
+  color: white;
   background-color: rgba(0, 0, 0, 0.1);
 }
 .sidebar-inverse .sidebar-badge {
-  color: #212121;
-  background-color: #e0e0e0;
+  color: #000000;
+  background-color: #ffffff;
 }
 .sidebar-inverse .sidebar-divider,
 .sidebar-inverse .sidebar-nav .divider {
@@ -536,7 +540,9 @@ body {
 .sidebar-inverse .sidebar-nav li:hover > a,
 .sidebar-inverse .sidebar-nav li > a:hover {
   color: #bdbdbd;
-  background-color: #000;
+  background-color: #2a6d67;
+  /*custom*/
+  font-weight: 800;
 }
 .sidebar-inverse .sidebar-nav li:hover > a i,
 .sidebar-inverse .sidebar-nav li > a:hover i {
@@ -555,7 +561,7 @@ body {
 .sidebar-inverse .sidebar-nav > .open > a:hover,
 .sidebar-inverse .sidebar-nav > .open > a:focus {
   color: #bdbdbd;
-  background-color: #000;
+  background-color: #2a6d67;
 }
 .sidebar-inverse .sidebar-nav > .active > a,
 .sidebar-inverse .sidebar-nav > .active > a:hover,
@@ -577,7 +583,7 @@ body {
   color: #bdbdbd;
 }
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > li > a:hover {
-  background-color: #000000;
+  background-color: #1d4c48;
   color: #bdbdbd;
 }
 .sidebar-inverse .sidebar-nav > .dropdown > .dropdown-menu > .active > a,

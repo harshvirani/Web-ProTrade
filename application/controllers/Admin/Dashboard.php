@@ -9,11 +9,22 @@ class Dashboard extends CI_Controller {
     }
 
     public function index() {
-        $data = array(
-            'title' => 'Market',
-            'markets' => $this->market_m->getMarket(),
-            'count' => $this->market_m->getCount()
-        );
+        if ($_SESSION['type'] == 'ADMIN') {
+            $data = array(
+                'title' => 'Users',
+                'markets' => $this->market_m->getMarket(),
+                'count' => $this->market_m->getCount()
+            );
+            
+
+            $this->load->view('Admin/admin_header', $data);
+           
+            $this->load->view('Admin/admin_sidebar');
+            $this->load->view('Admin/admin_dashboard');
+            $this->load->view('Default/footer_v');
+        } else {
+            redirect(base_url());
+        }
     }
 
 }

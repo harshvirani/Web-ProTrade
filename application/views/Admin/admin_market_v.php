@@ -60,7 +60,7 @@
 
                         <!--//marketId-->
 
-                        <input type="text" name="marketId" value="<?php echo $market_id;?>" placeholder="<?php echo $market_id;?>" hidden="1">
+                        <input type="text" name="marketId" value="<?php echo $market_id; ?>" placeholder="<?php echo $market_id; ?>" hidden="1">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <input class="mdl-textfield__input" name="price" type="number" id="sample3">
                             <label class="mdl-textfield__label" for="sample3">Current Price</label>
@@ -114,53 +114,56 @@
     <br/>
 
 
-    <div class="mdl-card__actions">
 
-        <div id="mdl-table">
 
-            <button data-toggle="modal" data-target="#addSymbol" tabindex="-1" id="adsym" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                <i class="material-icons" >add</i>
-            </button>
-            <div class="mdl-tooltip" for="adsym">
-                Add Symbols
-            </div>
-            <div  class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused pull-right">
-                <label id="search" class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
-                    <i class="material-icons">search</i>
-                </label>
-             
-                <div class="mdl-textfield__expandable-holder">
-                    <input class="mdl-textfield__input search" type="text" id="sample6">
-                    <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+    <div class="row client-row mdl-grid">
+        <div class="mdl-card__actions">
+            <div id="mdl-table">
+
+                <button data-toggle="modal" data-target="#addSymbol" tabindex="-1" id="adsym" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                    <i class="material-icons" >add</i>
+                </button>
+                <div class="mdl-tooltip" for="adsym">
+                    Add Symbols
+                </div>
+                <div  class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused pull-right">
+                    <label id="search" class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                        <i class="material-icons">search</i>
+                    </label>
+
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input search" type="text" id="sample6">
+                        <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+                    </div>
+
                 </div>
 
-            </div>
-
-            <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
-                <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric sort" data-sort="material">Name</th>
-                        <th class="mdl-data-table__cell--non-numeric material sort" data-sort="quantity">Code</th>
-                        <th class="mdl-data-table__cell--non-numeric material sort" data-sort="price" colspan="2">Price Quote</th>
-                    </tr>
-                </thead>
-                <tbody class="list">
-                    <?php
-                    foreach ($symbols->result_array() as $symbol) {
-                        ?>
+                <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                    <thead>
                         <tr>
-                            <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
-                            <td class="mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
-                            <td class="mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
-                            <td><button onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                                    <i class="material-icons mdl-button--colored">delete</i>
-                                </button>
-                            </td>
+                            <th class="mdl-data-table__cell--non-numeric sort" data-sort="material">Name</th>
+                            <th class="mdl-data-table__cell--non-numeric material sort" data-sort="quantity">Code</th>
+                            <th class="mdl-data-table__cell--non-numeric material sort" data-sort="price" colspan="2">Price Quote</th>
                         </tr>
-                    <?php }
-                    ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="list">
+                        <?php
+                        foreach ($symbols->result_array() as $symbol) {
+                            ?>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
+                                <td class="mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
+                                <td class="mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
+                                <td><button onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <i class="material-icons mdl-button--colored">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

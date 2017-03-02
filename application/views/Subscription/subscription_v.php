@@ -1,6 +1,6 @@
 <script type="text/javascript">
     var x, y;
-
+    var selectable = new Array();
     $(document).ready(function () {
         $(".sc1").click(function () {
             var favorite = [];
@@ -8,21 +8,21 @@
                 favorite.push($(this).val());
             });
             x = favorite.join(", ");
-            
+
             var favorite = [];
             $.each($("input[name='checker']:checked"), function () {
                 favorite.push($(this).val());
             });
             y = favorite.join(", ");
-            
+
             if (y == 1) {
                 document.getElementById('temp1').style.display = "block";
                 document.getElementById('temp2').style.display = "none";
-            }else if(y == 2) {
+            } else if (y == 2) {
                 document.getElementById('temp2').style.display = "block";
                 document.getElementById('temp1').style.display = "none";
-            }else{
-                window.location.href = "http://192.168.0.100/ProTrade/Plan";
+            } else {
+                window.location.href = "#";
                 alert("Please 'GO BACK' and Select  'Subscription Plan' ");
 
                 document.getElementById('temp1').style.display = "none";
@@ -30,9 +30,39 @@
             }
         });
     });
+
+    $(document).ready(function () {
+
+        $(document).on("click", ".mdl-checkbox__ripple-container.mdl-js-ripple-effect.mdl-ripple--center", function () {
+            var getscriptID = $(this).parents().eq(2/*child number*/).children().eq(2).text();
+            var parentID = $(this).parents().eq(2).attr('id');
+            
+            //DESELECT CHECKBOX
+            function contains(a, b) {
+                var i = a.length;
+                while (i--) {
+                    if (a[i] === b) {
+                        selectable.splice(i,1);
+                        return false;
+                    }
+                }
+                return true;
+            }
+            if (contains(selectable, getscriptID)) {
+                selectable.push(getscriptID.toString());
+            }
+            // alert('Select Script:' + selectable);
+        });
+
+    });
 </script>
 
-
+<style type="text/css">
+    #log
+    {
+        margin: 1% 1% 1% 1%;
+    }
+</style>
 <!-- DELETE POPOVER -->
 <div class="container">
     <div id="myModal" class="modal fade" role="dialog">
@@ -183,255 +213,191 @@
                             <i class="material-icons">arrow_forward</i> <!-- class="material-icons"-->
                         </button>
                     </div>
-                    
+
 <!--                    <style type="text/css">
-    .ScrollStyle
-    {
-        max-height: 250px;
-        height: 350px;
-        overflow-y: scroll;
-    }
+.ScrollStyle
+{
+max-height: 250px;
+height: 350px;
+overflow-y: scroll;
+}
 #element::-webkit-scrollbar { 
-    display: none; 
+display: none; 
 }
 /*.ScrollStyle::-webkit-scrollbar { 
-    display: none; 
+display: none; 
 }*/
 /* Let's get this party started */
 .ScrollStyle::-webkit-scrollbar {
-    width: 3px;
+width: 3px;
 
 }
- 
+
 /* Track */
 /*.ScrollStyle::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    -webkit-border-radius: 7px;
-    border-radius: 7px;
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+-webkit-border-radius: 7px;
+border-radius: 7px;
 }*/
- 
+
 /* Handle */
 .ScrollStyle::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: #2e9089; 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+-webkit-border-radius: 10px;
+border-radius: 10px;
+background: #2e9089; 
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 .ScrollStyle::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(255,0,0,0.4); 
+background: rgba(255,0,0,0.4); 
 }
 </style>
-                    <div class="row">&nbsp;</div>
-                    <div id="temp1">
-                        <div class="row">
+<div class="row">&nbsp;</div>
+<div id="temp1">
+    <div class="row">
                     <?php
                     foreach ($markets->result_array() as $mar) {
                         ?>
-                        
+        
 
-                             <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" >
-                                 <thead>
-                                    <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
-                                        <th class="full-width mdl-data-table__cell--non-numeric sort" data-sort="material" ><?php echo $mar['name']; ?></th>
+             <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" >
+                 <thead>
+                    <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
+                        <th class="full-width mdl-data-table__cell--non-numeric sort" data-sort="material" ><?php echo $mar['name']; ?></th>
 
-                                        <th class="full-width sort" data-sort="price">Unit price</th>
+                        <th class="full-width sort" data-sort="price">Unit price</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody class="list">
-                                    
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    
                         <?php
                         foreach ($symbols->result_array() as $symbol) {
                             if ($symbol['market_id'] == $mar['id']) {
                                 ?>
-                                
-                                            <tr>
-                                                <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
+                        
+                                    <tr>
+                                        <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
 
-                                                <td class="price"><?php echo $symbol['price_quote']; ?></td>
-                                            </tr>
-                                            
-                                
+                                        <td class="price"><?php echo $symbol['price_quote']; ?></td>
+                                    </tr>
+                                    
+                        
                                 <?php
                             }
                         }
                         ?>
-                                </tbody>
-                            </table>
-                            <br/>
-                        
+                </tbody>
+            </table>
+            <br/>
+        
                         <?php
                     }
                     ?>
-                    </div>
-                    </div>-->
-                    
-                    
-                    <div class="mdl-card__actions">
-        <div id="mdl-table">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused pull-right">
-                <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
-                    <i class="material-icons">search</i>
-                </label>
-                <div class="mdl-textfield__expandable-holder">
-                    <input class="mdl-textfield__input search" type="text" id="sample6">
-                    <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
-                </div>
-            </div>
+</div>
+</div>-->
 
-            <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp full-width">
-                <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric sort" data-sort="material">Name</th>
-                        <th class="mdl-data-table__cell--non-numeric material sort" data-sort="quantity">Code</th>
-                        <th class="mdl-data-table__cell--non-numeric material sort" data-sort="price" colspan="2">Price Quote</th>
-                    </tr>
-                </thead>
-                <tbody class="list">
-                     <?php
-    foreach ($symbols->result_array() as $symbol) {
-        ?>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
-                        <td class="mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
-                        <td class="mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
-                        <td><button onclick="document.location.href = '<?php echo base_url() . 'market/removeSymbol/' . $symbol['id'] . '/' ; ?>'" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                                            <i class="material-icons mdl-button--colored">delete</i>
-                                        </button>
-                                    </td>
-                    </tr>
-                    <?php }
-    ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-                    
-                    
-                    
-<style type="text/css">
-    #temp2 .panel-default>.panel-heading {
-        color: #e7eaec;
-        background-color: #2b9c92/*#9de1fe*/;
-        border-color: #ddd;
-    }
-     
-     #temp2 .material-icons {
-                  display: inline-flex;
-                  align-items: center;
-                  justify-content: center;
-                  vertical-align: middle;
-              }
-      #temp2 table {
-          border-collapse: collapse;
-          width: 100%;
-      }
-      #temp2 th{
-          color: #ccffff;
-      }
-      #temp2 th, td {
-          padding: 8px;
-          text-align: left;
-          /* border-bottom: 1px solid #ddd;*/
-      }
-      #temp2 th{
-          background-color: #b3d9ff;
-          color: #006666;
-          
-      }
-       #temp2 tr:hover {
-          background-color: #f5f5f5;
-          color: #006666;
-      }
-      #temp2 form{
-          text-align: center;
-      }
-       #temp2 #text, #temp2 #ico {
-          line-height: 50px;
-      }
-      #temp2 #text{
-          padding-left: 120px;
-          font-weight: bolder;
-      }
-
-      #temp2 #ico {
-          vertical-align: middle;
-      }
-      hr.head{
-                  margin: 1px 0 1px 0;
-              }
-</style>
                     <div id="temp2">
-                    <div class="mdl-layout__content">
-                    <div class="row">
-                        <?php
-                        foreach ($markets->result_array() as $mar) {
-                            ?>
-                            <div class="col-lg-4" id="">
-                                <div class="panel panel-default ">
-                                    <div class="panel-heading">
-                                        <!-- <h3 class="panel-title"><i class="material-icons">account_balance</i><?php echo $mar['name']; ?></h3> -->
-                                     <div class="panel-title">
-                                            <i id=ico class="icon icon-2x icon-file-text material-icons">account_balance</i>
-                                            <span id="text"><?php echo $mar['name']; ?></span>
+                        <div class="row">
+                            <div class="mdl-card__actions">
+                                <div id="mdl-table">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused pull-right">
+                                        <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                                            <i class="material-icons">search</i>
+                                        </label>
+                                        <div class="mdl-textfield__expandable-holder">
+                                            <input class="mdl-textfield__input search" type="text" id="sample6">
+                                            <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
                                         </div>
-                                        <hr>
-                                        
-                                        <table>
-                                            <thead>
+                                    </div>
+
+                                    <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp full-width">
+                                        <thead>
                                             <tr>
-                                                <th><i class="material-icons">trending_up</i></th>
-                                                <th>Symbol Name</th>
-                                                <th>Price ( <i class="fa fa-inr" aria-hidden="true"></i> )</th>
-                                                
+                                                <th class="mdl-data-table__cell--non-numeric sort" data-sort="material">Name</th>
+                                                <th class="mdl-data-table__cell--non-numeric material sort" data-sort="quantity">Code</th>
+                                                <th class="mdl-data-table__cell--non-numeric material sort" data-sort="price">Price Quote</th>
                                             </tr>
-                                            </thead>
-                                        </table>
-                                        <div class=" ScrollStyle">
-                                        <table>
+                                        </thead>
+                                        <tbody class="list">
                                             <?php
                                             foreach ($symbols->result_array() as $symbol) {
-                                                if ($symbol['market_id'] == $mar['id']) {
-                                                    ?>
-                                                    <tr><td><i class="material-icons">trending_up</i></td>
-                                                        <td><?php echo $symbol['name']; ?></td>
-                                                        <td><?php echo $symbol['price_quote']; ?></td>
-                                                        <td class="full-width">
-                                                            
-                                                        </td>
-                                                    </tr>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-                                                                
-                                        </table>  
-                                        </div>
-                                    </div>
+                                                ?>
+                                                <tr>
 
-                                    <div class="panel-body">
-                <!--                        <div class="text-left">
-                                            <a data-toggle="modal" data-target="#addSymbol" href="#">Add Symbols <i class="material-icons">add</i></a>
-                                        </div>-->
-                                        <div class="text-right">
-                                            <a href="#"><i class="material-icons" data-toggle="modal" data-target="#myModal">delete</i></a>
-                                        </div>
-                                    </div>
+                                                    <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
+                                                    <td class="mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
+                                                    <td class="mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
+
+                                                </tr>
+                                            <?php }
+                                            ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div id="log"></div>   
 
 
-                            <!--Over One CLient Card-->
-                            <?php
+                    <style type="text/css">
+                        #temp2 .panel-default>.panel-heading {
+                            color: #e7eaec;
+                            background-color: #2b9c92/*#9de1fe*/;
+                            border-color: #ddd;
                         }
-                        ?>
 
+                        #temp2 .material-icons {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            vertical-align: middle;
+                        }
+                        #temp2 table {
+                            border-collapse: collapse;
+                            width: 100%;
+                        }
+                        #temp2 th{
+                            color: #ccffff;
+                        }
+                        #temp2 th, td {
+                            padding: 8px;
+                            text-align: left;
+                            /* border-bottom: 1px solid #ddd;*/
+                        }
+                        #temp2 th{
+                            background-color: #b3d9ff;
+                            color: #006666;
 
+                        }
+                        #temp2 tr:hover {
+                            background-color: #f5f5f5;
+                            color: #006666;
+                        }
+                        #temp2 form{
+                            text-align: center;
+                        }
+                        #temp2 #text, #temp2 #ico {
+                            line-height: 50px;
+                        }
+                        #temp2 #text{
+                            padding-left: 120px;
+                            font-weight: bolder;
+                        }
 
+                        #temp2 #ico {
+                            vertical-align: middle;
+                        }
+                        hr.head{
+                            margin: 1px 0 1px 0;
+                        }
+                    </style>
+                    <div id="temp1">
+                        <div class="mdl-layout__content">
+                            <div class="row"><h1>Market Specific</h1></div>
+                        </div>
                     </div>
-                    </div>
-                    </div>
-                    
+
 
                 </div>
                 <!--Menu 3 Tab-->
@@ -444,7 +410,7 @@
                     </div>
                     <div class="row">&nbsp;</div>
                     <div class="row">
-                        <table id="tb1" class="tb1 mdl-data-table mdl-js-data-table mdl-data-table__cell--non-numeric mdl-shadow--2dp">
+                        <table id="finaltable" class="tb1 mdl-data-table mdl-js-data-table mdl-data-table__cell--non-numeric mdl-shadow--2dp">
                             <thead>
 
                                 <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
@@ -457,94 +423,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <table class="full-width mdl-data-table mdl-js-data-table mdl-shadow--2dp " >
-                                            <thead id="thd1">
-                                                <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
-                                                    <th class="full-width mdl-data-table__cell--non-numeric " >Acrylic (Transparent)</th>
-                                                    <th class="full-width">Unit price</th>
-                                                    <th class="full-width"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody  id="hideme" class="collapse in">
-                                                <tr>
-                                                    <td class="mdl-data-table__cell--non-numeric ">Acrylic (Transparent)</td>
-
-                                                    <td>$2.90</td>
-                                                    <td class="full-width">
-                                                        <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" data-toggle="modal" data-target="#myModal">
-                                                            <i class="material-icons">delete</i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-
-                                                    <td>$1.25</td>
-                                                    <td class="full-width">
-                                                        <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" data-toggle="modal" data-target="#myModal">
-                                                            <i class="material-icons">delete</i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-
-                                                    <td>$2.35</td>
-                                                    <td class="full-width">
-                                                        <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" data-toggle="modal" data-target="#myModal">
-                                                            <i class="material-icons">delete</i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                    <td class="full-width">25</td>
-                                    <td class="full-width">$2.90</td>
-                                    <td class="full-width">
-                                        <button class="mdl-button delete-row mdl-js-button mdl-button--icon mdl-button--colored" data-toggle="modal" data-target="#myModal">
-                                            <i class="material-icons">delete</i>
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr class="collapse out" id="r1">
-                                    <td colspan="3">
-                                        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" >
-                                            <thead>
-                                                <tr class="mdl-color "  style="background-color: #46b6ac;">
-                                                    <th class="full-width mdl-data-table__cell--non-numeric " >Market Name</th>
-
-                                                    <th class="full-width">Unit price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-
-                                                    <td>$2.90</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-
-                                                    <td>$1.25</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-
-                                                    <td>$2.35</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
+   <script type="text/javascript">
+        
+function abc(){
+    var j=selectable.length;
+    for (var i = selectable.length-1; i >= 0; i--) {
+            var table = document.getElementById("finaltable");
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            cell1.className = "full-width mdl-data-table__cell--non-numeric";
+            cell2.className = "full-width mdl-data-table__cell--non-numeric";
+            cell3.className = "full-width mdl-data-table__cell--non-numeric";
+            cell1.innerHTML = "NEW CELL1";
+            cell2.innerHTML = selectable[i];
+            cell3.innerHTML = i;
+        }
+alert(j);
+}
+    </script>
                                 <tr>
                                     <th class="full-width mdl-data-table__cell--non-numeric"></th>
-                                    <th class="full-width">Amount Payable</th>
-                                    <th class="full-width">0/- Rs</th>
-                                    <th class="full-width"></th>
+                                    <th class="full-width  mdl-data-table__cell--non-numeric">Amount Payable</th>
+                                    <th class="full-width mdl-data-table__cell--non-numeric">0/- Rs</th>
+                                    <th class="full-width  mdl-data-table__cell--non-numeric"></th>
                                 </tr>
 
                             </tbody>
@@ -552,7 +455,7 @@
                         <br>
                     </div>
                     <div class="row">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right">
+                        <button onclick="abc()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right">
                             Pay Now
                         </button>
                     </div>
@@ -561,4 +464,5 @@
             </div>
         </div>
     </div>
+ 
 </main>

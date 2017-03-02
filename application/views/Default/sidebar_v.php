@@ -1,9 +1,9 @@
 <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
     
     
-            <aside id="sidebar" class="sidebar sidebar-default open" role="navigation">
+            <aside id="sidebar" class="sidebar sidebar-inverse open" role="navigation">
     <!-- Sidebar header -->
-    <div class="sidebar-header header-cover" style="background-image: url(http://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg);">
+    <div class="sidebar-header header-cover" style="background-image: url(<?php echo base_url() . NAV_ASSETS; ?>images/bg.jpg);">
         <!-- Top bar -->
         <div class="top-bar"></div>
         <!-- Sidebar toggle button -->
@@ -37,7 +37,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li><hr>
         <li>
             <a href="<?php echo base_url().NAV_HOME ; ?>">
                 <i class="sidebar-icon md-inbox"></i>
