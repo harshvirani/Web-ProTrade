@@ -20,8 +20,8 @@
 
                                     var series = this.series[0];
                                     setInterval(function () {
-                                        $.getJSON("http://172.20.10.3/rethinkDB/trade_price_API.php?name=gold", function (data, status) {
-                                            temp = data["data"]["price"];
+                                        $.getJSON("http://localhost/rethinkDB/trade_price_API.php?name=gold", function (data, status) {
+                                            temp = data["data"]["current_price"];
                                         });
                                         var x = (new Date()).getTime(), // current time
                                                 y = parseInt(temp);
