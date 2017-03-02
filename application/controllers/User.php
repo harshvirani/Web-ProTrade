@@ -5,10 +5,13 @@ class User extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('user_m');
+        $this->load->model('market_m');
+        $this->load->model('symbol_m');
     }
 
 //    Login Page View 
     public function index() {
+
         if ($this->session->has_userdata('uname')) {
             if ($_SESSION['type'] === 'SUBSCRIBER' || $_SESSION['type'] === 'STAFF') {
                 redirect(base_url() . NAV_HOME);
@@ -52,15 +55,23 @@ class User extends CI_Controller {
 
     public function profile() {
         if (isset($_SESSION['type'])) {
-        $data = array(
-            'title' => 'Profile'
-        );
-        
-        $this->load->view('Default/header_v', $data);
-        $this->load->view('Default/sidebar_v');
-        $this->load->view('User/profile_v');
-        $this->load->view('Default/footer_v');
-        }else{
+            $data = array(
+                'title' => 'Profile',
+                'markets' => $this->market_m->getMarket(),
+                'count' => $this->market_m->getCount()
+            );
+//
+            if ($_SESSION['type'] == 'ADMIN') {
+                $this->load->view('Admin/admin_header', $data);
+                $this->load->view('Admin/admin_sidebar');
+                $this->load->view('User/sub_profile_v');
+            } else if ($_SESSION['type'] == 'SUBSCRIBER') {
+                $this->load->view('Default/header_v', $data);
+                $this->load->view('Default/sidebar_v');
+                $this->load->view('User/sub_profile_v');
+            }
+            $this->load->view('Default/footer_v');
+        } else {
             redirect(base_url());
         }
     }
