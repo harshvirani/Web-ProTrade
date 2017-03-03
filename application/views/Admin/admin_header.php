@@ -110,11 +110,7 @@
                 border: 1px black red;
                 /* border-bottom: 1px solid #ddd;*/
             }
-            th{
-                background-color: #b3d9ff;
-                color: #006666;
-
-            }
+            
             tr:hover {
                 background-color: #f5f5f5;
                 color: #006666;

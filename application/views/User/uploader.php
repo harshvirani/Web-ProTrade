@@ -1,3 +1,8 @@
+<main class="mdl-layout__content mdl-color--grey-100">
+    <div class="mdl-grid demo-content">
+
+<div class="container" >
+
 <?php
 error_reporting (E_ALL ^ E_NOTICE);
 session_start(); //Do not remove this
@@ -330,3 +335,6 @@ if(strlen($large_photo_exists)>0 && strlen($thumb_photo_exists)>0){
 	Photo <input type="file" name="image" size="30" /> <input type="submit" name="upload" value="Upload" />
 	</form>
 <?php } ?>
+</div>
+    
+</main>

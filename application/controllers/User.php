@@ -76,6 +76,29 @@ class User extends CI_Controller {
         }
     }
 
+    public function upload_picture(){
+        if (isset($_SESSION['type'])) {
+            $data = array(
+                'title' => 'Profile',
+                'markets' => $this->market_m->getMarket(),
+                'count' => $this->market_m->getCount()
+            );
+//
+            if ($_SESSION['type'] == 'ADMIN') {
+                $this->load->view('Admin/admin_header', $data);
+                $this->load->view('Admin/admin_sidebar');
+                $this->load->view('User/uploader');
+            } else if ($_SESSION['type'] == 'SUBSCRIBER') {
+                $this->load->view('Default/header_v', $data);
+                $this->load->view('Default/sidebar_v');
+                $this->load->view('User/uploader');
+            }
+            $this->load->view('Default/footer_v');
+        } else {
+            redirect(base_url());
+        }
+    }
+
     public function Register() {
 
 

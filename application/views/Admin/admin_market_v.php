@@ -129,12 +129,7 @@
     }*/
 </style>
 <main class="mdl-layout__content">    
-    <br/>
-
-
-
-
-    <div class="row client-row mdl-grid">
+    <div class="row mdl-grid">
         <div class="mdl-card__actions">
             <div id="mdl-table">
 

@@ -312,7 +312,7 @@ background: rgba(255,0,0,0.4);
 
                                     <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp full-width">
                                         <thead>
-                                            <tr>
+                                            <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
                                                 <th class="mdl-data-table__cell--non-numeric sort" data-sort="material">Name</th>
                                                 <th class="mdl-data-table__cell--non-numeric material sort" data-sort="quantity">Code</th>
                                                 <th class="mdl-data-table__cell--non-numeric material sort" data-sort="price">Price Quote</th>
@@ -402,12 +402,7 @@ background: rgba(255,0,0,0.4);
                 </div>
                 <!--Menu 3 Tab-->
                 <div id="menu3" class="tab-pane fade">
-                    <div class="row">&nbsp;</div>
-                    <div class="row" >
-                        <button data-toggle="tab" onclick="menu2()" class="pull-left mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
-                            <i class="material-icons">arrow_back</i> <!-- class="material-icons"-->
-                        </button>
-                    </div>
+                    
                     <div class="row">&nbsp;</div>
                     <div class="row">
                         <table id="finaltable" class="tb1 mdl-data-table mdl-js-data-table mdl-data-table__cell--non-numeric mdl-shadow--2dp">
@@ -417,9 +412,9 @@ background: rgba(255,0,0,0.4);
                                     <th class="full-width mdl-data-table__cell--non-numeric">
                                         Material
                                     </th>
-                                    <th class="full-width">Quantity</th>
-                                    <th class="full-width">Unit price</th>
-                                    <th class="full-width"></th>
+                                    <th class="full-width mdl-data-table__cell--non-numeric">Quantity</th>
+                                    <th class="full-width mdl-data-table__cell--non-numeric">Unit price</th>
+                                    <th class="full-width mdl-data-table__cell--non-numeric"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -440,7 +435,8 @@ function abc(){
             cell2.innerHTML = selectable[i];
             cell3.innerHTML = i;
         }
-alert(j);
+//alert(j);
+selectable=[];
 }
 //});       
     </script>
@@ -456,7 +452,7 @@ alert(j);
                         <br>
                     </div>
                     <div class="row">
-                        <button onclick="abc()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right">
                             Pay Now
                         </button>
                     </div>

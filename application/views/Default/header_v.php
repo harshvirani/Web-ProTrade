@@ -211,6 +211,7 @@
             function menu3() {
 
                 $('.nav-tabs a[href="#menu3"]').tab('show');
+                abc();
             }
 
             $('#A').click(function () {
