@@ -45,7 +45,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
+
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/style.css">          
+
+
+       
+
         <style type="text/css">
             .mainbody{
                 position: fixed; 
@@ -108,7 +113,7 @@
             th{
                 background-color: #b3d9ff;
                 color: #006666;
-                
+
             }
             tr:hover {
                 background-color: #f5f5f5;
@@ -333,22 +338,22 @@
                 <div class="mdl-layout__header-row">
                     <div class="mdl-layout-spacer"></div>
 
-<!--                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused">
-                        <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                            <i class="material-icons">search</i>
-                        </label>
-                        <div class="mdl-textfield__expandable-holder">
-                            <input class="mdl-textfield__input search" type="text" id="search">
-                            <label class="mdl-textfield__label" for="sample-expandable">Enter your query...</label>
-                        </div>
-                    </div>-->
-<!--                    <button id="insrt" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect">
-                        <i class="material-icons">add</i>
-                    </button>
-                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"  for="insrt">
-                        <li class="mdl-menu__item" data-toggle="modal" data-target="#addStaff" >Add Staff Member</li>
-                                                <li disabled class="mdl-menu__item">Snooze</li>
-                    </ul>-->
+                    <!--                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused">
+                                            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+                                                <i class="material-icons">search</i>
+                                            </label>
+                                            <div class="mdl-textfield__expandable-holder">
+                                                <input class="mdl-textfield__input search" type="text" id="search">
+                                                <label class="mdl-textfield__label" for="sample-expandable">Enter your query...</label>
+                                            </div>
+                                        </div>-->
+                    <!--                    <button id="insrt" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect">
+                                            <i class="material-icons">add</i>
+                                        </button>
+                                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"  for="insrt">
+                                            <li class="mdl-menu__item" data-toggle="modal" data-target="#addStaff" >Add Staff Member</li>
+                                                                    <li disabled class="mdl-menu__item">Snooze</li>
+                                        </ul>-->
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
                         <i class="material-icons">more_vert</i>
                     </button>
@@ -359,6 +364,6 @@
                     </ul>
                 </div>
                 <!-- <div class="mdl-tabs mdl-js-tabs "> -->
-                      
-</header>
+
+            </header>
 
