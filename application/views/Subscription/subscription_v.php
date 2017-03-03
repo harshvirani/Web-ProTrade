@@ -209,7 +209,7 @@
                         <button data-toggle="tab" onclick="menu1()" class="pull-left mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
                             <i class="material-icons">arrow_back</i> <!-- class="material-icons"-->
                         </button>
-                        <button data-toggle="tab" onclick="menu3()" class="pull-right mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                        <button id="nxtbtn" data-toggle="tab" onclick="menu3()" class="pull-right mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
                             <i class="material-icons">arrow_forward</i> <!-- class="material-icons"-->
                         </button>
                     </div>
@@ -424,7 +424,7 @@ background: rgba(255,0,0,0.4);
                             </thead>
                             <tbody>
    <script type="text/javascript">
-        
+//  $('#nxtbtn').click(function () {      
 function abc(){
     var j=selectable.length;
     for (var i = selectable.length-1; i >= 0; i--) {
@@ -442,6 +442,7 @@ function abc(){
         }
 alert(j);
 }
+//});       
     </script>
                                 <tr>
                                     <th class="full-width mdl-data-table__cell--non-numeric"></th>
