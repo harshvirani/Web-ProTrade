@@ -41,7 +41,25 @@
     </div>
 </div>
 <!-- ADD MARKET FORM OVER -->
-
+<script type="text/javascript">
+    $('.actionShow').click(function () {
+        var btnid=this.id;
+        showDialog({
+            title: 'Action',
+            text: 'This dialog can be closed by pressing ESC or clicking outside of the dialog.<br/>Pressing "YAY" will fire the configured action.',
+            negative: {
+                title: 'NO'
+            },
+            positive: {
+                title: 'YES',
+                onClick: function (e) {
+                    alert(btnid);
+                }
+            }
+        });
+    });
+    
+</script>
 <!-- ADD NEW MEMBER FORM START -->
 <div class="container">
     <div id="addSymbol" class="modal fade" role="dialog">
@@ -76,30 +94,30 @@
 </div>
 <!-- ADD NEW SYMBOL FORM OVER -->
 <style type="text/css">
-    .ScrollStyle
+/*    .ScrollStyle
     {
         overflow-y: scroll;
     }
     #element::-webkit-scrollbar { 
         display: none; 
     }
-    /*.ScrollStyle::-webkit-scrollbar { 
+    .ScrollStyle::-webkit-scrollbar { 
         display: none; 
-    }*/
-    /* Let's get this party started */
+    }
+     Let's get this party started 
     .ScrollStyle::-webkit-scrollbar {
         width: 5px;
 
     }
 
-    /* Track */
-    /*.ScrollStyle::-webkit-scrollbar-track {
+     Track 
+    .ScrollStyle::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
         -webkit-border-radius: 7px;
         border-radius: 7px;
-    }*/
+    }
 
-    /* Handle */
+     Handle 
     .ScrollStyle::-webkit-scrollbar-thumb {
         -webkit-border-radius: 10px;
         border-radius: 10px;
@@ -108,7 +126,7 @@
     }
     .ScrollStyle::-webkit-scrollbar-thumb:window-inactive {
         background: rgba(255,0,0,0.4); 
-    }
+    }*/
 </style>
 <main class="mdl-layout__content">    
     <br/>
@@ -138,7 +156,7 @@
 
                 </div>
 
-                <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                     <thead>
                         <tr>
                             <th class="mdl-data-table__cell--non-numeric sort" data-sort="material">Name</th>
@@ -154,7 +172,7 @@
                                 <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
                                 <td class="mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
                                 <td class="mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
-                                <td><button onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                <td><button id="<?php echo $symbol['id'];?>"  class="actionShow mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent mdl-button--colored">
                                         <i class="material-icons mdl-button--colored">delete</i>
                                     </button>
                                 </td>
