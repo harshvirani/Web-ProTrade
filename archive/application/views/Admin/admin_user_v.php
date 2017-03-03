@@ -111,30 +111,7 @@
             foreach ($users->result_array() as $row) {
                 if ($row['type'] == 'SUBSCRIBER') {
                     ?>
-<div class="card-wrap" id="<?php echo $row['id']; ?>">
-  <div class="profile_pic-wrap">
-    <img src="https://openclipart.org/download/247319/abstract-user-flat-3.svg" alt="img" />
-  </div>
-  <div class="info-wrap">
-  <h1 class="user-name"><?php echo $row['uname']; ?></h1>
-   <h6>EMAIL: <?php echo $row['email']; ?></h6>
-   <h6>CONTACT: <?php echo $row['contactNo']; ?></h6>
-    <hr>
-    <a href="">View More...</a>
-  </div>
-</div>
-<div class="card-wrap" id="<?php echo $row['id']; ?>">
-  <div class="profile_pic-wrap">
-    <img src="https://openclipart.org/download/247319/abstract-user-flat-3.svg" alt="img" />
-  </div>
-  <div class="info-wrap">
-  <h1 class="user-name"><?php echo $row['uname']; ?></h1>
-   <h6>EMAIL: <?php echo $row['email']; ?></h6>
-   <h6>CONTACT: <?php echo $row['contactNo']; ?></h6>
-    <hr>
-    <a href="">View More...</a>
-  </div>
-</div>
+
 <div class="card-wrap" id="<?php echo $row['id']; ?>">
   <div class="profile_pic-wrap">
     <img src="https://openclipart.org/download/247319/abstract-user-flat-3.svg" alt="img" />
@@ -148,7 +125,8 @@
   </div>
 </div>
 
-<!--                     <div class="col-lg-4" id="<?php echo $row['id']; ?>">
+
+                    <!-- <div class="col-lg-4" id="<?php echo $row['id']; ?>">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="material-icons">account_circle</i> <?php echo $row['uname']; ?></h3><hr>
@@ -168,29 +146,21 @@
                                     <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                                 <div class="text-right" >
-
                                     <a href="<?php echo base_url() . NAV_USERS . '/removeUser/' . $row['id']; ?>"><i class="material-icons">delete</i></a>
                                 </div>
                             </div>
                         </div>
-                    </div>
- -->
+                    </div> -->
+
 
                     <!--Over One CLient Card-->
                     <?php
                 }
             }
             ?>
-
-
-
         </div>
-
     </section>
     <!-- TAB_1 OVER -->
-
-
-
 
     <!-- TAB_2 START -->
     <section class="mdl-layout__tab-panel" id="tab2-panel">
