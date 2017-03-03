@@ -43,11 +43,28 @@
                     Dashboard
                 </a>
             </li>
-            <li>
-                <a href="<?php echo base_url() . NAV_USERS; ?>">
-                    <i class="sidebar-icon md-star"></i>
+            <li class="dropdown">
+                <a class="ripple-effect dropdown-toggle" href="<?php echo base_url() . NAV_USERS; ?>" data-toggle="dropdown">
+                    <i class="sidebar-icon material-icons">account_circle</i>
                     User
+                    <b class="caret"></b>
                 </a>
+                <ul class="dropdown-menu">
+                    <li>
+                    <a href="#" tabindex="-1">
+                        &nbsp;&nbsp;<i class="material-icons">verified_user</i>
+                        &nbsp;&nbsp;Subscriber
+                        <span class="sidebar-badge">12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" tabindex="-1">
+                        &nbsp;&nbsp;<i class="material-icons">verified_user</i>
+                        &nbsp;&nbsp;Staff
+                        <span class="sidebar-badge">0</span>
+                    </a>
+                </li>
+                </ul>
             </li>
             <!--<li class="divider"></li>-->
             <li class="dropdown">
