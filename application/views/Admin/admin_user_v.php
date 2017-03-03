@@ -1,65 +1,3 @@
-<!-- AANE MAIN CSS MA NAKHVATHI NATHI AAVTU -->
-<style type="text/css">
-
-.card-wrap {
-  width:350px;
-  margin:10px 5px;
-  background:#e3e3e3;
-  position:relative;
-  padding:20px; 
-  border-radius:5px;
-  border-top:33.33px solid #2b9c92;
-  font-family: 'Raleway', sans-serif;
-}
-
-.profile_pic-wrap {
-  width:100px;
-  height:100px;
-  background:#e3e3e3;
-  top:-30px;
-  left:80px;
-  padding:5px;
-  position:absolute;
-  margin-left: 50px;
-  border-radius:50%; 
-  overflow:hidden;
-  }
-  .profile_pic-wrap img {
-    border-radius:50%;
-    width: 100%;
-  }
-
-.user-name {
-  text-align:center;
-  margin-top:50px;
-}
-.user-title {
-  text-align:center;
-}
-.find_me-wrap {
-  margin-top:40px;
-}
-.find-me {
-  font:.7em;
-}
-.info-wrap {
-  text-align: center;
-}
-.icon-wrap a {
-  line-height:70px;
-  width:24%;
-  text-decoration:none;
-  padding:0;
-  font-size:2em;
-  cursor:pointer; 
-  margin:0;
-  color:darken(#e3e3e3,20);
-  transition:color .1s linear;
-  }
-  .icon-wrap a:hover {
-    color:darken(#e3e3e3,40);
-    }
-</style>
  
 <!-- ADD STAFF MEMBER START -->  
 
@@ -112,21 +50,7 @@
                 if ($row['type'] == 'SUBSCRIBER') {
                     ?>
 
-<div class="card-wrap" id="<?php echo $row['id']; ?>">
-  <div class="profile_pic-wrap">
-    <img src="https://openclipart.org/download/247319/abstract-user-flat-3.svg" alt="img" />
-  </div>
-  <div class="info-wrap">
-  <h1 class="user-name"><?php echo $row['uname']; ?></h1>
-   <h6>EMAIL: <?php echo $row['email']; ?></h6>
-   <h6>CONTACT: <?php echo $row['contactNo']; ?></h6>
-    <hr>
-    <a href="">View More...</a>
-  </div>
-</div>
-
-
-                    <!-- <div class="col-lg-4" id="<?php echo $row['id']; ?>">
+                    <div class="col-lg-4" id="<?php echo $row['id']; ?>">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="material-icons">account_circle</i> <?php echo $row['uname']; ?></h3><hr>
@@ -146,11 +70,13 @@
                                     <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                                 <div class="text-right" >
+
+        <!--onclick="document.location.href='<?php echo base_url() . NAV_USERS . '/removeUser/' . $row['id']; ?>'"-->
                                     <a href="<?php echo base_url() . NAV_USERS . '/removeUser/' . $row['id']; ?>"><i class="material-icons">delete</i></a>
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
 
 
                     <!--Over One CLient Card-->
@@ -158,9 +84,16 @@
                 }
             }
             ?>
+
+
+
         </div>
+
     </section>
     <!-- TAB_1 OVER -->
+
+
+
 
     <!-- TAB_2 START -->
     <section class="mdl-layout__tab-panel" id="tab2-panel">
