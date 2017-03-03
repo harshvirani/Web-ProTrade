@@ -128,7 +128,7 @@
                         <thead>
                             <tr>
                                 <th class="mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
-                                <th class="mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Current</th>
+                                <th class="mdl-data-table__cell--non-numeric sort full-width">Current</th>
                             </tr>
                         </thead>
                         <script>
