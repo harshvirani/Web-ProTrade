@@ -12,8 +12,9 @@ class User_m extends CI_Model {
         $query = $this->db->get('user');
         return $query->row();
     }
-    public function user_data($data) {
-        
+    public function user_data($type) {
+        $query = $this->db->query('select * from user where type="'.$type.'";');
+        return $query;
     }
     public function removeUser($uid) {
         $query = $this->db->delete('user', array('id' => $id));  // Produces: // DELETE FROM mytable  // WHERE id = $id

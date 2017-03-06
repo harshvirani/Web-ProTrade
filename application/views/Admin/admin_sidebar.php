@@ -13,9 +13,9 @@
                 <img src="<?php echo base_url() . NAV_ASSETS; ?>images/user.jpg" class="demo-avatar">
             </div>
             <!-- Sidebar brand name -->
-            <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+            <a data-toggle="dropdown" class="sidebar-brand " href="#settings-dropdown">
                 <?php echo $this->session->userdata('email'); ?>
-                <b class="caret"></b>
+                <i class="material-icons f14">menu</i>
             </a>
 
         </div>
@@ -39,7 +39,8 @@
             
             <hr><li>
                 <a href="<?php echo base_url() . NAV_ADMIN; ?>">
-                    <i class="sidebar-icon md-inbox"></i>
+                    <!--<i class="sidebar-icon md-inbox"></i>-->
+                    <i class="sidebar-icon mdl-color material-icons">dashboard</i>
                     Dashboard
                 </a>
             </li>
@@ -51,19 +52,27 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                    <a href="#" tabindex="-1">
+                        <a href="<?php echo base_url().NAV_USERS;?>SUBSCRIBER" tabindex="-1">
                         &nbsp;&nbsp;<i class="material-icons">verified_user</i>
                         &nbsp;&nbsp;Subscriber
-                        <span class="sidebar-badge">12</span>
+                        <span class="sidebar-badge"><?php echo $sub_cnt; ?></span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" tabindex="-1">
+                    <a href="<?php echo base_url().NAV_USERS;?>STAFF" tabindex="-1">
                         &nbsp;&nbsp;<i class="material-icons">verified_user</i>
                         &nbsp;&nbsp;Staff
-                        <span class="sidebar-badge">0</span>
+                        <span class="sidebar-badge"><?php echo $staff_cnt; ?></span>
                     </a>
                 </li>
+                
+                <hr>
+                    <li>
+                        <a data-toggle="modal" data-target="#addMarket" tabindex="-1">
+                            &nbsp;&nbsp;<i class="material-icons">add</i>
+                            &nbsp;&nbsp;Add Staff Member
+                        </a>
+                    </li>
                 </ul>
             </li>
             <!--<li class="divider"></li>-->
@@ -105,6 +114,7 @@
                         <?php
                     }
                     ?>
+                    <hr>
                     <li>
                         <a data-toggle="modal" data-target="#addMarket" tabindex="-1">
                             &nbsp;&nbsp;<i class="material-icons">add</i>
@@ -122,40 +132,19 @@
         <!-- Sidebar text -->
         <!--  <div class="sidebar-text">Text</div> -->
     </aside>
-
-
-
-
-
-    <!--    <header class="demo-drawer-header">
-            <img src="<?php echo base_url() . NAV_ASSETS; ?>images/user.jpg" class="demo-avatar">
-            <div class="demo-avatar-dropdown">
-                <span>Welcome Admin</span>
-                <div class="mdl-layout-spacer"></div>
-                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                    <i class="material-icons" role="presentation">arrow_drop_down</i>
-                    <span class="visuallyhidden">Accounts</span>
-                </button>
-                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                                <a href="<?php echo base_url() . NAV_LOGOUT ?>"><li class="mdl-menu__item">Logout</li></a>
-                            </ul>
-            </div>
-        </header>
-                        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-                        <ul style="list-style-type: none; padding-left: 0px;">
-                            <li><a class="mdl-navigation__link" href="<?php echo base_url() . NAV_ADMIN; ?>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people_outline</i>Dashboard</a></li>
-                            <li><a class="mdl-navigation__link" href="<?php echo base_url() . NAV_USERS; ?>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people_outline</i>User</a></li>
-                            <li><a class="mdl-navigation__link" href="<?php echo base_url() . NAV_MARKETS; ?>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Market</a></li>
-                        </ul>
-                            <div class="mdl-layout-spacer"></div>
-                            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>Help</a>
-                        
-                        </nav>-->
+    
+    
 
 </div>
 
 
 <!-- Square card -->
+
+
+
+
+
+
 
 
 

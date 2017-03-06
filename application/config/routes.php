@@ -53,5 +53,6 @@ $route['default_controller'] = 'user';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['marketview/(:num)'] = 'Admin/Market/MarketView/$1';
-$route['usersview'] = 'Admin/users';
+//$route['usersview'] = 'Admin/users';
 $route['profile'] = 'user/profile';
+$route['usersview/(:any)'] = 'Admin/users/view/$1';

@@ -6,6 +6,7 @@ class Market extends CI_Controller {
         parent::__construct();
         $this->load->model('market_m');
         $this->load->model('symbol_m');
+        $this->load->model('user_m');
     }
 
     public function MarketView($mid) {
@@ -13,7 +14,9 @@ class Market extends CI_Controller {
             $data = array(
                 'title' => 'Market',
                 'markets' => $this->market_m->getMarket(),
-                'count' => $this->market_m->getCount()
+                'count' => $this->market_m->getCount(),
+                'sub_cnt'=>$this->user_m->count('SUBSCRIBER'),
+                'staff_cnt'=>$this->user_m->count('STAFF')
             );
             $data['market_id'] = $mid;
             $data['symbols'] = $this->symbol_m->getSymbol($data['market_id']);

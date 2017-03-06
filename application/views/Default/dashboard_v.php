@@ -56,7 +56,7 @@
                             },
 
                             title: {
-                                text: 'Live random data'
+                                text: 'Live Chart:'+symb
                             },
 
                             exporting: {
@@ -149,7 +149,7 @@
                                         }
                                     }
                                     symb = data[0];
-                                    alert(symb);
+//                                    alert(symb);
                                     chart();
 //                                    $( "#container" ).load(window.location.href + " #container" );
                                 };

@@ -14,15 +14,17 @@ class Users extends CI_Controller {
         $this->load->model('market_m');
     }
 
-    public function index() {
+    public function view($type) {
         if ($_SESSION['type'] == 'ADMIN') {
             $data = array(
                 'title' => 'Users',
                 'markets' => $this->market_m->getMarket(),
-                'count' => $this->market_m->getCount()
+                'count' => $this->market_m->getCount(),
+                'sub_cnt'=>$this->user_m->count('SUBSCRIBER'),
+                'staff_cnt'=>$this->user_m->count('STAFF')
             );
-            $data['users'] = $this->user_m->all_user();
-
+            $data['users'] = $this->user_m->user_data($type);
+            
             $this->load->view('Admin/admin_header', $data);
 //            $this->load->view('Admin/admin_header_nav');
             $this->load->view('Admin/admin_sidebar');

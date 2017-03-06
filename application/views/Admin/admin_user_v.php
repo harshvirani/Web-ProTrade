@@ -2,11 +2,11 @@
 <style type="text/css">
 
 .card-wrap {
-  width:350px;
+  width:340px;
   margin:10px auto;
   background:#e3e3e3;
   position:relative;
-  padding:20px; 
+  padding:20px;
   border-radius:5px;
   border-top:33.33px solid #2b9c92;
   font-family: 'Raleway', sans-serif;
@@ -17,11 +17,11 @@
   height:100px;
   background:#e3e3e3;
   top:-30px;
-  left:80px;
+  left:70px;
   padding:5px;
   position:absolute;
   margin-left: 50px;
-  border-radius:50%; 
+  border-radius:50%;
   overflow:hidden;
   }
   .profile_pic-wrap img {
@@ -51,7 +51,7 @@
   text-decoration:none;
   padding:0;
   font-size:2em;
-  cursor:pointer; 
+  cursor:pointer;
   margin:0;
   color:darken(#e3e3e3,20);
   transition:color .1s linear;
@@ -60,8 +60,8 @@
     color:darken(#e3e3e3,40);
     }
 </style>
- 
-<!-- ADD STAFF MEMBER START -->  
+
+<!-- ADD STAFF MEMBER START -->
 
 <div class="container">
     <div id="addStaff" class="modal fade" role="dialog">
@@ -97,48 +97,32 @@
 </div>
 <!-- ADD STAFF MEMBER OVER -->
 
-
-<main class="mdl-layout__content">    
-
-   
+<main class="mdl-layout__content">
+<div class="row mdl-grid">
     
-<div class="card-wrap" id="<?php echo $row['id']; ?>">
-  <div class="profile_pic-wrap">
-    <img src="https://openclipart.org/download/247319/abstract-user-flat-3.svg" alt="img" />
-  </div>
-  <div class="info-wrap">
-  <h1 class="user-name"><?php echo $row['uname']; ?></h1>
-   <h6>EMAIL: <?php echo $row['email']; ?></h6>
-   <h6>CONTACT: <?php echo $row['contactNo']; ?></h6>
-    <hr>
-    <a href="">View More...</a>
-  </div>
-</div>
-<div class="card-wrap" id="<?php echo $row['id']; ?>">
-  <div class="profile_pic-wrap">
-    <img src="https://openclipart.org/download/247319/abstract-user-flat-3.svg" alt="img" />
-  </div>
-  <div class="info-wrap">
-  <h1 class="user-name"><?php echo $row['uname']; ?></h1>
-   <h6>EMAIL: <?php echo $row['email']; ?></h6>
-   <h6>CONTACT: <?php echo $row['contactNo']; ?></h6>
-    <hr>
-    <a href="">View More...</a>
-  </div>
-</div>
-<div class="card-wrap" id="<?php echo $row['id']; ?>">
-  <div class="profile_pic-wrap">
-    <img src="https://openclipart.org/download/247319/abstract-user-flat-3.svg" alt="img" />
-  </div>
-  <div class="info-wrap">
-  <h1 class="user-name"><?php echo $row['uname']; ?></h1>
-   <h6>EMAIL: <?php echo $row['email']; ?></h6>
-   <h6>CONTACT: <?php echo $row['contactNo']; ?></h6>
-    <hr>
-    <a href="">View More...</a>
-  </div>
-</div>
+     <?php
+            foreach ($users->result_array() as $row) {
+//                if ($row['type'] == 'STAFF') {
+                    ?>
 
+<div class="col-md-4 card-wrap" id="<?php echo $row['id']; ?>">
+  <div class="profile_pic-wrap">
+    <img src="https://openclipart.org/download/247319/abstract-user-flat-3.svg" alt="img" />
+  </div>
+  <div class="info-wrap">
+  <h1 class="user-name"><?php echo $row['uname']; ?></h1>
+   <h6>EMAIL: <?php echo $row['email']; ?></h6>
+   <h6>CONTACT:<?php echo $row['contactNo']; ?></h6>
+    <hr>
+  </div>
+</div>
+    
+    
+    <?php
+            }
+    ?>
+
+</div>
 </main>
 
 </div>

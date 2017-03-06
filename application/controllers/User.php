@@ -33,7 +33,7 @@ class User extends CI_Controller {
             $ses = json_decode(json_encode($result), True);
             $this->session->set_userdata($ses);
             if ($ses['type'] == 'ADMIN') {
-                redirect(base_url() . NAV_USERS);
+                redirect(base_url() . NAV_DASHBOARD);
             } else if ($ses['type'] == 'SUBSCRIBER') {
                 redirect(base_url() . NAV_HOME);
             } else if ($ses['type'] == 'STAFF') {

@@ -133,9 +133,11 @@
         <div class="mdl-card__actions">
             <div id="mdl-table">
 
-                <button data-toggle="modal" data-target="#addSymbol" tabindex="-1" id="adsym" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+<!--                <button data-toggle="modal" data-target="#addSymbol" tabindex="-1" id="adsym" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
                     <i class="material-icons" >add</i>
-                </button>
+                </button>-->
+                
+                <i data-toggle="modal" data-target="#addSymbol" tabindex="-1" id="adsym"  class="material-icons  mdl-color-text--cyan">add_circle_outline</i>
                 <div class="mdl-tooltip" for="adsym">
                     Add Symbols
                 </div>
@@ -167,9 +169,12 @@
                                 <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
                                 <td class="mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
                                 <td class="mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
-                                <td><button id="<?php echo $symbol['id'];?>"  class="actionShow mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent mdl-button--colored">
-                                        <i class="material-icons mdl-button--colored">delete</i>
-                                    </button>
+                                <td>
+<!--                                    <button id="<?php echo $symbol['id'];?>" onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'"  class="mdl-button mdl-js-button mdl-button--raised">
+                                        <i  class="material-icons mdl-color-text--red">remove_circle_outline</i>
+                                    </button>-->
+                                    
+                                    <i onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'" class="material-icons mdl-color-text--red">remove_circle_outline</i>       
                                 </td>
                             </tr>
                         <?php }

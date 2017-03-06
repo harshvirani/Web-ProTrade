@@ -13,7 +13,9 @@ class Dashboard extends CI_Controller {
             $data = array(
                 'title' => 'Users',
                 'markets' => $this->market_m->getMarket(),
-                'count' => $this->market_m->getCount()
+                'count' => $this->market_m->getCount(),
+                'sub_cnt'=>$this->user_m->count('SUBSCRIBER'),
+                'staff_cnt'=>$this->user_m->count('STAFF')
             );
             
 

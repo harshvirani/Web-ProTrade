@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    var x, y;
+     var x, y;
     var selectable = new Array();
     $(document).ready(function () {
         $(".sc1").click(function () {
@@ -36,7 +36,7 @@
         $(document).on("click", ".mdl-checkbox__ripple-container.mdl-js-ripple-effect.mdl-ripple--center", function () {
             var getscriptID = $(this).parents().eq(2/*child number*/).children().eq(2).text();
             var parentID = $(this).parents().eq(2).attr('id');
-            
+
             //DESELECT CHECKBOX
             function contains(a, b) {
                 var i = a.length;
@@ -106,7 +106,7 @@
                     <div class="row">&nbsp;</div>
                     <div class="row" >
                         <button data-toggle="tab" onclick="menu1()" class="pull-right mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
-                            <i class="material-icons">arrow_forward</i> 
+                            <i class="material-icons">arrow_forward</i>
                         </button>
                     </div>
                     <div class="row">&nbsp;</div>
@@ -130,7 +130,7 @@
                                             <span class="mdl-card__supporting-text mdl-checkbox__label"><?php echo $plan['name']; ?></span>
 
                                         </div>
-                                    </div>      
+                                    </div>
                                 </label>
                             </div>
 
@@ -173,7 +173,7 @@
                                         <span class="mdl-card__supporting-text mdl-checkbox__label">Market</span>
 
                                     </div>
-                                </div>      
+                                </div>
                             </label>
                         </div>
 
@@ -193,7 +193,7 @@
                                         <span class="mdl-card__supporting-text mdl-checkbox__label">Script</span>
 
                                     </div>
-                                </div>      
+                                </div>
                             </label>
                         </div>
                     </div>
@@ -221,11 +221,11 @@ max-height: 250px;
 height: 350px;
 overflow-y: scroll;
 }
-#element::-webkit-scrollbar { 
-display: none; 
+#element::-webkit-scrollbar {
+display: none;
 }
-/*.ScrollStyle::-webkit-scrollbar { 
-display: none; 
+/*.ScrollStyle::-webkit-scrollbar {
+display: none;
 }*/
 /* Let's get this party started */
 .ScrollStyle::-webkit-scrollbar {
@@ -235,7 +235,7 @@ width: 3px;
 
 /* Track */
 /*.ScrollStyle::-webkit-scrollbar-track {
--webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 -webkit-border-radius: 7px;
 border-radius: 7px;
 }*/
@@ -244,11 +244,11 @@ border-radius: 7px;
 .ScrollStyle::-webkit-scrollbar-thumb {
 -webkit-border-radius: 10px;
 border-radius: 10px;
-background: #2e9089; 
--webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+background: #2e9089;
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 .ScrollStyle::-webkit-scrollbar-thumb:window-inactive {
-background: rgba(255,0,0,0.4); 
+background: rgba(255,0,0,0.4);
 }
 </style>
 <div class="row">&nbsp;</div>
@@ -257,7 +257,7 @@ background: rgba(255,0,0,0.4);
                     <?php
                     foreach ($markets->result_array() as $mar) {
                         ?>
-        
+
 
              <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" >
                  <thead>
@@ -269,19 +269,19 @@ background: rgba(255,0,0,0.4);
                     </tr>
                 </thead>
                 <tbody class="list">
-                    
+
                         <?php
                         foreach ($symbols->result_array() as $symbol) {
                             if ($symbol['market_id'] == $mar['id']) {
                                 ?>
-                        
+
                                     <tr>
                                         <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
 
                                         <td class="price"><?php echo $symbol['price_quote']; ?></td>
                                     </tr>
-                                    
-                        
+
+
                                 <?php
                             }
                         }
@@ -289,7 +289,7 @@ background: rgba(255,0,0,0.4);
                 </tbody>
             </table>
             <br/>
-        
+
                         <?php
                     }
                     ?>
@@ -337,7 +337,7 @@ background: rgba(255,0,0,0.4);
                             </div>
                         </div>
                     </div>
-                    <div id="log"></div>   
+                    <div id="log"></div>
 
 
                     <style type="text/css">
@@ -402,7 +402,7 @@ background: rgba(255,0,0,0.4);
                 </div>
                 <!--Menu 3 Tab-->
                 <div id="menu3" class="tab-pane fade">
-                    
+
                     <div class="row">&nbsp;</div>
                     <div class="row">
                         <table id="finaltable" class="tb1 mdl-data-table mdl-js-data-table mdl-data-table__cell--non-numeric mdl-shadow--2dp">
@@ -419,26 +419,35 @@ background: rgba(255,0,0,0.4);
                             </thead>
                             <tbody>
    <script type="text/javascript">
-//  $('#nxtbtn').click(function () {      
+//  $('#nxtbtn').click(function () {
 function abc(){
     var j=selectable.length;
     for (var i = selectable.length-1; i >= 0; i--) {
             var table = document.getElementById("finaltable");
             var row = table.insertRow(1);
+            row.id=i;
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
             cell1.className = "full-width mdl-data-table__cell--non-numeric";
             cell2.className = "full-width mdl-data-table__cell--non-numeric";
             cell3.className = "full-width mdl-data-table__cell--non-numeric";
             cell1.innerHTML = "NEW CELL1";
             cell2.innerHTML = selectable[i];
             cell3.innerHTML = i;
+            cell4.innerHTML = "<button onclick='delete_row("+i+")' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
         }
-//alert(j);
+//alert(j);            onclick='delete_row("+i+")'
 selectable=[];
 }
-//});       
+
+
+function delete_row(rowid){
+var row = document.getElementById(rowid);
+    row.parentNode.removeChild(row);
+}
+//});
     </script>
                                 <tr>
                                     <th class="full-width mdl-data-table__cell--non-numeric"></th>
@@ -461,5 +470,5 @@ selectable=[];
             </div>
         </div>
     </div>
- 
+
 </main>
