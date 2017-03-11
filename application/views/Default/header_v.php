@@ -15,10 +15,10 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url().NAV_ASSETS; ?>images/ios-desktop.png">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url() . NAV_ASSETS; ?>images/ios-desktop.png">
 
         <!-- Tile icon for Win8 (144x144 + tile color) -->
-        <meta name="msapplication-TileImage" content="<?php echo base_url().NAV_ASSETS; ?>images/touch/ms-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileImage" content="<?php echo base_url() . NAV_ASSETS; ?>images/touch/ms-touch-icon-144x144-precomposed.png">
         <meta name="msapplication-TileColor" content="#3372DF">
 
 
@@ -26,11 +26,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://code.highcharts.com/stock/highstock.js"></script>
         <!-- <script src="https://code.highcharts.com/highcharts.js"></script>   -->
-        <!-- <script src="<?php echo base_url().NAV_ASSETS; ?>js/high.js"></script>   -->
-        <link rel="shortcut icon" href="<?php echo base_url().NAV_ASSETS; ?>images/favicon.png">
+        <!-- <script src="<?php echo base_url() . NAV_ASSETS; ?>js/high.js"></script>   -->
+        <link rel="shortcut icon" href="<?php echo base_url() . NAV_ASSETS; ?>images/favicon.png">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
+
         <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
         <!--
         <link rel="canonical" href="http://www.example.com/">
@@ -39,36 +39,45 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-        <link rel="stylesheet" href="<?php echo base_url().NAV_ASSETS; ?>styles.css">
-   
-        <!--New Side bar-->
-        
-        <!--<script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>-->
+        <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>styles.css">
+
+        <!--Right Sidebar for Scripts-->
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/style_side.css">
 
-  
-      <link rel="stylesheet" href="<?php echo base_url().NAV_ASSETS; ?>css/style.css">
-        
-   
-   
-    <style>
 
-        
-        
-    #view-source {
-      position: fixed;
-      display: block;
-      right: 0;
-      bottom: 0;
-      margin-right: 40px;
-      margin-bottom: 40px;
-      z-index: 900;
-    }
-    </style>
-        
-        
+
+
+<!--<script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>-->
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+        <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/style.css">
+
+
+
+        <style>
+
+
+
+            #view-source {
+                position: fixed;
+                display: block;
+                right: 0;
+                bottom: 0;
+                margin-right: 40px;
+                margin-bottom: 40px;
+                z-index: 900;
+            }
+        </style>
+
+
         <script>
             function td() {
                 if ($("#rw1").hasClass("out")) {
@@ -190,7 +199,7 @@
             .demo-card-square > .mdl-card__title {
                 color: #fff;
                 background:
-                    url('<?php echo base_url().NAV_ASSETS; ?>images/dog.png') bottom right 15% no-repeat #46B6AC;
+                    url('<?php echo base_url() . NAV_ASSETS; ?>images/dog.png') bottom right 15% no-repeat #46B6AC;
             }
 
         </style>
@@ -246,7 +255,7 @@
         </script>
     </head>
     <body>
-        
+
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
                 <div class="mdl-layout__header-row">

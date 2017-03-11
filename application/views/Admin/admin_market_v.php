@@ -1,5 +1,26 @@
+<script type="text/javascript">
+    $('.marketDelete').click(function () {
+        var btnid=this.id;
+        showDialog({
+            title: 'Action',
+            text: 'Are You Sure You Want to Delete?',
+            negative: {
+                title: 'NO'
+            },
+            positive: {
+                title: 'YES',
+                onClick: function () {
+                    alert(btnid);
+                }
+            }
+        });
+    });
+    
+</script>
+
+
 <!-- DELETE POPOVER -->
-<div class="container">
+<!--<div class="container">
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -16,9 +37,9 @@
         </div>
     </div>
 </div>
-<!-- DELETE POPOVER -->
+ DELETE POPOVER 
 
-<!-- ADD MARKET FORM START -->
+ ADD MARKET FORM START 
 <div class="container">
     <div id="addMarket" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -40,7 +61,7 @@
         </div>
     </div>
 </div>
-<!-- ADD MARKET FORM OVER -->
+ ADD MARKET FORM OVER 
 <script type="text/javascript">
     $('.actionShow').click(function () {
         var btnid=this.id;
@@ -60,7 +81,7 @@
     });
     
 </script>
-<!-- ADD NEW MEMBER FORM START -->
+ ADD NEW MEMBER FORM START 
 <div class="container">
     <div id="addSymbol" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -76,7 +97,7 @@
                             <label class="mdl-textfield__label" for="sample3">Symbol Code</label>
                         </div>
 
-                        <!--//marketId-->
+                        //marketId
 
                         <input type="text" name="marketId" value="<?php echo $market_id; ?>" placeholder="<?php echo $market_id; ?>" hidden="1">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -92,7 +113,7 @@
         </div>
     </div>
 </div>
-<!-- ADD NEW SYMBOL FORM OVER -->
+ ADD NEW SYMBOL FORM OVER 
 <style type="text/css">
 /*    .ScrollStyle
     {
@@ -127,7 +148,7 @@
     .ScrollStyle::-webkit-scrollbar-thumb:window-inactive {
         background: rgba(255,0,0,0.4); 
     }*/
-</style>
+</style>-->
 <main class="mdl-layout__content">    
     <div class="row mdl-grid">
         <div class="mdl-card__actions">
@@ -174,11 +195,13 @@
                                         <i  class="material-icons mdl-color-text--red">remove_circle_outline</i>
                                     </button>-->
                                     
-                                    <i onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'" class="material-icons mdl-color-text--red">remove_circle_outline</i>       
+                                    <i id="<?php echo $symbol['id']; ?>"  class=" marketDelete material-icons mdl-color-text--red">remove_circle_outline</i>       
+                                    <!--onclick="document.location.href = '<?php // echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'"-->
                                 </td>
                             </tr>
                         <?php }
                         ?>
+                            
                     </tbody>
                 </table>
             </div>

@@ -44,24 +44,24 @@
                     Dashboard
                 </a>
             </li>
-            <li class="dropdown">
-                <a class="ripple-effect dropdown-toggle" href="<?php echo base_url() . NAV_USERS; ?>" data-toggle="dropdown">
-                    <i class="sidebar-icon material-icons">account_circle</i>
+            <li class="dropdown "><!--clas=open-->
+                <a class="ripple-effect dropdown-toggle" href="<?php echo base_url() . NAV_USERS; ?>" data-toggle="dropdown"><!--aria-expanded="false"-->
+                    <i class="sidebar-icon material-icons">people</i>
                     User
                     <b class="caret"></b>
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"><!--style="display: block;"-->
                     <li>
                         <a href="<?php echo base_url().NAV_USERS;?>SUBSCRIBER" tabindex="-1">
-                        &nbsp;&nbsp;<i class="material-icons">verified_user</i>
-                        &nbsp;&nbsp;Subscriber
+                        <i class="sidebar-icon material-icons">person</i>
+                        Subscriber
                         <span class="sidebar-badge"><?php echo $sub_cnt; ?></span>
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo base_url().NAV_USERS;?>STAFF" tabindex="-1">
-                        &nbsp;&nbsp;<i class="material-icons">verified_user</i>
-                        &nbsp;&nbsp;Staff
+                        <i class="sidebar-icon material-icons">person</i>
+                        Staff
                         <span class="sidebar-badge"><?php echo $staff_cnt; ?></span>
                     </a>
                 </li>
@@ -69,8 +69,8 @@
                 <hr>
                     <li>
                         <a data-toggle="modal" data-target="#addMarket" tabindex="-1">
-                            &nbsp;&nbsp;<i class="material-icons">add</i>
-                            &nbsp;&nbsp;Add Staff Member
+                            &nbsp;&nbsp;<i class="sidebar-icon material-icons">person_add</i>
+                            Add Member
                         </a>
                     </li>
                 </ul>
@@ -79,7 +79,7 @@
             <li class="dropdown">
 
                 <a href="<?php echo base_url() . 'market/1'?>" class="ripple-effect dropdown-toggle"  data-toggle="dropdown">
-                    <i class="sidebar-icon md-inbox"></i>
+                    <i class="sidebar-icon mdl-color material-icons">account_balance</i>
                     Market
                     <b class="caret"></b>
                 </a>
@@ -91,8 +91,8 @@
 
                         <li>
                             <a href="<?php echo base_url() . 'marketview/' . $mar['id']; ?>" tabindex="-1">
-                                &nbsp;&nbsp;<i class="material-icons">trending_up</i>
-                                &nbsp;&nbsp;<?php echo $mar['name'];
+                                &nbsp;&nbsp;<i class="sidebar-icon material-icons">trending_up</i>
+                                <?php echo $mar['name'];
                         ?>
 
                                 <span class="sidebar-badge">
@@ -117,8 +117,8 @@
                     <hr>
                     <li>
                         <a data-toggle="modal" data-target="#addMarket" tabindex="-1">
-                            &nbsp;&nbsp;<i class="material-icons">add</i>
-                            &nbsp;&nbsp;Add Market
+                            &nbsp;&nbsp;<i class="sidebar-icon material-icons">add_box</i>
+                            Add Market
                         </a>
                     </li>
                 </ul>

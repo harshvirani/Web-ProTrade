@@ -1,14 +1,16 @@
 <main class="mdl-layout__content mdl-color--grey-100">
-    <div class="mdl-grid demo-content"><script>
+    <div class="com">
+	<div class="com__content">
+    <script>
         var symb = "gold";</script>
 
 
         <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col " style="width: 650px; height: 300px;">
             <div id="container" style="width: 650px; height: 300px;"></div>
             <script language="JavaScript">
-                window.onload = function () {
-                    myfun();
-                };
+//                window.onload = function () {
+//                    myfun();
+//                };
                 function chart() {
                     $(function () {
 
@@ -105,9 +107,47 @@
                 }
 
             </script>
+            <script type="text/javascript">
+    $('.scripts').click(function () {
+        var btnid=this.id;
+        alert(btnid);
+    });
+    </script>
+<script>
+function getPaging(str) {
+  alert(str);
+  symb=str;
+  chart();
+}
+
+
+</script>
+    
 
         </div>
-        <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing" >
+        </div>
+       
+        	<nav class="com__nav pull-right">
+                    <ul class="com__nav-list" id="bulk">
+                        
+                        
+			<?php
+                            foreach ($symbols->result_array() as $symbol) {
+                                ?>
+                        <li  class=" com__nav-item ">
+                            
+<!--                            <a style="text-align: center; text-decoration: none;"><?php echo $symbol['name']; ?></a>-->
+                            <div onclick="getPaging(this.id)" id="<?php echo $symbol['code']; ?>" style="color: white; text-decoration: none" href="" class="com__nav-link">
+					Name:<?php echo $symbol['name']; ?>
+				</div>
+			</li>
+                         <?php
+                            }
+                            ?>
+
+		</ul>
+	</nav>
+<!--        <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing" >
             <div class="mdl-card__actions mdl-card--border" >
                 <div id="mdl-table">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused" data-upgraded=",MaterialTextfield">
@@ -173,14 +213,14 @@
                 </div>
             </div>
 
-        </div><!-- /.container -->
+        </div> /.container -->
 
 
     </div>
-</div>
-<div class=" mdl-shadow--2dp  mdl-cell--12-col ">
+
+<!--<div class=" mdl-shadow--2dp  mdl-cell--12-col ">
     <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-        <!-- Tab Bars -->
+         Tab Bars 
         <div class="mdl-tabs__tab-bar">
             <a href="#asia-panel" class="mdl-tabs__tab is-active">Asia</a>
             <a href="#europe-panel" class="mdl-tabs__tab">Europe</a>
@@ -189,4 +229,7 @@
 
         </div>
     </div>
+   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+</div>-->
+   <script src="<?php echo base_url().NAV_ASSETS;?>js/index_side.js"></script> 
 </main>

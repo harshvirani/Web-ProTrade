@@ -48,8 +48,10 @@
 
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/style.css">          
 
+<!--Popup Dialogue Box-->
+        <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/mdl-jquery-modal-dialog.css">
+    <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
 
-       
 
         <style type="text/css">
             .mainbody{
@@ -328,6 +330,8 @@
         </script>
     </head>
     <body>
+        
+        
 
         <div class=" mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header mdl-layout--fixed-tabs">
             <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600 ">

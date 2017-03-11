@@ -16,14 +16,14 @@ class User extends CI_Controller {
             if ($_SESSION['type'] === 'SUBSCRIBER' || $_SESSION['type'] === 'STAFF') {
                 redirect(base_url() . NAV_HOME);
             } else {
-                redirect(base_url() . NAV_USERS);
+                redirect(base_url() . NAV_DASHBOARD);
             }
         }
         $this->load->view('Login/login_v');
     }
 
 //    Validate User and Nevigate user to appropriate Webpage
-    public function validate_user() {
+    public function validateUser() {
         $data = array(
             'uname' => $this->input->post('uname'),
             'pass' => $this->input->post('password')
@@ -76,7 +76,7 @@ class User extends CI_Controller {
         }
     }
 
-    public function upload_picture(){
+    public function upload_picture() {
         if (isset($_SESSION['type'])) {
             $data = array(
                 'title' => 'Profile',
@@ -97,6 +97,20 @@ class User extends CI_Controller {
         } else {
             redirect(base_url());
         }
+    }
+
+    public function save_image() {
+        $data = $_POST["image-data"];
+        $fname= $_SESSION["id"].'profile.png';
+        echo $fname;
+// echo $encodedString;
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
+        $data = base64_decode($data);
+        $dir = 'asstes/profile/'.$fname ;
+        echo $dir;
+        file_put_contents($dir, $data);die;
+        redirect(base_url() .NAV_PROFILE);
     }
 
     public function Register() {

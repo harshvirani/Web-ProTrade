@@ -1,99 +1,85 @@
-<!DOCTYPE html>
-<html >
+<!doctype html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <meta charset="UTF-8">
-  <title>PRO-TRADE</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ProTrade</title>
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <link rel="canonical" href="">
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="<?php echo base_url().NAV_ASSETS;?>css/material.min.css">
+  <link rel="stylesheet" href="<?php echo base_url().NAV_ASSETS;?>css/helpers.css">
+  <link rel="stylesheet" href="<?php echo base_url().NAV_ASSETS;?>css/login.css">
+
 </head>
-<style type="text/css">
-	.mainbody{
-		position: fixed; 
-
-	   overflow-y: hidden;
-	   top: 0; right: 0; bottom: 0; left: 0;
-	}
-	.center{
-		margin: 10% 30%;
-		box-shadow: 0px 0px 30px 0px rgba(67, 41, 122, 0.78);
-		background-color: #f5f5f5;
-	}
-	.center #format{
-		padding-left: 34px;
-	}
-	#signin{
-		margin: 3% 15%;
-		width: 400px;
-		height: 400px;
-	}
-	#signup{
-		margin: 3% 15%;
-		width: 400px;
-		height: 400px;
-	}
-</style>
 <body>
-<div class="mainbody">
-  <div class="center">
+<div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+  <div class="demo-ribbon " style=" background-image: url(<?php echo base_url().NAV_ASSETS;?>images/12.jpg); background-size: 100%; background-repeat:no-repeat;"></div>
   
-  	<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-	  <div class="mdl-tabs__tab-bar">
-	      <a href="#signin" class="mdl-tabs__tab is-active">Sign In</a>
-	      <a href="#signup" class="mdl-tabs__tab">Sign up</a>
-	      
-	  </div>
+  <main class="demo-main mdl-layout__content">
+    <h2 class="t-center mdl-color-text--white text-shadow">Pro-Trade</h2>
+    <a id="top"></a>
+    
+    <div class="demo-container mdl-grid">
+      <div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+      <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
 
-	  <div class="mdl-tabs__panel is-active" id="signin">
-              <form id="format" action="<?php echo base_url(); ?>user/validate_user" method="post">
-		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                      <input class="mdl-textfield__input" type="text" name="uname" id="sample3">
-		    <label class="mdl-textfield__label" for="sample3">LOGIN ID</label>
-		  </div>
-		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                      <input class="mdl-textfield__input" type="password" name="password" id="sample3">
-		    <label class="mdl-textfield__label" for="sample3">PASSWORD</label>
-		  </div>
-<!--		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		    <input class="mdl-textfield__input" type="text" id="sample3">
-		    <label class="mdl-textfield__label" for="sample3">Text...</label>
-		  </div>-->
+        <div class="mdl-card__title ">
+          <h2 class="mdl-card__title-text">
+            <i class="material-icons mdl-color-text--grey  m-r-5 lh-13">account_circle</i>
+            Login
+          </h2>
+        </div>
+        <div class="p-l-20 p-r-20 p-b-20">
+            <form action="<?php echo base_url();?>User/validateUser" method="post">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                <input class="mdl-textfield__input" name="uname" type="text" id="sample3" autocomplete="off"/>
+              <label class="mdl-textfield__label" for="sample3">Username</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                <input class="mdl-textfield__input" name="password" type="password" id="sample3" autocomplete="off"/>
+              <label class="mdl-textfield__label" for="sample3">Password</label>
+            </div>
 
-		  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-			  SIGN IN
-			</button>
-		</form>
-	  </div>
+            <div class="m-t-20">
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--black">
+              Login
+            </button>
+            <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              Register
+            </button>
+            </div>
 
-	  <div class="mdl-tabs__panel" id="signup">
-              <form id="format" action="<?php echo base_url(); ?>user/Register" method="post">
-		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                      <input class="mdl-textfield__input" name="name" type="text" id="sample3">
-		    <label class="mdl-textfield__label" for="sample3">First Name</label>
-		  </div>
-		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                      <input class="mdl-textfield__input" name="pass" type="password" id="sample3">
-		    <label class="mdl-textfield__label" for="sample3">Password</label>
-		  </div>
-		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                      <input class="mdl-textfield__input" name="email" type="email" id="sample3">
-		    <label class="mdl-textfield__label" for="sample3">Email ID</label>
-		  </div>
-		  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                      <input class="mdl-textfield__input" name="mob" type="number" id="sample3">
-		    <label class="mdl-textfield__label" for="sample3">Contact NO.</label>
-		  </div>
+          </form>
+        </div>
 
-		  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-		  	SIGN UP
-			</button>
-		</form>
-	  </div>
-	  
-	</div>
-  </div>
-  
 
-</div>    
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="<?php echo base_url().NAV_ASSETS;?>js/material.min.js"></script>
+
 </body>
 </html>
