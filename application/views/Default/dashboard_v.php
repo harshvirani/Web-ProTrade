@@ -5,7 +5,7 @@
         var symb = "gold";</script>
 
 
-        <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col " style="width: 650px; height: 300px;">
+        <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" >
             <div id="container" style="width: 650px; height: 300px;"></div>
             <script language="JavaScript">
 //                window.onload = function () {
@@ -124,21 +124,25 @@ function getPaging(str) {
 </script>
     
 
+        
         </div>
         </div>
-       
-        	<nav class="com__nav pull-right">
+        
+            <nav class="com__nav pull-right">
                     <ul class="com__nav-list" id="bulk">
                         
                         
 			<?php
                             foreach ($symbols->result_array() as $symbol) {
                                 ?>
-                        <li  class=" com__nav-item ">
+                        <li  class=" com__nav-item " >
+                            
+                            <div class="coin">    <?php echo $symbol['code']; ?></div>
                             
 <!--                            <a style="text-align: center; text-decoration: none;"><?php echo $symbol['name']; ?></a>-->
                             <div onclick="getPaging(this.id)" id="<?php echo $symbol['code']; ?>" style="color: white; text-decoration: none" href="" class="com__nav-link">
 					Name:<?php echo $symbol['name']; ?>
+                    Discrip: hudfhusdhfjdbhfbdjfjdgfdfdfhsdkjfhsdkjhsdkjh
 				</div>
 			</li>
                          <?php
@@ -147,6 +151,7 @@ function getPaging(str) {
 
 		</ul>
 	</nav>
+    
 <!--        <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing" >
             <div class="mdl-card__actions mdl-card--border" >
                 <div id="mdl-table">
