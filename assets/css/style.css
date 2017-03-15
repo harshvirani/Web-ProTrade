@@ -357,6 +357,7 @@ body {
 .sidebar .sidebar-nav li {
   position: relative;
   list-style-type: none;
+  margin: 5px 0;
 }
 .sidebar .sidebar-nav li a {
   position: relative;
@@ -501,7 +502,7 @@ body {
   background-color: #e0e0e0;
 }
 .sidebar-inverse {
-  background-color: #383838;/*212121*/
+  background-color: #37474F;
 }
 .sidebar-inverse .sidebar-header {
   background-color: #eceff1;

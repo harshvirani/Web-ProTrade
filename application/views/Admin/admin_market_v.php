@@ -1,23 +1,3 @@
-<script type="text/javascript">
-    $('.marketDelete').click(function () {
-        var btnid=this.id;
-        showDialog({
-            title: 'Action',
-            text: 'Are You Sure You Want to Delete?',
-            negative: {
-                title: 'NO'
-            },
-            positive: {
-                title: 'YES',
-                onClick: function () {
-                    alert(btnid);
-                }
-            }
-        });
-    });
-    
-</script>
-
 
 <!-- DELETE POPOVER -->
 <!--<div class="container">
@@ -149,6 +129,26 @@
         background: rgba(255,0,0,0.4); 
     }*/
 </style>-->
+
+<script>
+    function popup(id){
+        showDialog({
+            title: 'Delete Symbol',
+            text: 'Are You Sure You Want to Delete?',
+            negative: {
+                title: 'No'
+            },
+            positive: {
+                title: 'Yes',
+                onClick: function (e) {
+                    document.location.href = '<?php echo base_url() . "admin/market/removeSymbol/" ; ?>' + id + '<?php echo "/" . $market_id; ?>';
+                }
+            }
+        });
+    }
+    </script>
+
+
 <main class="mdl-layout__content">    
     <div class="row mdl-grid">
         <div class="mdl-card__actions">
@@ -158,12 +158,8 @@
                     <i class="material-icons" >add</i>
                 </button>-->
                 
-                <i data-toggle="modal" data-target="#addSymbol" tabindex="-1" id="adsym"  class="material-icons  mdl-color-text--cyan">add_circle_outline</i>
-                <div class="mdl-tooltip" for="adsym">
-                    Add Symbols
-                </div>
-                <div  class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused pull-right">
-                    <label id="search" class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                <div  class=" mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused pull-right">
+                    <label id="search" class="op mdl-button mdl-js-button mdl-button--icon" for="sample6">
                         <i class="material-icons">search</i>
                     </label>
 
@@ -171,6 +167,17 @@
                         <input class="mdl-textfield__input search" type="text" id="sample6">
                         <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
                     </div>
+                    <!-- <i data-toggle="modal" data-target="#addSymbol" tabindex="-1" id="adsym"  class="material-icons  mdl-color-text--cyan">add_circle_outline</i> -->
+                    
+                        <i class="material-icons" id="hd">more_vert</i>
+                    
+                    <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hd">
+                        <li class="mdl-menu__item">
+                            Import CSV
+                        </li>
+                        <li class="mdl-menu__item">Add Symbol</li>
+                        
+                    </ul>
 
                 </div>
 
@@ -191,11 +198,11 @@
                                 <td class="mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
                                 <td class="mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
                                 <td>
-<!--                                    <button id="<?php echo $symbol['id'];?>" onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'"  class="mdl-button mdl-js-button mdl-button--raised">
-                                        <i  class="material-icons mdl-color-text--red">remove_circle_outline</i>
-                                    </button>-->
+                                    <!--<button id="<?php echo $symbol['id'];?>" onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'"  class="mdl-button mdl-js-button mdl-button--raised">-->
+                                    <i id="<?php echo $symbol['id'];?>" onclick="popup(this.id)" class="material-icons mdl-color-text--red">remove_circle_outline</i>
+                                    <!--</button>-->
                                     
-                                    <i id="<?php echo $symbol['id']; ?>"  class=" marketDelete material-icons mdl-color-text--red">remove_circle_outline</i>       
+<!--                                    <i id="<?php echo $symbol['id']; ?>"  class=" marketDelete material-icons mdl-color-text--red">remove_circle_outline</i>       -->
                                     <!--onclick="document.location.href = '<?php // echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'"-->
                                 </td>
                             </tr>

@@ -37,7 +37,7 @@
                     </a>
                 </li>
             </ul>
-        </li><hr>
+        </li><li class="divider"></li>
         <li>
             <a href="<?php echo base_url().NAV_HOME ; ?>">
                 <i class="sidebar-icon md-inbox"></i>

@@ -39,11 +39,15 @@ class Market extends CI_Controller {
        
 //        print_r($res->result_array());die;
         print_r($res);
-        foreach($res->result_array() as $rs){
+        foreach($res->result_array() as $res){
         echo $res['id'];
         }
-        die;
+        
         redirect(base_url().NAV_MARKETS.$res['id']);
+    }
+    public function removeMarket($mid){
+        $res = $this->market_m->removeMarket($mid);
+        redirect(base_url());
     }
 
     public function addSymbol() {

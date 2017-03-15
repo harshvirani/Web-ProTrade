@@ -1,69 +1,73 @@
 <!-- AANE MAIN CSS MA NAKHVATHI NATHI AAVTU -->
 <style type="text/css">
 
-.card-wrap {
-  width:340px;
-  margin:10px auto;
-  background:#e3e3e3;
-  position:relative;
-  padding:20px;
-  border-radius:5px;
-  border-top:33.33px solid #2b9c92;
-  font-family: 'Raleway', sans-serif;
+
+
+
+.mdl-card--horizontal {
+  flex-direction: column;
+  height: 1vh; /* 1 */
+  padding-left: 150px;
+  width: 100%;
+  
+  .mdl-card__media {
+    left: 0;
+    position: absolute;
+    width: 150px;
+  }
+  
+  .mdl-card__supporting-text {
+    flex: 1 1 auto;
+    width: auto;
+  }
 }
 
-.profile_pic-wrap {
-  width:100px;
-  height:100px;
-  background:#e3e3e3;
-  top:-30px;
-  left:70px;
-  padding:5px;
-  position:absolute;
-  margin-left: 50px;
-  border-radius:50%;
-  overflow:hidden;
+.mdl-card--horizontal-2 {
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 0px;
+}  
+  .mdl-card__title {
+    align-items: flex-start;
+    flex-direction: column;
+    flex: 1 auto;
+    float: left;
   }
-  .profile_pic-wrap img {
-    border-radius:50%;
-    width: 100%;
+  .mdl-card__title-text {
+    align-self: flex-start;
+  }
+  .mdl-card__media {
+    flex: 0 auto; 
+    float: right;
+    height: 112px;
+    margin: 16px 16px 0 0;
+    width: 112px;
+  }
+  .three-btn{
+   flex: 0 auto; 
+    float: right;
+    
+    margin: 5px 16px 16px 0;
+    width: 112px; 
+  }
+  .mdl-card__actions {
+    clear: both;
+    flex: 1 auto; 
+    padding: 8px 0 8px 8px;
+  }
+  .three-btn i{
+    padding-left: 10px;
+    cursor: pointer;
+  }
+  .mdl-card__actions a{
+    text-decoration: none;
   }
 
-.user-name {
-  text-align:center;
-  margin-top:50px;
-}
-.user-title {
-  text-align:center;
-}
-.find_me-wrap {
-  margin-top:40px;
-}
-.find-me {
-  font:.7em;
-}
-.info-wrap {
-  text-align: center;
-}
-.icon-wrap a {
-  line-height:70px;
-  width:24%;
-  text-decoration:none;
-  padding:0;
-  font-size:2em;
-  cursor:pointer;
-  margin:0;
-  color:darken(#e3e3e3,20);
-  transition:color .1s linear;
-  }
-  .icon-wrap a:hover {
-    color:darken(#e3e3e3,40);
-    }
 </style>
 
 <!-- ADD STAFF MEMBER START -->
 
-<div class="container">
+<!--<div class="container">
     <div id="addStaff" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -95,7 +99,7 @@
         </div>
     </div>
 </div>
-<!-- ADD STAFF MEMBER OVER -->
+ ADD STAFF MEMBER OVER -->
 
 <main class="mdl-layout__content">
 <div class="row mdl-grid">
@@ -105,18 +109,32 @@
 //                if ($row['type'] == 'STAFF') {
                     ?>
 
-<div class="col-md-4 card-wrap" id="<?php echo $row['id']; ?>">
-  <div class="profile_pic-wrap">
-    <img src="https://openclipart.org/download/247319/abstract-user-flat-3.svg" alt="img" />
+<div class="mdl-card mdl-shadow--2dp mdl-card--horizontal-2">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text"><?php echo $row['uname']; ?></h2><br/>
+    <div class="mdl-card__subtitle-text">Status :-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['status']; ?><br>Contact :-&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['contactNo']; ?></div>
   </div>
-  <div class="info-wrap">
-  <h1 class="user-name"><?php echo $row['uname']; ?></h1>
-   <h6>EMAIL: <?php echo $row['email']; ?></h6>
-   <h6>CONTACT:<?php echo $row['contactNo']; ?></h6>
-    <hr>
+  <div class="mdl-card__media">
+    <img src="http://placehold.it/112x112/DC143C/FFFFFF" alt="img">
+  </div>
+  <div class="mdl-card__actions">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">More Info</a>
+ <div class="three-btn">
+    <i id="tt1" class="material-icons">mode_edit</i>
+    <i id="tt2" class="material-icons">block</i>
+    <i id="tt3" class="material-icons">delete_forever</i>
+      <div class="mdl-tooltip" data-mdl-for="tt1">
+          Edit
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="tt2">
+          Block
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="tt3">
+          Delete
+      </div>
+  </div>
   </div>
 </div>
-    
     
     <?php
             }

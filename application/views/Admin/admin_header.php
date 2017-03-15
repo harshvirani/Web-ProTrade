@@ -48,6 +48,10 @@
 
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/style.css">          
 
+        <!--Popup-->
+        <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/mdl-jquery-modal-dialog.css">
+    <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
+    
 <!--Popup Dialogue Box-->
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/mdl-jquery-modal-dialog.css">
     <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
@@ -92,6 +96,7 @@
                 align-items: center;
                 justify-content: center;
                 vertical-align: middle;
+                cursor: pointer;
             }
             .panel-default>.panel-heading {
                 color: #e7eaec;

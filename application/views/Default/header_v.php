@@ -41,18 +41,8 @@
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>styles.css">
 
-        <!--Right Sidebar for Scripts-->
-
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-
-        <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/style_side.css">
-
-
-
-
-<!--<script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>-->
+       
+        
 
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">

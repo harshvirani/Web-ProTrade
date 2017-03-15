@@ -22,6 +22,9 @@ class Market_m extends CI_Model{
         return $query;
     }
     
-     
+    public function removeMarket($id){
+        $query=$this->db->delete('market', array('id' => $id));
+        return $query;
+    }
     
 }

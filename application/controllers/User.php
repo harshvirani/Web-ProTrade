@@ -30,6 +30,9 @@ class User extends CI_Controller {
         );
         $result = $this->user_m->user_details($data);
         if (isset($result)) {
+//            echo $result->uname;
+//            echo $data['uname'];die;
+            if($result->uname==$data['uname'] && $result->password==$data['pass']){
             $ses = json_decode(json_encode($result), True);
             $this->session->set_userdata($ses);
             if ($ses['type'] == 'ADMIN') {
@@ -38,6 +41,9 @@ class User extends CI_Controller {
                 redirect(base_url() . NAV_HOME);
             } else if ($ses['type'] == 'STAFF') {
                 redirect(base_url() . NAV_HOME);
+            }
+            }else{
+                redirect(base_url());
             }
         } else {
             redirect(base_url());
