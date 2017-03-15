@@ -102,11 +102,6 @@
             </li>
 
         </ul>
-        <!-- Sidebar divider -->
-        <!-- <div class="sidebar-divider"></div> -->
-
-        <!-- Sidebar text -->
-        <!--  <div class="sidebar-text">Text</div> -->
     </aside>
     <!--                <header class="demo-drawer-header">
                         <img src="<?php echo base_url() . NAV_ASSETS; ?>images/user.jpg" class="demo-avatar">
