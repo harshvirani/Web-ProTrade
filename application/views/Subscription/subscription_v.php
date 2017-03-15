@@ -1,8 +1,10 @@
 <script type="text/javascript">
-     var x, y;
+    var x, y;
     var selectable = new Array();
     $(document).ready(function () {
+        
         $(".sc1").click(function () {
+
             var favorite = [];
             $.each($("input[name='plan']:checked"), function () {
                 favorite.push($(this).val());
@@ -14,16 +16,16 @@
                 favorite.push($(this).val());
             });
             y = favorite.join(", ");
-
             if (y == 1) {
                 document.getElementById('temp1').style.display = "block";
                 document.getElementById('temp2').style.display = "none";
             } else if (y == 2) {
                 document.getElementById('temp2').style.display = "block";
                 document.getElementById('temp1').style.display = "none";
-            } else {
-                window.location.href = "#";
-                alert("Please 'GO BACK' and Select  'Subscription Plan' ");
+            } else{
+                // document.getElementById("te1").disabled = false;
+                // window.location.href = "#";
+                // alert("Please 'GO BACK' and Select  'Subscription Plan' ");
 
                 document.getElementById('temp1').style.display = "none";
                 document.getElementById('temp2').style.display = "none";
@@ -99,7 +101,7 @@
             <!--<div id="progressbar1" class="mdl-progress mdl-js-progress"></div>-->
 
             <div class="tab-content" >
-
+            <!-- <form action=""> -->
                 <!--Home Tab-->
                 <div id="home" class=" tab-pane fade in active">
 
@@ -157,7 +159,7 @@
 
                     <div class="row">&nbsp;</div>
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 col-md-offset-1">
                             <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
                                 <div class="demo-card-square mdl-card mdl-shadow--2dp ">
                                     <div class="mdl-card__title mdl-card--expand">
@@ -177,7 +179,7 @@
                             </label>
                         </div>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 col-md-offset-1">
                             <label for="scriptspec" class="mdl-card__supporting-text mdl-checkbox__label">
                                 <div class="demo-card-square mdl-card mdl-shadow--2dp ">
                                     <div class="mdl-card__title mdl-card--expand">
@@ -206,95 +208,13 @@
                     <div class="row">&nbsp;</div>
                     <div class="row">
 
-                        <button data-toggle="tab" onclick="menu1()" class="pull-left mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                        <button data-toggle="tab" id="not_back" onclick="menu1()" class="pull-left mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
                             <i class="material-icons">arrow_back</i> <!-- class="material-icons"-->
                         </button>
                         <button id="nxtbtn" data-toggle="tab" onclick="menu3()" class="pull-right mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
                             <i class="material-icons">arrow_forward</i> <!-- class="material-icons"-->
                         </button>
                     </div>
-
-<!--                    <style type="text/css">
-.ScrollStyle
-{
-max-height: 250px;
-height: 350px;
-overflow-y: scroll;
-}
-#element::-webkit-scrollbar {
-display: none;
-}
-/*.ScrollStyle::-webkit-scrollbar {
-display: none;
-}*/
-/* Let's get this party started */
-.ScrollStyle::-webkit-scrollbar {
-width: 3px;
-
-}
-
-/* Track */
-/*.ScrollStyle::-webkit-scrollbar-track {
--webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
--webkit-border-radius: 7px;
-border-radius: 7px;
-}*/
-
-/* Handle */
-.ScrollStyle::-webkit-scrollbar-thumb {
--webkit-border-radius: 10px;
-border-radius: 10px;
-background: #2e9089;
--webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-}
-.ScrollStyle::-webkit-scrollbar-thumb:window-inactive {
-background: rgba(255,0,0,0.4);
-}
-</style>
-<div class="row">&nbsp;</div>
-<div id="temp1">
-    <div class="row">
-                    <?php
-                    foreach ($markets->result_array() as $mar) {
-                        ?>
-
-
-             <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" >
-                 <thead>
-                    <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
-                        <th class="full-width mdl-data-table__cell--non-numeric sort" data-sort="material" ><?php echo $mar['name']; ?></th>
-
-                        <th class="full-width sort" data-sort="price">Unit price</th>
-
-                    </tr>
-                </thead>
-                <tbody class="list">
-
-                        <?php
-                        foreach ($symbols->result_array() as $symbol) {
-                            if ($symbol['market_id'] == $mar['id']) {
-                                ?>
-
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
-
-                                        <td class="price"><?php echo $symbol['price_quote']; ?></td>
-                                    </tr>
-
-
-                                <?php
-                            }
-                        }
-                        ?>
-                </tbody>
-            </table>
-            <br/>
-
-                        <?php
-                    }
-                    ?>
-</div>
-</div>-->
 
                     <div id="temp2">
                         <div class="row">
@@ -309,13 +229,12 @@ background: rgba(255,0,0,0.4);
                                             <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
                                         </div>
                                     </div>
-
-                                    <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp full-width">
+                                    <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                                         <thead>
                                             <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
-                                                <th class="mdl-data-table__cell--non-numeric sort" data-sort="material">Name</th>
-                                                <th class="mdl-data-table__cell--non-numeric material sort" data-sort="quantity">Code</th>
-                                                <th class="mdl-data-table__cell--non-numeric material sort" data-sort="price">Price Quote</th>
+                                                <th class="full-width mdl-data-table__cell--non-numeric sort" data-sort="material">Name</th>
+                                                <th class="full-width mdl-data-table__cell--non-numeric material sort" data-sort="quantity">Code</th>
+                                                <th class="full-width mdl-data-table__cell--non-numeric material sort" data-sort="price">Price Quote</th>
                                             </tr>
                                         </thead>
                                         <tbody class="list">
@@ -323,11 +242,9 @@ background: rgba(255,0,0,0.4);
                                             foreach ($symbols->result_array() as $symbol) {
                                                 ?>
                                                 <tr>
-
-                                                    <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
-                                                    <td class="mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
-                                                    <td class="mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
-
+                                                    <td class="full-width mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
+                                                    <td class="full-width mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
+                                                    <td class="full-width mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
                                                 </tr>
                                             <?php }
                                             ?>
@@ -357,26 +274,7 @@ background: rgba(255,0,0,0.4);
                             border-collapse: collapse;
                             width: 100%;
                         }
-                        #temp2 th{
-                            color: #ccffff;
-                        }
-                        #temp2 th, td {
-                            padding: 8px;
-                            text-align: left;
-                            /* border-bottom: 1px solid #ddd;*/
-                        }
-                        #temp2 th{
-                            background-color: #b3d9ff;
-                            color: #006666;
-
-                        }
-                        #temp2 tr:hover {
-                            background-color: #f5f5f5;
-                            color: #006666;
-                        }
-                        #temp2 form{
-                            text-align: center;
-                        }
+                        
                         #temp2 #text, #temp2 #ico {
                             line-height: 50px;
                         }
@@ -391,10 +289,145 @@ background: rgba(255,0,0,0.4);
                         hr.head{
                             margin: 1px 0 1px 0;
                         }
+                        .market_name{
+                            padding: 9px 0;
+                            text-align: center;
+                            font-weight: 500;
+                            font-size: 18px;
+                            letter-spacing: 1px;
+                            color: white;
+                            background: teal;
+                        }
+                        .card_border{
+                            border: 1px solid black;
+                        }
+                        .mdl-card{
+                            width: auto;
+                        }
                     </style>
                     <div id="temp1">
-                        <div class="mdl-layout__content">
-                            <div class="row"><h1>Market Specific</h1></div>
+                        <div class="row"><!-- <h1>Market Specific</h1> -->
+                            <div class="col-sm-4">
+                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                                    <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
+                                        <div class="market_name">MARKET NAME</div>
+                                        
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                                    <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
+                                        <div class="market_name">MARKET NAME</div>
+                                        
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                                    <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
+                                        <div class="market_name">MARKET NAME</div>
+                                        
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                                    <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
+                                        <div class="market_name">MARKET NAME</div>
+                                        
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                                    <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
+                                        <div class="market_name">MARKET NAME</div>
+                                        
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                                    <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
+                                        <div class="market_name">MARKET NAME</div>
+                                        
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                                
                         </div>
                     </div>
 
@@ -418,7 +451,7 @@ background: rgba(255,0,0,0.4);
                                 </tr>
                             </thead>
                             <tbody>
-   <script type="text/javascript">
+<script type="text/javascript">
 //  $('#nxtbtn').click(function () {
 function abc(){
     var j=selectable.length;

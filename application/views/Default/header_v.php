@@ -189,7 +189,6 @@
                 width: 100%;
             }
             .demo-card-square.mdl-card {
-                width: 320px;
                 height: 320px;
             }
             .demo-card-square > .mdl-card__title {

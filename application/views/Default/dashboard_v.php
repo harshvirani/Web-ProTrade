@@ -147,7 +147,7 @@
                         <style>
                             tr:hover { cursor: pointer;}
                         </style>
-                        <div style="height:340px;overflow-x: hidden;overflow-y: scroll;" >
+                        <div style="height:340px;overflow-x: hidden;overflow-y: scroll; border: 1px solid black;" >
                         <table id='mdl-table' class="mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                             <thead>
                                 <tr>

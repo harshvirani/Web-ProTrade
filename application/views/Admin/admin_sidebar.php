@@ -194,10 +194,8 @@
                 <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
                     <h2 class="mdl-card__title-text">Add Market</h2>
                 </div>
-
-
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" name="name" type="text" id="sample1" required>
+                    <input class="mdl-textfield__input" name="name" type="text" id="sample1" autocomplete="off">
                     <label class="mdl-textfield__label"  for="sample1">Market Name</label>
                 </div>
                 
@@ -214,7 +212,16 @@
 
 
 
+<style type="text/css">
+    .mdl-textfield{
+        width: auto;
+        
+    }
+    .mdl-textfield__input:{
+        border: 0;
+    }
 
+</style>
 
 
 

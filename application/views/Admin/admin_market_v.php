@@ -1,47 +1,6 @@
 
 <!-- DELETE POPOVER -->
-<!--<div class="container">
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <div class="modal-content">
-
-                <div class="modal-body">
-                    <p>Are You Sure You want to Delete?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">YES</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
- DELETE POPOVER 
-
- ADD MARKET FORM START 
-<div class="container">
-    <div id="addMarket" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form id="format" action="<?php echo base_url(); ?>Admin/market/addMarket" method="post">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" name="name" type="text" id="sample3">
-                            <label class="mdl-textfield__label" for="sample3">New Market Name</label>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button class="pull-left mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> ADD  </button>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
- ADD MARKET FORM OVER 
+<!--ADD MARKET FORM OVER 
 <script type="text/javascript">
     $('.actionShow').click(function () {
         var btnid=this.id;
@@ -130,7 +89,7 @@
     }*/
 </style>-->
 
-<script>
+<script type="text/javascript">
     function popup(id){
         showDialog({
             title: 'Delete Symbol',
@@ -170,12 +129,7 @@
 <main class="mdl-layout__content">    
     <div class="row mdl-grid">
         <div class="mdl-card__actions">
-            <div id="mdl-table">
-
-<!--                <button data-toggle="modal" data-target="#addSymbol" tabindex="-1" id="adsym" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-                    <i class="material-icons" >add</i>
-                </button>-->
-                
+            <div id="mdl-table">                
                 <div  class=" mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused pull-right">
                     <label id="search" class="op mdl-button mdl-js-button mdl-button--icon" for="sample6">
                         <i class="material-icons">search</i>
@@ -185,7 +139,6 @@
                         <input class="mdl-textfield__input search" type="text" id="sample6">
                         <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
                     </div>
-                    <!-- <i data-toggle="modal" data-target="#addSymbol" tabindex="-1" id="adsym"  class="material-icons  mdl-color-text--cyan">add_circle_outline</i> -->
                     
                         <i class="material-icons" id="hd">more_vert</i>
                     
