@@ -9,7 +9,7 @@
         <button class="mdl-snackbar__action" type="button"></button>
     </div>
     <script type="text/javascript">
-        var socket = io.connect('http://192.168.0.108:8088');
+        var socket = io.connect('http://localhost:8088');
 
         socket.on('message', function (data1) {
 //				var actualContent = $( "#messages" ).html();
