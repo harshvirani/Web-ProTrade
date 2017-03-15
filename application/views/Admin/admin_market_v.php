@@ -147,7 +147,25 @@
         });
     }
     </script>
+<div class="modal fade" id="importCSV" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <!-- content goes here -->
+        <form action="<?php echo base_url(); ?>Admin/market/addMarket" method="post">
+            <div class="mdl-card mdl-shadow--6dp">
+                <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                    <h2 class="mdl-card__title-text">IMPORT CSV</h2>
+                </div>
 
+                <form action="import.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" id="file"> </br> </br>
+                    <input type="text" name="marketId" placeholder="Enter marketId"> </br> </br>
+                    <!-- <button type="submit" id="submit" name="Import">Upload</button> -->
+                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-left" type="submit" id="submit" name="Import">Upload</button>
+                </form>
+            </div>
+        </form>
+    </div>
+</div>
 
 <main class="mdl-layout__content">    
     <div class="row mdl-grid">
@@ -173,7 +191,11 @@
                     
                     <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hd">
                         <li class="mdl-menu__item">
+                            
+                            <a data-toggle="modal" data-target="#importCSV" class="">
+                            <!-- &nbsp;&nbsp;<i class="sidebar-icon material-icons">add_box</i> -->
                             Import CSV
+                        </a>
                         </li>
                         <li class="mdl-menu__item">Add Symbol</li>
                         

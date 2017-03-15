@@ -41,8 +41,14 @@
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>styles.css">
 
-       
-        
+        <!--Notification of Call-->
+        <script src="http://192.168.0.108/notificationPHP/node_modules/socket.io-client/dist/socket.io.js"></script>
+        <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/toastr.min.css">
+        <script src="<?php echo base_url() . NAV_ASSETS; ?>js/toastr.min.js"></script>
+        <script src="<?php echo base_url() . NAV_ASSETS; ?>js/toastr.js"></script>
+
+        <!--End of Notification of Call-->
+
 
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">

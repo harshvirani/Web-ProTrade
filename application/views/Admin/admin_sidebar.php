@@ -187,12 +187,8 @@
 </div>
 
 <div class="modal fade" id="addMarket" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-
     <div class="modal-dialog">
-
-
-
-        <!-- content goes here -->
+            <!-- content goes here -->
         <form action="<?php echo base_url(); ?>Admin/market/addMarket" method="post">
             <div class="mdl-card mdl-shadow--6dp">
                 <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
@@ -212,9 +208,6 @@
 
             </div>
         </form>
-
-
-
     </div>
 </div>
 <!-- Square card -->
