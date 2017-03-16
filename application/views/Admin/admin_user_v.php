@@ -58,7 +58,81 @@
     }
 
   </style>
-
+<script>
+    
+     $('.blockUser').click(function () {
+            var btnid = this.id;
+            
+            showDialog({
+                title: 'Delete Market',
+                text: 'Are You Sure You Want to Delete?',
+                negative: {
+                    title: 'No'
+                },
+                positive: {
+                    title: 'Yes',
+                    onClick: function (e) {
+                        document.location.href = '<?php echo base_url() . "admin/market/removeMarket/" ; ?>' + btnid ;
+                    }
+                }
+            });
+            return false;
+        });
+        
+        
+        function blockUser(id,type){
+        showDialog({
+            title: 'Block User',
+            text: 'Are You Sure You Want to Block?',
+            negative: {
+                title: 'No'
+            },
+            positive: {
+                title: 'Yes',
+                onClick: function (e) {
+//                    alert(type)
+                    document.location.href = '<?php echo base_url() . "admin/users/blockUser/" ; ?>' + id+'/'+type ;
+                }
+            }
+        });
+        }
+        
+        
+        function unblockUser(id,type){
+        showDialog({
+            title: 'Unblock User',
+            text: 'Are You Sure You Want to UnBlock?',
+            negative: {
+                title: 'No'
+            },
+            positive: {
+                title: 'Yes',
+                onClick: function (e) {
+//                    alert(type)
+                    document.location.href = '<?php echo base_url() . "admin/users/unblockUser/" ; ?>' + id+'/'+type ;
+                }
+            }
+        });
+        }
+        
+        
+        function deleteUser(id,type){
+        showDialog({
+            title: 'Delete Market',
+            text: 'Are You Sure You Want to Delete?',
+            negative: {
+                title: 'No'
+            },
+            positive: {
+                title: 'Yes',
+                onClick: function (e) {
+//                    alert(type)
+                    document.location.href = '<?php echo base_url() . "admin/users/removeUser/" ; ?>' + id+'/'+type ;
+                }
+            }
+        });
+    }
+    </script>
   <main class="mdl-layout__content">
   <div class="row mdl-grid">
     <div class="col-md-4">
@@ -78,9 +152,13 @@
     <div class="mdl-card__actions">
       <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">More Info</a>
    <div class="three-btn">
-      <i id="tt1" class="material-icons">mode_edit</i>
-      <i id="tt2" class="material-icons">block</i>
-      <i id="tt3" class="material-icons">delete_forever</i>
+      <i id="<?php echo $row['id']; ?>" class="material-icons">mode_edit</i>
+      <?php if($row['status']=='BLOCKED'){?>
+      <i id="<?php echo $row['id']; ?>" onclick="unblockUser(this.id,'<?php echo $row['type']; ?>')" class="unblockUser material-icons">block</i>
+      <?php }else{?>
+      <i id="<?php echo $row['id']; ?>" onclick="blockUser(this.id,'<?php echo $row['type']; ?>')" class="blockUser material-icons">block</i>
+      <?php }?>
+      <i id="<?php echo $row['id']; ?>" onclick="deleteUser(this.id,'<?php echo $row['type']; ?>')" class="material-icons">delete_forever</i>
         <div class="mdl-tooltip" data-mdl-for="tt1">Edit</div>
         <div class="mdl-tooltip" data-mdl-for="tt2">Block</div>
         <div class="mdl-tooltip" data-mdl-for="tt3">Delete</div>

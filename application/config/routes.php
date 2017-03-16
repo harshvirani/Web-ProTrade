@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'user';
+$route['default_controller'] = 'user/login';
 $route['404_override'] = 'Home/error';
 $route['translate_uri_dashes'] = FALSE;
 $route['marketview/(:num)'] = 'Admin/Market/MarketView/$1';

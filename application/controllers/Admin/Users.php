@@ -34,10 +34,21 @@ class Users extends CI_Controller {
             redirect(base_url());
         }
     }
-
-    public function removeUser($uid) {
+    
+    
+    public function blockUser($uid,$type){
+        $res = $this->user_m->blockUser($uid);
+        redirect(base_url() . NAV_USERS.$type);
+    }
+    
+    public function unblockUser($uid,$type){
+        $res = $this->user_m->unblockUser($uid);
+        redirect(base_url() . NAV_USERS.$type);
+    }
+    
+    public function removeUser($uid,$type) {
         $res = $this->user_m->removeUser($uid);
-        redirect(base_url() . NAV_USERS);
+        redirect(base_url() . NAV_USERS.$type);
     }
 
 }

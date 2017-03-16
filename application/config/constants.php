@@ -90,7 +90,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 define('NAV_ASSETS', "assets/");
 define('NAV_PLAN', "Plan");
-define('NAV_LOGIN', "user");
+define('NAV_LOGIN', "user/login");
 define('NAV_LOGOUT', "user/logout");
 define('NAV_HOME', "home");
 define('NAV_ADMIN', "Admin/dashboard");

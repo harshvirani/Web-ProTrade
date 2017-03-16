@@ -1,5 +1,6 @@
 <?php
 
+error_reporting(E_ERROR | E_PARSE);
 class User extends CI_Controller {
 
     public function __construct() {
@@ -10,51 +11,60 @@ class User extends CI_Controller {
     }
 
 //    Login Page View 
-    public function index() {
-
+    public function login($data = "") {
         if ($this->session->has_userdata('uname')) {
-            if ($_SESSION['type'] === 'SUBSCRIBER' || $_SESSION['type'] === 'STAFF') {
+            if ($_SESSION['status'] == 'BLOCKED') {
+                $this->session->sess_destroy();
+            } else if ($_SESSION['type'] === 'SUBSCRIBER' || $_SESSION['type'] === 'STAFF') {
                 redirect(base_url() . NAV_HOME);
             } else {
                 redirect(base_url() . NAV_DASHBOARD);
             }
         }
-        $this->load->view('Login/login_v');
+        $this->load->view('Login/login_v', $data);
     }
 
 //    Validate User and Nevigate user to appropriate Webpage
     public function validateUser() {
-        $data = array(
-            'uname' => $this->input->post('uname'),
-            'pass' => $this->input->post('password')
-        );
+        $data = array('uname' => $this->input->post('uname'), 'pass' => $this->input->post('password'));
         $result = $this->user_m->user_details($data);
         if (isset($result)) {
-//            echo $result->uname;
-//            echo $data['uname'];die;
-            if($result->uname==$data['uname'] && $result->password==$data['pass']){
+            $this->validate_details($result, $data);
+            $this->redirect_user();
+        } else {
+            $data["error"] = "Username or Password is Wrong.";
+            $this->login($data);
+//            $this->load->view('Login/login_v', $data);
+        }
+    }
+
+    public function redirect_user() {
+        if ($_SESSION['status'] == 'BLOCKED') {
+            $this->session->sess_destroy();
+            $data["error"] = "This User is Blocked";
+            $this->login($data);
+        } else {
+            if ($_SESSION['type'] == 'ADMIN') {
+                redirect(base_url() . NAV_DASHBOARD);
+            } else if ($_SESSION['type'] == 'SUBSCRIBER') {
+                redirect(base_url() . NAV_HOME);
+            } else if ($_SESSION['type'] == 'STAFF') {
+                redirect(base_url() . NAV_HOME);
+            }
+        }
+    }
+
+    public function validate_details($result, $data) {
+        if ($result->uname == $data['uname'] && $result->password == $data['pass']) {
             $ses = json_decode(json_encode($result), True);
             $this->session->set_userdata($ses);
-            if ($ses['type'] == 'ADMIN') {
-                redirect(base_url() . NAV_DASHBOARD);
-            } else if ($ses['type'] == 'SUBSCRIBER') {
-                redirect(base_url() . NAV_HOME);
-            } else if ($ses['type'] == 'STAFF') {
-                redirect(base_url() . NAV_HOME);
-            }
-            }else{
-                redirect(base_url());
-            }
+            $this->redirect_user();
         } else {
             redirect(base_url());
         }
     }
 
     public function logout() {
-//        $ses=array(
-//            'id','uname','password','email','cotactNo','type','status','is_deleted'
-//        );
-//        $this->session->unset_userdata($ses);
         $this->session->sess_destroy();
         redirect(base_url());
     }
@@ -107,16 +117,17 @@ class User extends CI_Controller {
 
     public function save_image() {
         $data = $_POST["image-data"];
-        $fname= $_SESSION["id"].'profile.png';
+        $fname = $_SESSION["id"] . 'profile.png';
         echo $fname;
 // echo $encodedString;
         list($type, $data) = explode(';', $data);
         list(, $data) = explode(',', $data);
         $data = base64_decode($data);
-        $dir = 'asstes/profile/'.$fname ;
+        $dir = 'asstes/profile/' . $fname;
         echo $dir;
-        file_put_contents($dir, $data);die;
-        redirect(base_url() .NAV_PROFILE);
+        file_put_contents($dir, $data);
+        die;
+        redirect(base_url() . NAV_PROFILE);
     }
 
     public function Register() {

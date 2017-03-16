@@ -167,6 +167,11 @@
         });
         
         
+        
+        
+        
+        
+        
         function removeMarket(id){
         showDialog({
             title: 'Delete Market',
