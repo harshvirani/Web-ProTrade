@@ -1,96 +1,5 @@
-
-<!-- DELETE POPOVER -->
-<!--ADD MARKET FORM OVER 
 <script type="text/javascript">
-    $('.actionShow').click(function () {
-        var btnid=this.id;
-        showDialog({
-            title: 'Action',
-            text: 'This dialog can be closed by pressing ESC or clicking outside of the dialog.<br/>Pressing "YAY" will fire the configured action.',
-            negative: {
-                title: 'NO'
-            },
-            positive: {
-                title: 'YES',
-                onClick: function (e) {
-                    alert(btnid);
-                }
-            }
-        });
-    });
-    
-</script>
- ADD NEW MEMBER FORM START 
-<div class="container">
-    <div id="addSymbol" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form id="format" action="<?php echo base_url(); ?>Admin/market/addSymbol" method="post">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" name="name" type="text" id="sample3">
-                            <label class="mdl-textfield__label" for="sample3">New Symbol Name</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" name="code" type="text" id="sample3">
-                            <label class="mdl-textfield__label" for="sample3">Symbol Code</label>
-                        </div>
-
-                        //marketId
-
-                        <input type="text" name="marketId" value="<?php echo $market_id; ?>" placeholder="<?php echo $market_id; ?>" hidden="1">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" name="price" type="number" id="sample3">
-                            <label class="mdl-textfield__label" for="sample3">Current Price</label>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="pull-left mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> ADD  </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
- ADD NEW SYMBOL FORM OVER 
-<style type="text/css">
-/*    .ScrollStyle
-    {
-        overflow-y: scroll;
-    }
-    #element::-webkit-scrollbar { 
-        display: none; 
-    }
-    .ScrollStyle::-webkit-scrollbar { 
-        display: none; 
-    }
-     Let's get this party started 
-    .ScrollStyle::-webkit-scrollbar {
-        width: 5px;
-
-    }
-
-     Track 
-    .ScrollStyle::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-        -webkit-border-radius: 7px;
-        border-radius: 7px;
-    }
-
-     Handle 
-    .ScrollStyle::-webkit-scrollbar-thumb {
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        background: #2e9089; 
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-    }
-    .ScrollStyle::-webkit-scrollbar-thumb:window-inactive {
-        background: rgba(255,0,0,0.4); 
-    }*/
-</style>-->
-
-<script type="text/javascript">
-    function popup(id){
+    function popup(id) {
         showDialog({
             title: 'Delete Symbol',
             text: 'Are You Sure You Want to Delete?',
@@ -100,31 +9,73 @@
             positive: {
                 title: 'Yes',
                 onClick: function (e) {
-                    document.location.href = '<?php echo base_url() . "admin/market/removeSymbol/" ; ?>' + id + '<?php echo "/" . $market_id; ?>';
+                    document.location.href = '<?php echo base_url() . "admin/market/removeSymbol/"; ?>' + id + '<?php echo "/" . $market_id; ?>';
                 }
             }
         });
     }
-    </script>
-<div class="modal fade" id="importCSV" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-            <!-- content goes here -->
-        <form action="<?php echo base_url(); ?>Admin/market/addMarket" method="post">
-            <div class="mdl-card mdl-shadow--6dp">
-                <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-                    <h2 class="mdl-card__title-text">IMPORT CSV</h2>
-                </div>
 
-                <form action="import.php" method="post" enctype="multipart/form-data">
-                    <input type="file" name="file" id="file"> </br> </br>
-                    <input type="text" name="marketId" placeholder="Enter marketId"> </br> </br>
-                    <!-- <button type="submit" id="submit" name="Import">Upload</button> -->
-                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-left" type="submit" id="submit" name="Import">Upload</button>
-                </form>
+    $(document).ready(function () {
+        'use strict';
+        var dialog = document.querySelector('#importCSV');
+        var closeButton = dialog.querySelector('.buttonClose');
+        var showButton = document.querySelector('#importCSVButton');
+        if (!dialog.showModal) {
+            dialogPolyfill.registerDialog(dialog);
+        }
+        var closeClickHandler = function (event) {
+            dialog.close();
+        };
+        var showClickHandler = function (event) {
+            dialog.showModal();
+        };
+        showButton.addEventListener('click', showClickHandler);
+        closeButton.addEventListener('click', closeClickHandler);
+    });
+</script>
+<style>
+    .mdl-button--file input {
+  cursor: pointer;
+  height: 100%;
+  right: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 300px;
+  z-index: 4;
+}
+.mdl-textfield--file .mdl-textfield__input {
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+}
+.mdl-textfield--file .mdl-button--file {
+  right: 0;
+}
+
+</style>
+
+<dialog class="mdl-dialog" id="importCSV">
+    <form action="<?php echo base_url(); ?>Admin/market/importCSV/<?php echo $market_id;?>" method="post" enctype="multipart/form-data">
+        <div class="mdl-dialog__content">
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
+                <input class="mdl-textfield__input" name="import" placeholder="No file chosen" type="text" id="TEXT_ID" readonly />
+                <input type="text" name="mid" value="<?php echo $market_id;?>" hidden="true">
+                <div class="mdl-button mdl-button--icon mdl-button--file">
+                    <i class="material-icons">attach_file</i>
+                    <input type="file" name="file" id="ID" onchange="document.getElementById('TEXT_ID').value = this.files[0].name;" />
+                </div>
             </div>
-        </form>
-    </div>
-</div>
+
+            <!--<input type="file" name="file" id="file">-->
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="submit" class="mdl-button">Add</button>
+            <button type="reset" class="buttonClose mdl-button">Cancel</button>
+        </div>
+    </form>
+</dialog>
+
 
 <main class="mdl-layout__content">    
     <div class="row mdl-grid">
@@ -139,19 +90,18 @@
                         <input class="mdl-textfield__input search" type="text" id="sample6">
                         <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
                     </div>
-                    
-                        <i class="material-icons" id="hd">more_vert</i>
-                    
+
+                    <i class="material-icons" id="hd">more_vert</i>
+
                     <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hd">
-                        <li class="mdl-menu__item">
+                        <li id="importCSVButton"  class="mdl-menu__item">
+
                             
-                            <a data-toggle="modal" data-target="#importCSV" class="">
                             <!-- &nbsp;&nbsp;<i class="sidebar-icon material-icons">add_box</i> -->
-                            Import CSV
-                        </a>
-                        </li>
+                                Import CSV
+                                                    </li>
                         <li class="mdl-menu__item">Add Symbol</li>
-                        
+
                     </ul>
 
                 </div>
@@ -173,17 +123,17 @@
                                 <td class="mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
                                 <td class="mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
                                 <td>
-                                    <!--<button id="<?php echo $symbol['id'];?>" onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'"  class="mdl-button mdl-js-button mdl-button--raised">-->
-                                    <i id="<?php echo $symbol['id'];?>" onclick="popup(this.id)" class="material-icons mdl-color-text--red">remove_circle_outline</i>
+                                    <!--<button id="<?php echo $symbol['id']; ?>" onclick="document.location.href = '<?php echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'"  class="mdl-button mdl-js-button mdl-button--raised">-->
+                                    <i id="<?php echo $symbol['id']; ?>" onclick="popup(this.id)" class="material-icons mdl-color-text--red">remove_circle_outline</i>
                                     <!--</button>-->
-                                    
-<!--                                    <i id="<?php echo $symbol['id']; ?>"  class=" marketDelete material-icons mdl-color-text--red">remove_circle_outline</i>       -->
-                                    <!--onclick="document.location.href = '<?php // echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id; ?>'"-->
+
+    <!--                                    <i id="<?php echo $symbol['id']; ?>"  class=" marketDelete material-icons mdl-color-text--red">remove_circle_outline</i>       -->
+    <!--onclick="document.location.href = '<?php // echo base_url() . 'admin/market/removeSymbol/' . $symbol['id'] . '/' . $market_id;  ?>'"-->
                                 </td>
                             </tr>
                         <?php }
                         ?>
-                            
+
                     </tbody>
                 </table>
             </div>

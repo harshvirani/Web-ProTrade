@@ -16,22 +16,38 @@
                 favorite.push($(this).val());
             });
             y = favorite.join(", ");
-            if (y == 1) {
-                document.getElementById('temp1').style.display = "block";
-                document.getElementById('temp2').style.display = "none";
-            } else if (y == 2) {
-                document.getElementById('temp2').style.display = "block";
-                document.getElementById('temp1').style.display = "none";
-            } else{
-                // document.getElementById("te1").disabled = false;
-                // window.location.href = "#";
-                // alert("Please 'GO BACK' and Select  'Subscription Plan' ");
 
-                document.getElementById('temp1').style.display = "none";
-                document.getElementById('temp2').style.display = "none";
+           if (y == 1) {
+               document.getElementById('temp1').style.display = "block";
+               document.getElementById('temp2').style.display = "none";
+               // document.getElementById("te1").disabled = false;
+           } else if (y == 2) {
+               document.getElementById('temp2').style.display = "block";
+               document.getElementById('temp1').style.display = "none";
+               // document.getElementById("te1").disabled = false;
+           } else{
+//                // document.getElementById("te1").disabled = true;
+//                // window.location.href = "#";
+//                // alert("Please 'GO BACK' and Select  'Subscription Plan' ");
+//
+               document.getElementById('temp1').style.display = "none";
+               document.getElementById('temp2').style.display = "none";
             }
         });
     });
+
+function type_card(){
+    document.getElementById("te1").disabled = false;
+}
+
+function plan_card(){
+    document.getElementById("tab1").disabled = false;
+}
+// $('.type_card').click(function()
+// {
+//   $('#te1').removeAttr("disabled");
+// });
+
 
     $(document).ready(function () {
 
@@ -107,7 +123,7 @@
 
                     <div class="row">&nbsp;</div>
                     <div class="row" >
-                        <button data-toggle="tab" onclick="menu1()" class="pull-right mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                        <button id="tab1" data-toggle="tab" onclick="menu1()" class="pull-right mdl-button mdl-js-button mdl-button--icon mdl-button--colored" disabled="true">
                             <i class="material-icons">arrow_forward</i>
                         </button>
                     </div>
@@ -118,7 +134,7 @@
                             ?>
                             <!--Start Plan Card-->
                             <div class="col-sm-4">
-                                <label for="chkbox<?php echo $plan['id']; ?>" class="mdl-card__supporting-text mdl-checkbox__label">
+                                <label onclick="plan_card()" for="chkbox<?php echo $plan['id']; ?>" class="mdl-card__supporting-text mdl-checkbox__label">
                                     <div class="demo-card-square mdl-card mdl-shadow--2dp ">
                                         <div class="mdl-card__title mdl-card--expand">
                                             <h2 class="mdl-card__title-text"><?php echo $plan['name']; ?></h2>
@@ -152,7 +168,7 @@
                             <i class="material-icons">arrow_back</i> <!-- class="material-icons"-->
                         </button>
 
-                        <button type="button" id="te1" onclick="menu2()" data-toggle="tab" class="sc1 pull-right mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                        <button type="button" id="te1" onclick="menu2()" data-toggle="tab" class="sc1 pull-right mdl-button mdl-js-button mdl-button--icon mdl-button--colored" disabled="true">
                             <i class="material-icons">arrow_forward</i> <!-- class="material-icons"-->
                         </button>
                     </div>
@@ -160,7 +176,7 @@
                     <div class="row">&nbsp;</div>
                     <div class="row">
                         <div class="col-sm-4 col-md-offset-1">
-                            <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                            <label for="marketspec" onclick="type_card()" class=" mdl-card__supporting-text mdl-checkbox__label">
                                 <div class="demo-card-square mdl-card mdl-shadow--2dp ">
                                     <div class="mdl-card__title mdl-card--expand">
                                         <h2 class="mdl-card__title-text">Market Specific</h2>
@@ -171,7 +187,7 @@
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
 
-                                        <input type="radio" id="marketspec" name="checker" value="1" class="mdl-checkbox__input">
+                                        <input type="radio" id="marketspec" name="checker" value="1" class="type_card mdl-checkbox__input">
                                         <span class="mdl-card__supporting-text mdl-checkbox__label">Market</span>
 
                                     </div>
@@ -180,7 +196,7 @@
                         </div>
 
                         <div class="col-sm-4 col-md-offset-1">
-                            <label for="scriptspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                            <label for="scriptspec" onclick="type_card()" class=" mdl-card__supporting-text mdl-checkbox__label">
                                 <div class="demo-card-square mdl-card mdl-shadow--2dp ">
                                     <div class="mdl-card__title mdl-card--expand">
                                         <h2 class="mdl-card__title-text">Script Specific</h2>
@@ -191,7 +207,7 @@
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
 
-                                        <input type="radio" id="scriptspec" name="checker" value="2" class="mdl-checkbox__input chkbx">
+                                        <input type="radio" id="scriptspec" name="checker" value="2" class="type_card mdl-checkbox__input chkbx">
                                         <span class="mdl-card__supporting-text mdl-checkbox__label">Script</span>
 
                                     </div>
@@ -298,8 +314,21 @@
                             color: white;
                             background: teal;
                         }
+                        .market_price{
+                            
+                            position: absolute;
+                            bottom: 0;
+                            padding: 9px 35px;
+                            width: 100%;
+                            font-weight: 100;
+                            font-size: 10px;
+                            letter-spacing: 1px;
+                            color: white;
+                            background: teal;
+                        }
                         .card_border{
                             border: 1px solid black;
+                            margin: 0;
                         }
                         .mdl-card{
                             width: auto;
@@ -308,24 +337,34 @@
                     <div id="temp1">
                         <div class="row"><!-- <h1>Market Specific</h1> -->
                             <div class="col-sm-4">
-                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
-                                    <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
+                                
+                                    <div class="demo-card-square mdl-card mdl-shadow--2dp  ">
+                                        <label  for="checkbox3" class=" mdl-checkbox__label">
+                                        <div class="card_border">
                                         <div class="market_name">MARKET NAME</div>
                                         
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <!-- <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input"> -->
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <!-- <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input"> -->
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
+                                            <!-- <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input"> -->
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
                                         </div>
+
+                                        <div class="market_price">
+                                                <input type="checkbox" id="checkbox3" class="mdl-checkbox__input" >
+                                                <span class="mdl-checkbox__label">Rs.200/- </span>
+                                        </div>
+                                        </div>
+                                        </label>
+                                        
                                     </div>
-                                </label>
+                               
                             </div>
                             <div class="col-sm-4">
                                 <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">

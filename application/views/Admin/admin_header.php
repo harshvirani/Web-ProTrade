@@ -23,7 +23,8 @@
 
 
         <!--Charts Script from HighChart-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
         <script src="https://code.highcharts.com/stock/highstock.js"></script>
         <!-- <script src="https://code.highcharts.com/highcharts.js"></script>   -->
         <!-- <script src="<?php echo base_url() . NAV_ASSETS; ?>js/high.js"></script>   -->
@@ -40,7 +41,6 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-light_blue.min.css" />
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>styles.css">
-
         <!--New Sidebar-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 

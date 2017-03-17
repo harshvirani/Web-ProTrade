@@ -15,8 +15,8 @@ class Market extends CI_Controller {
                 'title' => 'Market',
                 'markets' => $this->market_m->getMarket(),
                 'count' => $this->market_m->getCount(),
-                'sub_cnt'=>$this->user_m->count('SUBSCRIBER'),
-                'staff_cnt'=>$this->user_m->count('STAFF')
+                'sub_cnt' => $this->user_m->count('SUBSCRIBER'),
+                'staff_cnt' => $this->user_m->count('STAFF')
             );
             $data['market_id'] = $mid;
             $data['symbols'] = $this->symbol_m->getSymbol($data['market_id']);
@@ -36,18 +36,47 @@ class Market extends CI_Controller {
             'name' => $this->input->post('name')
         );
         $res = $this->market_m->addMarket($mar);
-       
+
 //        print_r($res->result_array());die;
         print_r($res);
-        foreach($res->result_array() as $res){
-        echo $res['id'];
+        foreach ($res->result_array() as $res) {
+            echo $res['id'];
         }
-        
-        redirect(base_url().NAV_MARKETS.$res['id']);
+
+        redirect(base_url() . NAV_MARKETS . $res['id']);
     }
-    public function removeMarket($mid){
+
+    public function removeMarket($mid) {
         $res = $this->market_m->removeMarket($mid);
         redirect(base_url());
+    }
+
+    public function importCSV($mid) {
+        echo $filename = $_FILES["file"]["tmp_name"];
+        if ($_FILES["file"]["size"] > 0) {
+            $file = fopen($filename, "r");
+            while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE) {
+                $sym = array(
+                    'market_id' => $mid,
+                    'code' => $emapData[0],
+                    'name' => $emapData[1],
+                    'category' => $emapData[2],
+                    'lot_size' => $emapData[3],
+                    'tick_size' => $emapData[4],
+                    'margin' => $emapData[5],
+                    'price_quote' => $emapData[6]
+                );
+                $query = $this->symbol_m->getSymbolDetail($sym['code']);
+                if ($query->num_rows() > 0) {
+                    $res= $this->symbol_m->updateSymbol($sym);
+                } else {
+                    $res = $this->symbol_m->addSymbol($sym);
+                }
+                print_r($res);
+            }
+            fclose($file);
+        }
+        redirect(base_url() . NAV_MARKETS . $mid);
     }
 
     public function addSymbol() {
@@ -58,12 +87,16 @@ class Market extends CI_Controller {
             'price_quote' => $this->input->post('price')
         );
         $res = $this->symbol_m->addSymbol($mar);
-        redirect(base_url() . NAV_MARKETS.$mar['market_id']);
+        redirect(base_url() . NAV_MARKETS . $mar['market_id']);
+    }
+
+    public function getSymbolDetail() {
+        $this->symbol_m->getSymbolDetail($code);
     }
 
     public function removeSymbol($sid, $mid) {
         $res = $this->symbol_m->removeSymbol($sid);
-        redirect(base_url() . NAV_MARKETS  . $mid);
+        redirect(base_url() . NAV_MARKETS . $mid);
     }
 
 }

@@ -86,12 +86,12 @@
                 <ul class="dropdown-menu">
                     <style type="text/css">
                         .lock:hover .icon-unlock,
-.lock .icon-lock {
-    display: none;
-}
-.lock:hover .icon-lock {
-    display: inline-block;
-}
+                        .lock .icon-lock {
+                            display: none;
+                        }
+                        .lock:hover .icon-lock {
+                            display: inline-block;
+                        }
                     </style>
                     <?php
                     foreach ($markets->result_array() as $mar) {
@@ -102,7 +102,7 @@
 
                                 &nbsp;&nbsp;<i class="icon-unlock sidebar-icon material-icons ">trending_up</i>
                                 <i id="<?php echo $mar['id']; ?>" class="icon-lock sidebar-icon material-icons deleteMarket" >delete_forever</i>
-                                    
+
                                 <?php echo $mar['name'];
                                 ?>
 
@@ -127,7 +127,7 @@
                     ?>
                     <hr>
                     <li>
-                        <a data-toggle="modal" data-target="#addMarket" class="">
+                        <a id="addMarketButton" class="">
                             &nbsp;&nbsp;<i class="sidebar-icon material-icons">add_box</i>
                             Add Market
                         </a>
@@ -146,10 +146,12 @@
         <!--  <div class="sidebar-text">Text</div> -->
     </aside>
 
+
+
     <script>
         $('.deleteMarket').click(function () {
             var btnid = this.id;
-            
+
             showDialog({
                 title: 'Delete Market',
                 text: 'Are You Sure You Want to Delete?',
@@ -159,74 +161,76 @@
                 positive: {
                     title: 'Yes',
                     onClick: function (e) {
-                        document.location.href = '<?php echo base_url() . "admin/market/removeMarket/" ; ?>' + btnid ;
+                        document.location.href = '<?php echo base_url() . "admin/market/removeMarket/"; ?>' + btnid;
                     }
                 }
             });
             return false;
         });
-        
-        
-        
-        
-        
-        
-        
-        function removeMarket(id){
-        showDialog({
-            title: 'Delete Market',
-            text: 'Are You Sure You Want to Delete?',
-            negative: {
-                title: 'No'
-            },
-            positive: {
-                title: 'Yes',
-                onClick: function (e) {
-                    document.location.href = '<?php echo base_url() . "admin/market/removeSymbol/" ; ?>' + id ;
+
+
+
+
+
+
+
+        function removeMarket(id) {
+            showDialog({
+                title: 'Delete Market',
+                text: 'Are You Sure You Want to Delete?',
+                negative: {
+                    title: 'No'
+                },
+                positive: {
+                    title: 'Yes',
+                    onClick: function (e) {
+                        document.location.href = '<?php echo base_url() . "admin/market/removeSymbol/"; ?>' + id;
+                    }
                 }
+            });
+        }
+
+
+        $(document).ready(function () {
+            'use strict';
+            var dialog = document.querySelector('#addMarket');
+            var closeButton = dialog.querySelector('.buttonClose');
+            var showButton = document.querySelector('#addMarketButton');
+            if (!dialog.showModal) {
+                dialogPolyfill.registerDialog(dialog);
             }
+            var closeClickHandler = function (event) {
+                dialog.close();
+            };
+            var showClickHandler = function (event) {
+                dialog.showModal();
+            };
+            showButton.addEventListener('click', showClickHandler);
+            closeButton.addEventListener('click', closeClickHandler);
         });
-    }
     </script>
 
 </div>
 
-<div class="modal fade" id="addMarket" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-            <!-- content goes here -->
-        <form action="<?php echo base_url(); ?>Admin/market/addMarket" method="post">
-            <div class="mdl-card mdl-shadow--6dp">
-                <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-                    <h2 class="mdl-card__title-text">Add Market</h2>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" name="name" type="text" id="sample1" autocomplete="off">
-                    <label class="mdl-textfield__label"  for="sample1">Market Name</label>
-                </div>
-                
-                <div class="mdl-card__actions mdl-card--border">
-                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-left">Add</button>
-                    <button type="reset" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-right">Cancel</button>
-                </div>
+<dialog class="mdl-dialog" id="addMarket">
+    <form action="<?php echo base_url(); ?>Admin/market/addMarket" method="post">
+        <div class="mdl-dialog__content">
+            <!--<h1 class="mdl-dialog__title">Add Market</h1>-->
 
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" name="name" type="text" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">Market Name</label>
             </div>
-        </form>
-    </div>
-</div>
-<!-- Square card -->
+
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="submit" class="mdl-button">Add</button>
+            <button type="reset" class="buttonClose mdl-button">Cancel</button>
+        </div>
+    </form>
+</dialog>
 
 
-
-<style type="text/css">
-    .mdl-textfield{
-        width: auto;
-        
-    }
-    .mdl-textfield__input:{
-        border: 0;
-    }
-
-</style>
 
 
 
