@@ -16,8 +16,8 @@
       float: left;
     }
     .mdl-button.mdl-button--colored{
-      color: #FFFFFF;
-      background: #37474f;
+/*      color: #FFFFFF;
+      background: #37474f;*/
       border-radius: 7px;
       font-weight: 300;
     }
