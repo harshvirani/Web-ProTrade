@@ -505,11 +505,19 @@ function abc(){
             cell1.className = "full-width mdl-data-table__cell--non-numeric";
             cell2.className = "full-width mdl-data-table__cell--non-numeric";
             cell3.className = "full-width mdl-data-table__cell--non-numeric";
+            <?php 
+//                foreach ($symbols->result_array() as $symbol) {
+            ?>
+//                        if(selectable[i])
             cell1.innerHTML = "NEW CELL1";
             cell2.innerHTML = selectable[i];
             cell3.innerHTML = i;
             cell4.innerHTML = "<button onclick='delete_row("+i+")' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
         }
+        
+        <?php
+//                }
+        ?>
 //alert(j);            onclick='delete_row("+i+")'
 selectable=[];
 }

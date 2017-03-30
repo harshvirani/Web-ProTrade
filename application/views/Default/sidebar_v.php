@@ -12,17 +12,6 @@
         var socket = io.connect('http://localhost:8088');
 
         socket.on('message', function (data1) {
-//				var actualContent = $( "#messages" ).html();
-//				var newMsgContent = '<li> <strong>' + data.name + '</strong> : ' + data.message + '</li>';
-//				var content = newMsgContent + actualContent;
-
-//				$( "#messages" ).html( content );
-//                            'use strict';
-//                             var snackbarContainer = document.querySelector('#demo-toast-example');
-//                             var data = {message: 'Example Message # ' + data1.name};
-//    snackbarContainer.MaterialSnackbar.showSnackbar(data);
-
-// $.bootstrapGrowl("This is another test"+data1.name, { type: 'success' });
             toastr.success('Name:' + data1.name, 'Buy/Sell', {timeOut: 5000})
         });
 
@@ -103,27 +92,6 @@
 
         </ul>
     </aside>
-    <!--                <header class="demo-drawer-header">
-                        <img src="<?php echo base_url() . NAV_ASSETS; ?>images/user.jpg" class="demo-avatar">
-                        <div class="demo-avatar-dropdown">
-                            <span><?php echo $this->session->userdata('email'); ?></span>
-                            <div class="mdl-layout-spacer"></div>
-                            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                                <i class="material-icons" role="presentation">arrow_drop_down</i>
-                                <span class="visuallyhidden">Accounts</span>
-                            </button>
-                            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                                <a href="<?php echo base_url() . NAV_LOGOUT ?>"><li class="mdl-menu__item">Logout</li></a>
-                            </ul>
-                        </div>
-                    </header>
-                    <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-                        <a class="mdl-navigation__link" href="<?php echo base_url() . NAV_HOME; ?>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Inbox</a>
-                        <a class="mdl-navigation__link" href="<?php echo base_url() . NAV_PLAN; ?>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Subscrition Plan</a>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Purchases</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span >Help</span></a>
-                    </nav>-->
+    
 
 </div>

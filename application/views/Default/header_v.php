@@ -255,7 +255,9 @@
             <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
                 <div class="mdl-layout__header-row">
                     <span class="mdl-layout-title">Home</span>
+                    
                     <div class="mdl-layout-spacer"></div>
+
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                         <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
                             <i class="material-icons">search</i>
@@ -273,6 +275,7 @@
                         <li class="mdl-menu__item">Contact</li>
                         <li class="mdl-menu__item">Legal information</li>
                     </ul>
+                    
                 </div>
             </header>
 
