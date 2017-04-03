@@ -31,7 +31,7 @@
                                                 var gp = "gold";
                                                 var series = this.series[0];
                                                 setInterval(function () {
-                                                    $.getJSON("http://localhost/rethinkDB/trade_price_API.php?name=" + symb, function (data, status) {
+                                                    $.getJSON("http://localhost/rethinkDB/lineCurrentData_API.php?code=" + symb, function (data, status) {
                                                         temp = data["data"]["current_price"];
                                                     });
                                                     var x = (new Date()).getTime(), // current time
