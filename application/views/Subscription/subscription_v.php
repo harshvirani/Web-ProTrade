@@ -312,157 +312,247 @@ function plan_card(){
                             font-size: 18px;
                             letter-spacing: 1px;
                             color: white;
-                            background: teal;
+                            background: #46b6ac;
                         }
-                        .market_price{
-                            
-                            position: absolute;
-                            bottom: 0;
-                            padding: 9px 35px;
-                            width: 100%;
-                            font-weight: 100;
-                            font-size: 10px;
-                            letter-spacing: 1px;
-                            color: white;
-                            background: teal;
-                        }
+                        
                         .card_border{
-                            border: 1px solid black;
+                            border: 1px solid grey;
                             margin: 0;
                         }
                         .mdl-card{
                             width: auto;
                         }
+                        .market_price{
+                            padding: 9px 0;
+                            position: absolute;
+                            bottom: 0;
+                            width: 100%;
+                            text-align: center;
+                            font-weight: 500;
+                            font-size: 18px;
+                            letter-spacing: 1px;
+                            color: white;
+                            background: #46b6ac;
+                        }
+                        .pl{
+                            overflow-y: scroll;
+                            height: 74%;
+                        }
                     </style>
                     <div id="temp1">
                         <div class="row"><!-- <h1>Market Specific</h1> -->
                             <div class="col-sm-4">
-                                
-                                    <div class="demo-card-square mdl-card mdl-shadow--2dp  ">
-                                        <label  for="checkbox3" class=" mdl-checkbox__label">
-                                        <div class="card_border">
-                                        <div class="market_name">MARKET NAME</div>
+                                <label for="c1" class="mdl-card__supporting-text mdl-checkbox__label">
+                                    <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
                                         
+                                        <div class="market_name">MARKET NAME</div>
+                                        <div class="pl">
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <!-- <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input"> -->
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <!-- <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input"> -->
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <!-- <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input"> -->
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
                                         </div>
-
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        </div>
                                         <div class="market_price">
-                                                <input type="checkbox" id="checkbox3" class="mdl-checkbox__input" >
-                                                <span class="mdl-checkbox__label">Rs.200/- </span>
+                                            <input type="checkbox" id="c1" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 200</span>
                                         </div>
-                                        </div>
-                                        </label>
-                                        
                                     </div>
                                
                             </div>
                             <div class="col-sm-4">
-                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                                <label for="c2" class="mdl-card__supporting-text mdl-checkbox__label">
                                     <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
-                                        <div class="market_name">MARKET NAME</div>
                                         
+                                        <div class="market_name">MARKET NAME</div>
+                                        <div class="pl">
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
                                         </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        </div>
+                                        <div class="market_price">
+                                            <input type="checkbox" id="c2" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 200</span>
+                                        </div>
+                                        
                                     </div>
                                 </label>
                             </div>
                             <div class="col-sm-4">
-                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                                <label for="c3" class="mdl-card__supporting-text mdl-checkbox__label">
                                     <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
-                                        <div class="market_name">MARKET NAME</div>
                                         
+                                        <div class="market_name">MARKET NAME</div>
+                                        <div class="pl">
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
                                         </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        </div>
+                                        <div class="market_price">
+                                            <input type="checkbox" id="c3" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 200</span>
+                                        </div>
+                                        
                                     </div>
                                 </label>
                             </div>
                             <div class="col-sm-4">
-                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                                <label for="c4" class="mdl-card__supporting-text mdl-checkbox__label">
                                     <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
-                                        <div class="market_name">MARKET NAME</div>
                                         
+                                        <div class="market_name">MARKET NAME</div>
+                                        <div class="pl">
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
                                         </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        </div>
+                                        <div class="market_price">
+                                            <input type="checkbox" id="c4" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 200</span>
+                                        </div>
+                                        
                                     </div>
                                 </label>
                             </div>
                             <div class="col-sm-4">
-                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                                <label for="c5" class="mdl-card__supporting-text mdl-checkbox__label">
                                     <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
-                                        <div class="market_name">MARKET NAME</div>
                                         
+                                        <div class="market_name">MARKET NAME</div>
+                                        <div class="pl">
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
                                         </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        </div>
+                                        <div class="market_price">
+                                            <input type="checkbox" id="c5" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 200</span>
+                                        </div>
+                                        
                                     </div>
                                 </label>
                             </div>
                             <div class="col-sm-4">
-                                <label for="marketspec" class="mdl-card__supporting-text mdl-checkbox__label">
+                               <label for="c6" class="mdl-card__supporting-text mdl-checkbox__label">
                                     <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
-                                        <div class="market_name">MARKET NAME</div>
                                         
+                                        <div class="market_name">MARKET NAME</div>
+                                        <div class="pl">
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 1</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 2</span>
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
-                                            <input type="checkbox" id="" name="" value="1" class="mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
                                         </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Market 3</span>
+                                        </div>
+                                        </div>
+                                        <div class="market_price">
+                                            <input type="checkbox" id="c6" name="" value="1" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 200</span>
+                                        </div>
+                                        
                                     </div>
                                 </label>
                             </div>
