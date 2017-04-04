@@ -36,6 +36,11 @@ class User_m extends CI_Model {
         $res = $this->db->insert('user', $data);
         return $res;
     }
+    public function countUser($status){
+        $this->db->where('status', $status);
+        $this->db->from('user');
+        return $this->db->count_all_results();
+    }
 
     public function count($type) {
         $this->db->where('type', $type);
@@ -56,5 +61,25 @@ class User_m extends CI_Model {
         $res = $this->db->update('user', $data);
         return $res;
     }
+    
+    public function checkEmail($email){
+        $this->db->where('email',$email);
+        $this->db->from('user');
+        $res= $this->db->count_all_results();
+//        print_r($res); die;
+        if($res==0){
+            return FALSE;
+        }else{
+            return TRUE;
+        }
+    }
 
+    public function resetPass($data){
+        $this->db->where('email',$data['email']);
+        $pass=array(
+            'password'=>$data['pass']
+            );
+        $res = $this->db->update('user', $pass);
+        return $res;
+    }
 }

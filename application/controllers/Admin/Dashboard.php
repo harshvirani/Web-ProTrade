@@ -6,6 +6,7 @@ class Dashboard extends CI_Controller {
         parent::__construct();
         $this->load->model('user_m');
         $this->load->model('market_m');
+        $this->load->model('plan_m');
     }
 
     public function index() {
@@ -15,10 +16,12 @@ class Dashboard extends CI_Controller {
                 'markets' => $this->market_m->getMarket(),
                 'count' => $this->market_m->getCount(),
                 'sub_cnt'=>$this->user_m->count('SUBSCRIBER'),
-                'staff_cnt'=>$this->user_m->count('STAFF')
+                'staff_cnt'=>$this->user_m->count('STAFF'),
+                'blocked_cnt'=> $this->user_m->countUser('BLOCKED'),
+                'active_cnt'=> $this->user_m->countUser('ACTIVE')
             );
             
-
+            $data['symbols']=$this->plan_m->all_symbols();
             $this->load->view('Admin/admin_header', $data);
            
             $this->load->view('Admin/admin_sidebar');
@@ -27,6 +30,16 @@ class Dashboard extends CI_Controller {
         } else {
             redirect(base_url());
         }
+    }
+    
+    public function updateMinMax($id,$min,$max){
+        $this->load->model('symbol_m');
+        $data=array(
+            'call_min'=>$min,
+            'call_max'=>$max
+        );
+        $this->symbol_m->updateMinMax($data,$id);
+        $this->index();
     }
 
 }

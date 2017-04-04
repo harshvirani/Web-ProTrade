@@ -1,3 +1,413 @@
-<main class="mdl-layout__content">
-    <h1>DASHBOARD</h1>
+<main class="mdl-layout__content mdl-color--grey-100">
+
+    <div class="container">
+        <div class="row">
+            <script>
+                var symb = "gold";</script>
+            <div class="col-md-8">
+
+                <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" style="width: 100%; height: 400px;">
+                    <div id="container" ></div>
+                    <script language="JavaScript">
+                        window.onload = function () {
+                            chart();
+                            myfun();
+                        };
+                        function chart() {
+                            $(function () {
+
+                                Highcharts.setOptions({
+                                    global: {
+                                        useUTC: false
+                                    }
+                                });
+
+                                Highcharts.stockChart('container', {
+                                    chart: {
+                                        events: {
+                                            load: function () {
+
+                                                var temp;
+                                                var gp = "gold";
+                                                var series = this.series[0];
+                                                setInterval(function () {
+                                                    $.getJSON("http://localhost/rethinkDB/lineCurrentData_API.php?code=" + symb, function (data, status) {
+                                                        temp = data["data"]["current_price"];
+                                                    });
+                                                    var x = (new Date()).getTime(), // current time
+                                                            y = parseInt(temp);
+                                                    series.addPoint([x, y], true, true);
+                                                }, 1000);
+                                            }
+                                        }
+                                    },
+
+                                    rangeSelector: {
+                                        buttons: [{
+                                                count: 1,
+                                                type: 'minute',
+                                                text: '1M'
+                                            }, {
+                                                count: 5,
+                                                type: 'minute',
+                                                text: '5M'
+                                            }, {
+                                                type: 'all',
+                                                text: 'All'
+                                            }],
+                                        inputEnabled: false,
+                                        selected: 0
+                                    },
+
+                                    title: {
+                                        text: 'Live Chart:' + symb
+                                    },
+
+                                    exporting: {
+                                        enabled: false
+                                    },
+
+                                    series: [{
+                                            name: 'Random data',
+                                            data: (function () {
+                                                // generate an array of random data
+                                                var data = [],
+                                                        time = (new Date()).getTime(),
+                                                        i;
+
+                                                for (i = -999; i <= 0; i += 1) {
+                                                    data.push([
+                                                        time + i * 1000,
+                                                        Math.round(Math.random() * 100)
+                                                    ]);
+                                                }
+
+
+
+                                                //                                    $.getJSON("http://192.168.0.100/rethinkDB/all_API.php?req=trade_all", function (apidata, status) {
+                                                ////            alert("Data: " + data["count"]);
+                                                //                                        var k = 0;
+                                                //                                        var cnt = apidata["count"];
+                                                //                                        var mi = cnt - (2 * cnt);
+                                                //                                        for (i = mi; i <= 0; i += 1) {
+                                                //                                            
+                                                //                                            data.push([
+                                                //                                                time + i * 1000,
+                                                //                                                apidata["data"][k]["price"];
+                                                //                                            ]);
+                                                //                                            k += 1;
+                                                //                                        }
+                                                //                                    });
+
+
+                                                return data;
+                                            }())
+                                        }]
+                                });
+
+                            });
+                        }
+
+                    </script>
+                    <script type="text/javascript">
+                        $('.scripts').click(function () {
+                            var btnid = this.id;
+                            alert(btnid);
+                        });
+                    </script>
+                    <script>
+                        function getPaging(str) {
+                            alert(str);
+                            symb = str;
+                            chart();
+                        }
+
+
+                    </script>
+
+
+
+                </div>
+            </div>
+            <div class="col-md-4" >
+                <div class="mdl-card" style="width: 85%; background: transparent;">
+
+
+                    <div id="mdl-table"  style="width: 100%; height: 100%;">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused" data-upgraded=",MaterialTextfield">
+
+                            <div class="mdl-textfield__expandable-holder">
+                                <input class="mdl-textfield__input search" type="text" id="sample6">
+                                <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+                            </div>
+                            <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                                <i class="material-icons">search</i>
+                            </label>
+                        </div>
+                        <style>
+                            tr:hover { cursor: pointer;}
+                        </style>
+                        <div style="height:340px;overflow-x: hidden;overflow-y: scroll; border: 1px solid black;" >
+                            <table id='mdl-table' class="mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
+                                        <th class="mdl-data-table__cell--non-numeric sort full-width">Current</th>
+                                    </tr>
+                                </thead>
+                                <script>
+                                    function myfun() {
+                                        var table = document.getElementsByTagName("table")[0];
+                                        var tbody = table.getElementsByTagName("tbody")[0];
+                                        tbody.onclick = function (e) {
+                                            e = e || window.event;
+                                            var data = [];
+                                            var target = e.srcElement || e.target;
+                                            while (target && target.nodeName !== "TR") {
+                                                target = target.parentNode;
+                                            }
+                                            if (target) {
+                                                var cells = target.getElementsByTagName("td");
+                                                for (var i = 0; i < cells.length; i++) {
+                                                    data.push(cells[i].innerHTML);
+                                                }
+                                            }
+                                            symb = data[0];
+                                            //                                    alert(symb);
+                                            chart();
+                                            //                                    $( "#container" ).load(window.location.href + " #container" );
+                                        };
+                                    }
+
+                                </script>
+                                <tbody class="list">
+                                    <?php
+                                    foreach ($symbols->result_array() as $symbol) {
+                                        ?>
+                                        <tr >
+                                            <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['code']; ?></td>
+                                            <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['price_quote']; ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--</div>-->
+
+                </div> 
+            </div>
+        </div>
+        <style type="text/css">
+            .huge {
+                font-size: 40px;
+            }
+            .panel-green > .panel-heading {
+                border-color: #5cb85c;
+                color: white;
+                background-color: #5cb85c;
+            }
+            .panel-yellow > .panel-heading {
+                border-color: #f0ad4e;
+                color: white;
+                background-color: #f0ad4e;
+            }
+            .panel-red > .panel-heading {
+                border-color: #d9534f;
+                color: white;
+                background-color: #d9534f;
+            }
+            .nter{
+                width: 150px;
+                margin: 40px auto;
+
+            }
+            .scrispac{
+                width: 40%;
+            }
+            .nospec{
+                width:8%;
+            }
+            .center{
+                text-align: center;
+            }
+            .four_task{
+                width: 95%;
+            }
+            .tab_wid{
+                width: 95%;
+            }
+            .tab_had{
+                font-weight: bolder;
+                font-size: 15px;
+            }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $('.btn-minuse').on('click', function () {
+                    $(this).parent().siblings('input').val(parseInt($(this).parent().siblings('input').val()) - 1)
+                })
+
+                $('.btn-pluss').on('click', function () {
+                    $(this).parent().siblings('input').val(parseInt($(this).parent().siblings('input').val()) + 1)
+                })
+
+            });
+        </script>
+
+        <div class="four_task">
+            <div class="row">
+                <div class=" col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-file fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $sub_cnt;?></div>
+                                    <div>Total Subscriber</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-users fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $active_cnt;?></div>
+                                    <div>Active User</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-ban fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $blocked_cnt;?></div>
+                                    <div>Blocked User</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-id-badge fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $staff_cnt;?></div>
+                                    <div>Total Staff</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="tab_wid col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading tab_had">
+                        Symbols Notifications Preferences
+                    </div>
+                    
+                    <script>
+                    function updateMinMax(id1){
+                        var min=document.getElementById("min"+id1).value;
+                        var max=document.getElementById("max"+id1).value
+                        location.href="<?php echo base_url();?>/Admin/Dashboard/updateMinMax/"+id1+"/"+min+"/"+max;
+                    }
+                    </script>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="scrispac">Script</th>
+                                        <th class="center">Min</th>
+                                        <th class="center">Max</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach ($symbols->result_array() as $symbol) {
+                                    ?>
+                                    <tr>
+                                        
+                                        <td><?php echo $symbol['name'];?></td>
+                                        <td><div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-white btn-minuse" type="button">-</button>
+                                                </span>
+                                                <input id="min<?php echo $symbol['id'];?>"  type="text" class="form-control no-padding add-color text-center height-25" maxlength="5" value="<?php echo $symbol['call_min']; ?>">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-red btn-pluss" type="button">+</button>
+                                                </span>
+                                            </div><!-- /input-group --></td>
+                                        <td><div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-white btn-minuse" type="button">-</button>
+                                                </span>
+                                                <input id="max<?php echo $symbol['id'];?>" type="text" class="form-control no-padding add-color text-center height-25" maxlength="5" value="<?php echo $symbol['call_max']; ?>">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-red btn-pluss" type="button">+</button>
+                                                </span>
+                                            </div><!-- /input-group --></td>
+                                        <td><button id="<?php echo $symbol['id'];?>" onclick="updateMinMax(this.id)" class="mdl-button mdl-js-button mdl-button--raised">Apply</button></td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        </div>
+    </div>
+    <!--<div class=" mdl-shadow--2dp  mdl-cell--12-col ">
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+             Tab Bars 
+            <div class="mdl-tabs__tab-bar">
+                <a href="#asia-panel" class="mdl-tabs__tab is-active">Asia</a>
+                <a href="#europe-panel" class="mdl-tabs__tab">Europe</a>
+                <a href="#america-panel" class="mdl-tabs__tab">America</a>
+                <a href="#america-panel" class="mdl-tabs__tab">America</a>
+    
+            </div>
+        </div>
+       <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    </div>-->
+    <script src="<?php echo base_url() . NAV_ASSETS; ?>js/index_side.js"></script> 
 </main>

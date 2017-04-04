@@ -32,5 +32,11 @@ class Symbol_m extends CI_Model {
         $result=$this->db->update('symbol',$data);
         return $result;
     }
+    
+    public function updateMinMax($data,$id){
+        $this->db->where('id',$id);
+        $result=$this->db->update('symbol',$data);
+        return $result;
+    }
 
 }

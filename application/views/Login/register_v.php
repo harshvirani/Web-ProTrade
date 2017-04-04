@@ -75,14 +75,22 @@
                                     <label class="mdl-textfield__label" for="sample3">Password</label>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-                                    <a href="<?php echo base_url(); ?>User/forgetPassword">Forget Password</a>
+                                    <input class="mdl-textfield__input" name="email" type="email" id="sample3" autocomplete="off"/>
+                                    <label class="mdl-textfield__label" for="sample3">Email</label>
                                 </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                                    <input class="mdl-textfield__input" name="mobileno" type="tel" id="sample3" autocomplete="off"/>
+                                    <label class="mdl-textfield__label" for="sample3">Contact No.</label>
+                                </div>
+                                <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                                    <a href="<?php echo base_url(); ?>User/forgetPassword">Forget Password</a>
+                                </div> -->
                                 <div class="m-t-20">
                                     <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--black">
-                                        Login
-                                    </button>
-                                    <button onclick="location.href = '<?php echo base_url(); ?>User/registerView'" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
                                         Register
+                                    </button>
+                                    <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                                        Login
                                     </button>
                                 </div>
 

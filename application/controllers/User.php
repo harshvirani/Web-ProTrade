@@ -1,6 +1,7 @@
 <?php
 
 error_reporting(E_ERROR | E_PARSE);
+
 class User extends CI_Controller {
 
     public function __construct() {
@@ -62,6 +63,43 @@ class User extends CI_Controller {
         } else {
             redirect(base_url());
         }
+    }
+
+    public function forgetPassword($data="") {
+       
+        $this->load->view('Login/forget_v',$data);
+    }
+
+    public function resetPassword() {
+        $email = $this->input->post('email');
+        $res = $this->user_m->checkEmail($email);
+        if ($res == TRUE) {
+            $data = array(
+                'email' => $email,
+                'pass' => $this->randomPassword(12)
+            );
+            $this->user_m->resetPass($data);
+            $this->sendMail($data);
+            $this->login();
+        }else{
+            $data['error']='Invalid Email Address';
+            $this->forgetPassword($data);
+        }
+    }
+
+    public function sendMail($data) {
+        $this->load->library('email');
+        $this->email->from('ProTrade', 'ProTrade');
+        $this->email->to($data['email']);
+        $this->email->subject('Reset Password');
+        $this->email->message('Your New Password for your Email:' . $data['email'] . 'New Password:' . $data['pass']);
+        $this->email->send();
+    }
+
+    public function randomPassword($length = 8) {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
+        $password = substr(str_shuffle($chars), 0, $length);
+        return $password;
     }
 
     public function logout() {
@@ -132,7 +170,6 @@ class User extends CI_Controller {
 
     public function Register() {
 
-
         $data = array(
             'uname' => $this->input->post('name'),
             'password' => $this->input->post('pass'),
@@ -142,7 +179,6 @@ class User extends CI_Controller {
             'status' => 'ACTIVE',
             'is_deleted' => 0
         );
-
         $res = $this->user_m->addUser($data);
         if ($res) {
             $data = array(
@@ -158,6 +194,19 @@ class User extends CI_Controller {
         } else {
             redirect(base_url() . NAV_LOGIN);
         }
+    }
+    
+    public function registerView(){
+        if ($this->session->has_userdata('uname')) {
+            if ($_SESSION['status'] == 'BLOCKED') {
+                $this->session->sess_destroy();
+            } else if ($_SESSION['type'] === 'SUBSCRIBER' || $_SESSION['type'] === 'STAFF') {
+                redirect(base_url() . NAV_HOME);
+            } else {
+                redirect(base_url() . NAV_DASHBOARD);
+            }
+        }
+        $this->load->view('Login/register_v', $data);
     }
 
     public function addStaff() {

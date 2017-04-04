@@ -8,16 +8,7 @@
         <div class="mdl-snackbar__text"></div>
         <button class="mdl-snackbar__action" type="button"></button>
     </div>
-    <script type="text/javascript">
-        var socket = io.connect('http://localhost:8088');
-
-        socket.on('message', function (data1) {
-            toastr.success('Name:' + data1.name, 'Buy/Sell', {timeOut: 5000})
-        });
-
-
-
-    </script>
+   
     <aside id="sidebar" class="sidebar sidebar-inverse open" role="navigation">
         <!-- Sidebar header -->
         <div class="sidebar-header header-cover" style="background-image: url(<?php echo base_url() . NAV_ASSETS; ?>images/bg.jpg);">

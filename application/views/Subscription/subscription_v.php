@@ -1,5 +1,6 @@
 <script type="text/javascript">
-    var x, y;
+    var x, y, z;
+    
     var selectable = new Array();
     $(document).ready(function () {
         
@@ -10,18 +11,20 @@
                 favorite.push($(this).val());
             });
             x = favorite.join(", ");
+            
 
             var favorite = [];
             $.each($("input[name='checker']:checked"), function () {
                 favorite.push($(this).val());
             });
             y = favorite.join(", ");
+            // alert('TYPE: '+ x +' '+ y);
 
-           if (y == 1) {
+           if (y == 'MARKET SPECIFIC') {
                document.getElementById('temp1').style.display = "block";
                document.getElementById('temp2').style.display = "none";
                // document.getElementById("te1").disabled = false;
-           } else if (y == 2) {
+           } else if (y == 'SCRIPT SPECIFIC') {
                document.getElementById('temp2').style.display = "block";
                document.getElementById('temp1').style.display = "none";
                // document.getElementById("te1").disabled = false;
@@ -50,7 +53,8 @@ function plan_card(){
 
 
     $(document).ready(function () {
-
+        
+        //START
         $(document).on("click", ".mdl-checkbox__ripple-container.mdl-js-ripple-effect.mdl-ripple--center", function () {
             var getscriptID = $(this).parents().eq(2/*child number*/).children().eq(2).text();
             var parentID = $(this).parents().eq(2).attr('id');
@@ -69,12 +73,31 @@ function plan_card(){
             if (contains(selectable, getscriptID)) {
                 selectable.push(getscriptID.toString());
             }
-            // alert('Select Script:' + selectable);
+            var obj = {"PLAN": x, "TYPE": y, "SELECTION": selectable};
+            var myJSON = JSON.stringify(obj, null, ' ');
+            alert(myJSON);
         });
+        //END
+        //MARKET SELECTION START
+            $("input:checkbox").change(function() {
+                var mark = [];
+                $("input:checkbox").each(function() {
+                    if ($(this).is(":checked")) {
+                        mark.push($(this).attr("value"));
+                    } 
+                });
+                z = mark;
+                // alert("PRINT: "+ x +' '+ y +' '+ z);
+
+                var obj = { "PLAN": x, "TYPE": y, "SELECTION": z};
+                var myJSON = JSON.stringify(obj, null, ' ');
+                alert(myJSON);
+            });
+        //MARKET SELECTION END
 
     });
-</script>
 
+</script>
 <style type="text/css">
     #log
     {
@@ -144,7 +167,7 @@ function plan_card(){
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
 
-                                            <input type="radio" id="chkbox<?php echo $plan['id']; ?>" name="plan" value="<?php echo $plan['id']; ?>" class=" mdl-checkbox__input">
+                                            <input type="radio" id="chkbox<?php echo $plan['id']; ?>" name="plan" value="<?php echo $plan['name']; ?>" class="qwe mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label"><?php echo $plan['name']; ?></span>
 
                                         </div>
@@ -187,7 +210,7 @@ function plan_card(){
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
 
-                                        <input type="radio" id="marketspec" name="checker" value="1" class="type_card mdl-checkbox__input">
+                                        <input type="radio" id="marketspec" name="checker" value="MARKET SPECIFIC" class="type_card mdl-checkbox__input">
                                         <span class="mdl-card__supporting-text mdl-checkbox__label">Market</span>
 
                                     </div>
@@ -207,7 +230,7 @@ function plan_card(){
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
 
-                                        <input type="radio" id="scriptspec" name="checker" value="2" class="type_card mdl-checkbox__input chkbx">
+                                        <input type="radio" id="scriptspec" name="checker" value="SCRIPT SPECIFIC" class="type_card mdl-checkbox__input chkbx">
                                         <span class="mdl-card__supporting-text mdl-checkbox__label">Script</span>
 
                                     </div>
@@ -339,6 +362,7 @@ function plan_card(){
                             height: 74%;
                         }
                     </style>
+
                     <div id="temp1">
                         <div class="row"><!-- <h1>Market Specific</h1> -->
                              <?php
@@ -346,7 +370,7 @@ function plan_card(){
                                                 ?>
                             
                             <div class="col-sm-4">
-                                <label for="c2" class="mdl-card__supporting-text mdl-checkbox__label">
+                                <label for="mar<?php echo $market['id']; ?>" class="mdl-card__supporting-text mdl-checkbox__label">
                                     <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
                                         <div class="market_name"><?php echo $market["name"];?></div>
                                         <div class="pl">
@@ -359,13 +383,12 @@ function plan_card(){
                                             <span class="mdl-card__supporting-text mdl-checkbox__label"><?php echo $symbol['name'];?></span>
                                         </div>
                                             <?php }}?>
-                                        
+                                        mar<?php echo $market['id']; ?>
                                         </div>
                                         <div class="market_price">
-                                            <input type="checkbox" id="c2" name="" value="1" class="mdl-checkbox__input">
-                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 200</span>
+                                            <input type="checkbox" id="mar<?php echo $market['id']; ?>" value="<?php echo $market["name"];?>" class="mdl-checkbox__input">
+                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 400</span>
                                         </div>
-                                        
                                     </div>
                                 </label>
                             </div>
@@ -386,9 +409,7 @@ function plan_card(){
                             <thead>
 
                                 <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
-                                    <th class="full-width mdl-data-table__cell--non-numeric">
-                                        Material
-                                    </th>
+                                    <th class="full-width mdl-data-table__cell--non-numeric">Material</th>
                                     <th class="full-width mdl-data-table__cell--non-numeric">Quantity</th>
                                     <th class="full-width mdl-data-table__cell--non-numeric">Unit price</th>
                                     <th class="full-width mdl-data-table__cell--non-numeric"></th>
@@ -398,7 +419,6 @@ function plan_card(){
 <script type="text/javascript">
 //  $('#nxtbtn').click(function () {
 function abc(){
-    var j=selectable.length;
     for (var i = selectable.length-1; i >= 0; i--) {
             var table = document.getElementById("finaltable");
             var row = table.insertRow(1);
@@ -418,6 +438,7 @@ function abc(){
             cell2.innerHTML = selectable[i];
             cell3.innerHTML = i;
             cell4.innerHTML = "<button onclick='delete_row("+i+")' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
+
         }
         
         <?php
@@ -427,11 +448,11 @@ function abc(){
 selectable=[];
 }
 
-
 function delete_row(rowid){
 var row = document.getElementById(rowid);
     row.parentNode.removeChild(row);
 }
+function lol()
 //});
     </script>
                                 <tr>
@@ -446,7 +467,7 @@ var row = document.getElementById(rowid);
                         <br>
                     </div>
                     <div class="row">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right" onclick="lol()">
                             Pay Now
                         </button>
                     </div>

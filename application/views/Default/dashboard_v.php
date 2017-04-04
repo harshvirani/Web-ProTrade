@@ -204,18 +204,6 @@
         </div>
     
 
-    <!--<div class=" mdl-shadow--2dp  mdl-cell--12-col ">
-        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-             Tab Bars 
-            <div class="mdl-tabs__tab-bar">
-                <a href="#asia-panel" class="mdl-tabs__tab is-active">Asia</a>
-                <a href="#europe-panel" class="mdl-tabs__tab">Europe</a>
-                <a href="#america-panel" class="mdl-tabs__tab">America</a>
-                <a href="#america-panel" class="mdl-tabs__tab">America</a>
     
-            </div>
-        </div>
-       <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    </div>-->
     <script src="<?php echo base_url() . NAV_ASSETS; ?>js/index_side.js"></script> 
 </main>

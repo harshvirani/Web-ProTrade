@@ -255,18 +255,51 @@
             <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
                 <div class="mdl-layout__header-row">
                     <span class="mdl-layout-title">Home</span>
-                    
-                    <div class="mdl-layout-spacer"></div>
 
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                        <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                            <i class="material-icons">search</i>
-                        </label>
-                        <div class="mdl-textfield__expandable-holder">
-                            <input class="mdl-textfield__input" type="text" id="search">
-                            <label class="mdl-textfield__label" for="search">Enter your query...</label>
-                        </div>
-                    </div>
+                    <div class="mdl-layout-spacer"></div>
+                    <i id="menudemo" class="material-icons mdl-badge mdl-badge--overlap" data-badge="">add_alert</i>
+                    <style type="text/css">
+                        .mymenu{
+                            min-height: 300px;
+                            max-height: 300px;
+                            overflow-y: scroll;
+                        }
+                        .mymenuitem{
+                            min-width: 300px;
+                        }
+                    </style>
+                    <script>
+                        $(document).ready(function () {
+                            var no = $("#noti_ul li").length;
+                            $("#menudemo").attr("data-badge", no);
+                            $("#menudemo").click(function () {
+                                $("#menudemo").attr("data-badge", "0");
+                            });
+                        });
+
+                    </script>
+
+                    <script type="text/javascript">
+                        var socket = io.connect('http://192.168.0.100:8088');
+
+                        socket.on('message', function (data1) {
+                            var badge=$("#menudemo").attr("data-badge");
+                            $("#menudemo").attr("data-badge", ++badge);
+                            $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data1.name + "</li>");
+                            toastr.success('Name:' + data1.name, 'Buy/Sell', {timeOut: 5000});
+                        });
+
+
+
+                    </script>
+
+                    <ul id="noti_ul" class="mdl-menu mymenu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menudemo">
+                        <li class=" mdl-menu__item mymenuitem">Some Action</li>
+
+                    </ul>
+
+
+
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
                         <i class="material-icons">more_vert</i>
                     </button>
@@ -275,7 +308,7 @@
                         <li class="mdl-menu__item">Contact</li>
                         <li class="mdl-menu__item">Legal information</li>
                     </ul>
-                    
+
                 </div>
             </header>
 
