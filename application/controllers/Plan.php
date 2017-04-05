@@ -25,4 +25,11 @@ class Plan extends CI_Controller{
             redirect(base_url());
         }
     }
+    
+    public function insertSubSymbol($data,$plan){
+        $sym=explode(',', $data);
+        for($i=0;$i<= sizeof($sym);$i++){
+            
+        }
+    }
 }

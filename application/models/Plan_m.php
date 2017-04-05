@@ -20,4 +20,7 @@ class Plan_m extends CI_Model{
         return $query;
     }
     
+    public function insertSubscription(){
+        
+    }
 }

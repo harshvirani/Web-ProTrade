@@ -77,7 +77,97 @@
 
                 <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" style="width: 100%; height: 400px;">
                     <div id="container" ></div>
-                    <script language="JavaScript">
+<script type="text/javascript">
+$(function() {
+  $(document).ready(function() {
+    Highcharts.setOptions({
+    global: {
+        useUTC: false
+    }
+    });
+
+// Create the chart
+    Highcharts.stockChart('container', {
+    chart: {
+    type: 'candlestick',
+        events: {
+            load: function () {
+
+                // set up the updating of the chart each second
+            var series = this.series[0];
+            setInterval(function() {
+                $.getJSON("http://localhost/rethinkDB/candleStickCurrentData_API.php?code=CRUDEOIL 1&cycle=10", function (data, status) {
+                                                        temp = data;
+//                                                        alert(temp['high']);
+                                                    });
+//                                                    var x = (new Date()).getTime(), // current time
+//                                                            y = parseInt(temp);
+              var x = (new Date()).getTime();
+              series.addPoint([
+                x,
+                parseInt(temp['open']),
+                parseInt(temp['high']),
+                parseInt(temp['low']),
+                parseInt(temp['close'])
+              ], true, true);
+            }, 1000)
+            }
+        }
+    },
+
+    rangeSelector: {
+        buttons: [{
+                count: 1,
+                type: 'minute',
+                text: '1M'
+            }, {
+                count: 5,
+                type: 'minute',
+                text: '5M'
+            }, {
+                type: 'all',
+                text: 'All'
+            }],
+        inputEnabled: false,
+        selected: 0
+    },
+
+    title: {
+        text: 'Live random data'
+    },
+
+    exporting: {
+        enabled: false
+    },
+
+    series: [{
+        name: 'Random data',
+        type: 'candlestick',
+        data: (function() {
+          // generate an array of random data
+          var data = [],
+            time = (new Date()).getTime(),
+            i;
+
+          for (i = -999; i <= 0; i++) {
+            data.push([
+              time + i * 1000,
+              Math.round(Math.random() * 100),
+              Math.round(Math.random() * 100),
+              Math.round(Math.random() * 100),
+              Math.round(Math.random() * 100)
+            ]);
+          }
+          return data;
+        })()
+    }]
+    });
+});
+});
+
+
+</script>
+                    <!-- <script language="JavaScript">
                         window.onload = function () {
                             chart();
                             myfun();
@@ -173,7 +263,7 @@
                         }
 
 
-                    </script>
+                    </script> -->
 
 
 

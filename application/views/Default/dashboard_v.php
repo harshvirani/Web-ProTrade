@@ -2,12 +2,23 @@
 
     <div class="container">
         <div class="row">
+            
             <script>
-                var symb = "gold";</script>
+                var symb = "gold";
+            </script>
+            <style type="text/css">
+                #cono {
+                    height:360px;
+                    width:750px;
+                    position:relative;
+                }
+            </style>
             <div class="col-md-8">
-
-                <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" style="width: 100%; height: 400px;">
-                    <div id="container" ></div>
+                <button><i class="material-icons">settings_input_component</i></button>
+                <button><i class="material-icons">multiline_chart</i></button>
+                <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+                
+                    <div id="cono" ></div>
                     <script language="JavaScript">
                         window.onload = function () {
                             chart();
@@ -22,7 +33,8 @@
                                     }
                                 });
 
-                                Highcharts.stockChart('container', {
+                                Highcharts.stockChart('cono', {
+
                                     chart: {
                                         events: {
                                             load: function () {
@@ -68,7 +80,7 @@
                                     },
 
                                     series: [{
-                                            name: 'Random data',
+                                            name: 'Live Data',
                                             data: (function () {
                                                 // generate an array of random data
                                                 var data = [],

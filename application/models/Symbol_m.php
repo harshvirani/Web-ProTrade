@@ -39,4 +39,7 @@ class Symbol_m extends CI_Model {
         return $result;
     }
 
+    public function insertSubSymbol(){
+        
+    }
 }

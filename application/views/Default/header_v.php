@@ -280,13 +280,13 @@
                     </script>
 
                     <script type="text/javascript">
-                        var socket = io.connect('http://192.168.0.100:8088');
+                        var socket = io.connect('http://localhost:8088');
 
                         socket.on('message', function (data1) {
                             var badge=$("#menudemo").attr("data-badge");
                             $("#menudemo").attr("data-badge", ++badge);
-                            $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data1.name + "</li>");
-                            toastr.success('Name:' + data1.name, 'Buy/Sell', {timeOut: 5000});
+                            $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data1.code+"   "+data1.type + "</li>");
+                            toastr.success('Code : ' + data1.code, data1.type, {timeOut: 5000});
                         });
 
 

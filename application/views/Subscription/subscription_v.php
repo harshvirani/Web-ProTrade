@@ -8,7 +8,7 @@
 
             var favorite = [];
             $.each($("input[name='plan']:checked"), function () {
-                favorite.push($(this).val());
+                favorite.push($(this).id);
             });
             x = favorite.join(", ");
 
@@ -90,8 +90,8 @@
             // alert("PRINT: "+ x +' '+ y +' '+ z);
 
             var obj = {"PLAN": x, "TYPE": y, "SELECTION": z};
-            var myJSON = JSON.stringify(obj, null, ' ');
-            alert(myJSON);
+//            var myJSON = JSON.stringify(obj, null, ' ');
+//            alert(myJSON["PLAN"]);
         });
         //MARKET SELECTION END
 
@@ -157,7 +157,7 @@
                             ?>
                             <!--Start Plan Card-->
                             <div class="col-sm-4">
-                                <label onclick="plan_card()" for="chkbox<?php echo $plan['id']; ?>" class="mdl-card__supporting-text mdl-checkbox__label">
+                                <label onclick="plan_card()" for="<?php echo $plan['id']; ?>" class="mdl-card__supporting-text mdl-checkbox__label">
                                     <div class="demo-card-square mdl-card mdl-shadow--2dp ">
                                         <div class="mdl-card__title mdl-card--expand">
                                             <h2 class="mdl-card__title-text"><?php echo $plan['name']; ?></h2>
@@ -167,7 +167,7 @@
                                         </div>
                                         <div class="mdl-card__actions mdl-card--border">
 
-                                            <input type="radio" id="chkbox<?php echo $plan['id']; ?>" name="plan" value="<?php echo $plan['name']; ?>" class="qwe mdl-checkbox__input">
+                                            <input type="radio" id="<?php echo $plan['id']; ?>" name="plan" value="<?php echo $plan['name']; ?>" class="qwe mdl-checkbox__input">
                                             <span class="mdl-card__supporting-text mdl-checkbox__label"><?php echo $plan['name']; ?></span>
 
                                         </div>
@@ -425,7 +425,7 @@
                                     for (var i = selectable.length - 1; i >= 0; i--) {
                                         var table = document.getElementById("finaltable");
                                         var row = table.insertRow(1);
-                                        row.id = i;
+//                                        row.id = selectable[i];
                                         var cell1 = row.insertCell(0);
                                         var cell2 = row.insertCell(1);
                                         var cell3 = row.insertCell(2);
@@ -440,10 +440,11 @@ foreach ($symbols->result_array() as $symbol) {
                                             //                                            alert("<?php echo $symbol['code']; ?>");
                                             var code = "<?php echo $symbol['code']; ?>";
                                             if (selectable[i] === code) {
+                                                row.id = "<?php echo $symbol['id']; ?>";
                                                 cell1.innerHTML = "<?php echo $symbol['name']; ?>";
                                                 cell2.innerHTML = selectable[i];
                                                 cell3.innerHTML = "<?php echo $symbol['price_quote']; ?>";
-                                                cell4.innerHTML = "<button onclick='delete_row(" + i + ")' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
+                                                cell4.innerHTML = "<button onclick='delete_row(" + selectable[i] + ")' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
 
                                             }
 <?php } ?>
@@ -476,11 +477,16 @@ foreach ($symbols->result_array() as $symbol) {
                 </div>
                 <script>
                     function phpfun() {
-<?php
-foreach ($symbols->result_array() as $symbol) {
-    ?>
-                            alert("<?php echo $symbol['code']; ?>");
-<?php } ?>
+                        var data = [];
+                        var len = document.getElementById("finaltable").rows.length;
+                        for (var i = 1; i < len - 1; i++) {
+                            var dat = document.getElementById("finaltable").rows[i].id;
+                            data.push(dat);
+                        }
+                        alert(x);
+                        return false;
+//                        location.href="<?php echo base_url(); ?>plan/insertSubSymbol/"+data+"/"+x+"/"+y;
+                       
                     }
                 </script>
             </div>
