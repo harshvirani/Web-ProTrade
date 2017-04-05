@@ -1,9 +1,9 @@
 <script type="text/javascript">
     var x, y, z;
-    
+
     var selectable = new Array();
     $(document).ready(function () {
-        
+
         $(".sc1").click(function () {
 
             var favorite = [];
@@ -11,7 +11,7 @@
                 favorite.push($(this).val());
             });
             x = favorite.join(", ");
-            
+
 
             var favorite = [];
             $.each($("input[name='checker']:checked"), function () {
@@ -20,32 +20,32 @@
             y = favorite.join(", ");
             // alert('TYPE: '+ x +' '+ y);
 
-           if (y == 'MARKET SPECIFIC') {
-               document.getElementById('temp1').style.display = "block";
-               document.getElementById('temp2').style.display = "none";
-               // document.getElementById("te1").disabled = false;
-           } else if (y == 'SCRIPT SPECIFIC') {
-               document.getElementById('temp2').style.display = "block";
-               document.getElementById('temp1').style.display = "none";
-               // document.getElementById("te1").disabled = false;
-           } else{
+            if (y == 'MARKET SPECIFIC') {
+                document.getElementById('temp1').style.display = "block";
+                document.getElementById('temp2').style.display = "none";
+                // document.getElementById("te1").disabled = false;
+            } else if (y == 'SCRIPT SPECIFIC') {
+                document.getElementById('temp2').style.display = "block";
+                document.getElementById('temp1').style.display = "none";
+                // document.getElementById("te1").disabled = false;
+            } else {
 //                // document.getElementById("te1").disabled = true;
 //                // window.location.href = "#";
 //                // alert("Please 'GO BACK' and Select  'Subscription Plan' ");
 //
-               document.getElementById('temp1').style.display = "none";
-               document.getElementById('temp2').style.display = "none";
+                document.getElementById('temp1').style.display = "none";
+                document.getElementById('temp2').style.display = "none";
             }
         });
     });
 
-function type_card(){
-    document.getElementById("te1").disabled = false;
-}
+    function type_card() {
+        document.getElementById("te1").disabled = false;
+    }
 
-function plan_card(){
-    document.getElementById("tab1").disabled = false;
-}
+    function plan_card() {
+        document.getElementById("tab1").disabled = false;
+    }
 // $('.type_card').click(function()
 // {
 //   $('#te1').removeAttr("disabled");
@@ -53,7 +53,7 @@ function plan_card(){
 
 
     $(document).ready(function () {
-        
+
         //START
         $(document).on("click", ".mdl-checkbox__ripple-container.mdl-js-ripple-effect.mdl-ripple--center", function () {
             var getscriptID = $(this).parents().eq(2/*child number*/).children().eq(2).text();
@@ -64,7 +64,7 @@ function plan_card(){
                 var i = a.length;
                 while (i--) {
                     if (a[i] === b) {
-                        selectable.splice(i,1);
+                        selectable.splice(i, 1);
                         return false;
                     }
                 }
@@ -79,20 +79,20 @@ function plan_card(){
         });
         //END
         //MARKET SELECTION START
-            $("input:checkbox").change(function() {
-                var mark = [];
-                $("input:checkbox").each(function() {
-                    if ($(this).is(":checked")) {
-                        mark.push($(this).attr("value"));
-                    } 
-                });
-                z = mark;
-                // alert("PRINT: "+ x +' '+ y +' '+ z);
-
-                var obj = { "PLAN": x, "TYPE": y, "SELECTION": z};
-                var myJSON = JSON.stringify(obj, null, ' ');
-                alert(myJSON);
+        $("input:checkbox").change(function () {
+            var mark = [];
+            $("input:checkbox").each(function () {
+                if ($(this).is(":checked")) {
+                    mark.push($(this).attr("value"));
+                }
             });
+            z = mark;
+            // alert("PRINT: "+ x +' '+ y +' '+ z);
+
+            var obj = {"PLAN": x, "TYPE": y, "SELECTION": z};
+            var myJSON = JSON.stringify(obj, null, ' ');
+            alert(myJSON);
+        });
         //MARKET SELECTION END
 
     });
@@ -140,7 +140,7 @@ function plan_card(){
             <!--<div id="progressbar1" class="mdl-progress mdl-js-progress"></div>-->
 
             <div class="tab-content" >
-            <!-- <form action=""> -->
+                <!-- <form action=""> -->
                 <!--Home Tab-->
                 <div id="home" class=" tab-pane fade in active">
 
@@ -313,7 +313,7 @@ function plan_card(){
                             border-collapse: collapse;
                             width: 100%;
                         }
-                        
+
                         #temp2 #text, #temp2 #ico {
                             line-height: 50px;
                         }
@@ -337,7 +337,7 @@ function plan_card(){
                             color: white;
                             background: #46b6ac;
                         }
-                        
+
                         .card_border{
                             border: 1px solid grey;
                             margin: 0;
@@ -365,36 +365,39 @@ function plan_card(){
 
                     <div id="temp1">
                         <div class="row"><!-- <h1>Market Specific</h1> -->
-                             <?php
-                                            foreach ($markets->result_array() as $market) {
+                            <?php
+                            foreach ($markets->result_array() as $market) {
+                                ?>
+
+                                <div class="col-sm-4">
+                                    <label for="mar<?php echo $market['id']; ?>" class="mdl-card__supporting-text mdl-checkbox__label">
+                                        <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
+                                            <div class="market_name"><?php echo $market["name"]; ?></div>
+                                            <div class="pl">
+                                                <?php
+                                                foreach ($symbols->result_array() as $symbol) {
+
+                                                    if ($symbol['market_id'] == $market['id']) {
+                                                        ?>
+                                                        <div class="mdl-card__actions mdl-card--border">
+                                                            <span class="mdl-card__supporting-text mdl-checkbox__label"><?php echo $symbol['name']; ?></span>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                }
                                                 ?>
-                            
-                            <div class="col-sm-4">
-                                <label for="mar<?php echo $market['id']; ?>" class="mdl-card__supporting-text mdl-checkbox__label">
-                                    <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
-                                        <div class="market_name"><?php echo $market["name"];?></div>
-                                        <div class="pl">
-                                             <?php
-                                            foreach ($symbols->result_array() as $symbol) {
-                                               
-                                            if($symbol['market_id']==$market['id']){
-                                                ?>
-                                        <div class="mdl-card__actions mdl-card--border">
-                                            <span class="mdl-card__supporting-text mdl-checkbox__label"><?php echo $symbol['name'];?></span>
+                                                mar<?php echo $market['id']; ?>
+                                            </div>
+                                            <div class="market_price">
+                                                <input type="checkbox" id="mar<?php echo $market['id']; ?>" value="<?php echo $market["name"]; ?>" class="mdl-checkbox__input">
+                                                <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 400</span>
+                                            </div>
                                         </div>
-                                            <?php }}?>
-                                        mar<?php echo $market['id']; ?>
-                                        </div>
-                                        <div class="market_price">
-                                            <input type="checkbox" id="mar<?php echo $market['id']; ?>" value="<?php echo $market["name"];?>" class="mdl-checkbox__input">
-                                            <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 400</span>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                                            <?php
-                                            }
-                                            ?>
+                                    </label>
+                                </div>
+                                <?php
+                            }
+                            ?>
                         </div>
                     </div>
 
@@ -410,69 +413,76 @@ function plan_card(){
 
                                 <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
                                     <th class="full-width mdl-data-table__cell--non-numeric">Material</th>
-                                    <th class="full-width mdl-data-table__cell--non-numeric">Quantity</th>
+                                    <th class="full-width mdl-data-table__cell--non-numeric">Code</th>
                                     <th class="full-width mdl-data-table__cell--non-numeric">Unit price</th>
                                     <th class="full-width mdl-data-table__cell--non-numeric"></th>
                                 </tr>
                             </thead>
                             <tbody>
-<script type="text/javascript">
-//  $('#nxtbtn').click(function () {
-function abc(){
-    for (var i = selectable.length-1; i >= 0; i--) {
-            var table = document.getElementById("finaltable");
-            var row = table.insertRow(1);
-            row.id=i;
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            cell1.className = "full-width mdl-data-table__cell--non-numeric";
-            cell2.className = "full-width mdl-data-table__cell--non-numeric";
-            cell3.className = "full-width mdl-data-table__cell--non-numeric";
-            <?php 
-//                foreach ($symbols->result_array() as $symbol) {
-            ?>
-//                        if(selectable[i])
-            cell1.innerHTML = "NEW CELL1";
-            cell2.innerHTML = selectable[i];
-            cell3.innerHTML = i;
-            cell4.innerHTML = "<button onclick='delete_row("+i+")' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
+                            <script type="text/javascript">
 
-        }
-        
-        <?php
-//                }
-        ?>
-//alert(j);            onclick='delete_row("+i+")'
-selectable=[];
-}
+                                function abc() {
+                                    for (var i = selectable.length - 1; i >= 0; i--) {
+                                        var table = document.getElementById("finaltable");
+                                        var row = table.insertRow(1);
+                                        row.id = i;
+                                        var cell1 = row.insertCell(0);
+                                        var cell2 = row.insertCell(1);
+                                        var cell3 = row.insertCell(2);
+                                        var cell4 = row.insertCell(3);
+                                        cell1.className = "full-width mdl-data-table__cell--non-numeric";
+                                        cell2.className = "full-width mdl-data-table__cell--non-numeric";
+                                        cell3.className = "full-width mdl-data-table__cell--non-numeric";
 
-function delete_row(rowid){
-var row = document.getElementById(rowid);
-    row.parentNode.removeChild(row);
-}
-function lol()
-//});
-    </script>
-                                <tr>
-                                    <th class="full-width mdl-data-table__cell--non-numeric"></th>
-                                    <th class="full-width  mdl-data-table__cell--non-numeric">Amount Payable</th>
-                                    <th class="full-width mdl-data-table__cell--non-numeric">0/- Rs</th>
-                                    <th class="full-width  mdl-data-table__cell--non-numeric"></th>
-                                </tr>
+<?php
+foreach ($symbols->result_array() as $symbol) {
+    ?>
+                                            //                                            alert("<?php echo $symbol['code']; ?>");
+                                            var code = "<?php echo $symbol['code']; ?>";
+                                            if (selectable[i] === code) {
+                                                cell1.innerHTML = "<?php echo $symbol['name']; ?>";
+                                                cell2.innerHTML = selectable[i];
+                                                cell3.innerHTML = "<?php echo $symbol['price_quote']; ?>";
+                                                cell4.innerHTML = "<button onclick='delete_row(" + i + ")' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
+
+                                            }
+<?php } ?>
+
+                                    }
+                                }
+
+                                function delete_row(rowid) {
+                                    var row = document.getElementById(rowid);
+                                    row.parentNode.removeChild(row);
+                                }
+
+                            </script>
+                            <tr>
+                                <th class="full-width mdl-data-table__cell--non-numeric"></th>
+                                <th class="full-width  mdl-data-table__cell--non-numeric">Amount Payable</th>
+                                <th class="full-width mdl-data-table__cell--non-numeric">0/- Rs</th>
+                                <th class="full-width  mdl-data-table__cell--non-numeric"></th>
+                            </tr>
 
                             </tbody>
                         </table>
                         <br>
                     </div>
                     <div class="row">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right" onclick="lol()">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right" onclick="phpfun()">
                             Pay Now
                         </button>
                     </div>
                 </div>
-
+                <script>
+                    function phpfun() {
+<?php
+foreach ($symbols->result_array() as $symbol) {
+    ?>
+                            alert("<?php echo $symbol['code']; ?>");
+<?php } ?>
+                    }
+                </script>
             </div>
         </div>
     </div>

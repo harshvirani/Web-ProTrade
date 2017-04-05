@@ -2,6 +2,75 @@
 
     <div class="container">
         <div class="row">
+            <div class="four_task" style="padding: 10px 15px 0 15px;">
+            <div class="row">
+                <div class=" col-lg-3 col-md-6">
+                    <div class="panel panel-lightgreen">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-map-o fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">132</div>
+                                    <div>Total Market</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-lightgrey">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-credit-card fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">544</div>
+                                    <div>Total Script</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-lightblue">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-line-chart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Top 10</div>
+                                    <div>Trending Script</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" col-lg-3 col-md-6">
+                    <div class="panel panel-lightpink">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-level-up fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Top 10</div>
+                                    <div>Trending Market</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
             <script>
                 var symb = "gold";</script>
             <div class="col-md-8">
@@ -81,25 +150,6 @@
                                                         Math.round(Math.random() * 100)
                                                     ]);
                                                 }
-
-
-
-                                                //                                    $.getJSON("http://192.168.0.100/rethinkDB/all_API.php?req=trade_all", function (apidata, status) {
-                                                ////            alert("Data: " + data["count"]);
-                                                //                                        var k = 0;
-                                                //                                        var cnt = apidata["count"];
-                                                //                                        var mi = cnt - (2 * cnt);
-                                                //                                        for (i = mi; i <= 0; i += 1) {
-                                                //                                            
-                                                //                                            data.push([
-                                                //                                                time + i * 1000,
-                                                //                                                apidata["data"][k]["price"];
-                                                //                                            ]);
-                                                //                                            k += 1;
-                                                //                                        }
-                                                //                                    });
-
-
                                                 return data;
                                             }())
                                         }]
@@ -205,15 +255,56 @@
             .huge {
                 font-size: 40px;
             }
+            .panel-green {
+                border-color: #5cb85c;
+            }
             .panel-green > .panel-heading {
                 border-color: #5cb85c;
                 color: white;
                 background-color: #5cb85c;
             }
+            .panel-lightpink{
+                border-color: #ebccd1;
+            }
+            .panel-lightpink>.panel-heading {
+                color: #a94442;
+                background-color: #f2dede;
+                border-color: #ebccd1;
+            }
+            .panel-lightgreen{
+                border-color: #d6e9c6;
+            }
+            .panel-lightgreen>.panel-heading {
+                color: #3c763d;
+                background-color: #dff0d8;
+                border-color: #d6e9c6;
+            }
+            .panel-lightgrey{
+                border-color: #faebcc;
+            }
+            .panel-lightgrey>.panel-heading {
+                color: #8a6d3b;
+                background-color: #fcf8e3;
+                border-color: #faebcc;
+            }
+            .panel-lightblue{
+                border-color: #bce8f1;
+            }
+            .panel-lightblue>.panel-heading {
+                color: #31708f;
+                background-color: #d9edf7;
+                border-color: #bce8f1;
+            }
+            .panel-yellow {
+                border-color: #f0ad4e;
+            }
             .panel-yellow > .panel-heading {
                 border-color: #f0ad4e;
                 color: white;
                 background-color: #f0ad4e;
+            }
+            .panel-red{
+                border-color: #d9534f; 
             }
             .panel-red > .panel-heading {
                 border-color: #d9534f;
@@ -262,11 +353,11 @@
         <div class="four_task">
             <div class="row">
                 <div class=" col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-file fa-5x"></i>
+                                    <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><?php echo $sub_cnt;?></div>
@@ -278,11 +369,11 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-users fa-5x"></i>
+                                    <i class="fa  fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><?php echo $active_cnt;?></div>
@@ -295,7 +386,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
+                    <div class="panel panel-red">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -311,7 +402,7 @@
                     </div>
                 </div>
                 <div class=" col-lg-3 col-md-6">
-                    <div class="panel panel-red">
+                    <div class="panel panel-yellow">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -393,6 +484,31 @@
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        Candlestick Cycle (between 1 to 60)
+                    </div>
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-white btn-minuse" type="button">-</button>
+                            </span>
+                            <input id=""  type="text" class="form-control no-padding add-color text-center height-25" min="1" max="60"  value="0" maxlength="2">
+                            <span class="input-group-btn">
+                                <button class="btn btn-red btn-pluss" type="button">+</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button id="" class="mdl-button mdl-js-button mdl-button--raised">Apply</button>
+                    </div>
+                </div>
+                <!-- /.col-lg-4 -->
             </div>
         </div>
     </div>
