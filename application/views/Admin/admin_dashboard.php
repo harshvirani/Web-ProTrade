@@ -96,7 +96,7 @@ $(function() {
                 // set up the updating of the chart each second
             var series = this.series[0];
             setInterval(function() {
-                $.getJSON("http://localhost/rethinkDB/candleStickCurrentData_API.php?code=CRUDEOIL 1&cycle=10", function (data, status) {
+                $.getJSON("http://172.20.10.2/rethinkDB/candleStickCurrentData_API.php?code=CRUDEOIL 1&cycle=10", function (data, status) {
                                                         temp = data;
 //                                                        alert(temp['high']);
                                                     });
@@ -600,8 +600,28 @@ $(function() {
                 </div>
                 <!-- /.col-lg-4 -->
             </div>
+            <div class="col-lg-4">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        Broadcast Message
+                    </div>
+                    <form>
+                    <div class="panel-body">
+                        <div class="input-group">
+                                                        <input id="text" name="mail"  type="text" class="form-control no-padding add-color text-center height-25" min="1" max="60"  value="0" maxlength="2">
+                                                    </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" id="submit" name="submit" value="Submit" class="mdl-button mdl-js-button mdl-button--raised">Send</button>
+                    </div>
+                    </form>
+                    
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
         </div>
     </div>
+    
     <!--<div class=" mdl-shadow--2dp  mdl-cell--12-col ">
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
              Tab Bars 

@@ -75,6 +75,10 @@
 
 
         <script>
+            function playSound() {
+                var filename = "<?php echo base_url() . NAV_ASSETS; ?>coin";
+                document.getElementById("sound").innerHTML = '<audio autoplay="autoplay"><source src="' + filename + '.mp3" type="audio/mpeg" /><source src="' + filename + '.ogg" type="audio/ogg" /><embed hidden="true" autostart="true" loop="false" src="' + filename + '.mp3" /></audio>';
+            }
             function td() {
                 if ($("#rw1").hasClass("out")) {
                     $("#rw1").addClass("in");
@@ -280,13 +284,20 @@
                     </script>
 
                     <script type="text/javascript">
-                        var socket = io.connect('http://localhost:8088');
+                        var socket = io.connect('http://172.20.10.2:8088');
 
                         socket.on('message', function (data1) {
-                            var badge=$("#menudemo").attr("data-badge");
+
+                            var badge = $("#menudemo").attr("data-badge");
                             $("#menudemo").attr("data-badge", ++badge);
-                            $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data1.code+"   "+data1.type + "</li>");
-                            toastr.success('Code : ' + data1.code, data1.type, {timeOut: 5000});
+                            $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data1.code + "   " + data1.type + "</li>");
+                            playSound();
+                            if (data1.type === "Sell") {
+                                toastr.warning('Code : ' + data1.code, data1.type, {timeOut: 5000});
+                            }else{
+                                toastr.success('Code : ' + data1.code, data1.type, {timeOut: 5000});
+                           
+                            }
                         });
 
 
@@ -294,7 +305,6 @@
                     </script>
 
                     <ul id="noti_ul" class="mdl-menu mymenu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menudemo">
-                        <li class=" mdl-menu__item mymenuitem">Some Action</li>
 
                     </ul>
 
@@ -308,7 +318,7 @@
                         <li class="mdl-menu__item">Contact</li>
                         <li class="mdl-menu__item">Legal information</li>
                     </ul>
-
+                    <div id="sound"></div>
                 </div>
             </header>
 

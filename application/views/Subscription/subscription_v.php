@@ -75,7 +75,7 @@
             }
             var obj = {"PLAN": x, "TYPE": y, "SELECTION": selectable};
             var myJSON = JSON.stringify(obj, null, ' ');
-            alert(myJSON);
+//            alert(myJSON);
         });
         //END
         //MARKET SELECTION START
@@ -386,7 +386,7 @@
                                                     }
                                                 }
                                                 ?>
-                                                mar<?php echo $market['id']; ?>
+                                                <!-- mar<?php echo $market['id']; ?> -->
                                             </div>
                                             <div class="market_price">
                                                 <input type="checkbox" id="mar<?php echo $market['id']; ?>" value="<?php echo $market["name"]; ?>" class="mdl-checkbox__input">
