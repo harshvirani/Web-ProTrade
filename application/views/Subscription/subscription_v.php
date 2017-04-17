@@ -1,3 +1,70 @@
+<style type="text/css">
+                        #temp2 .panel-default>.panel-heading {
+                            color: #e7eaec;
+                            background-color: #2b9c92/*#9de1fe*/;
+                            border-color: #ddd;
+                        }
+
+                        #temp2 .material-icons {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            vertical-align: middle;
+                        }
+                        #temp2 table {
+                            border-collapse: collapse;
+                            width: 100%;
+                        }
+
+                        #temp2 #text, #temp2 #ico {
+                            line-height: 50px;
+                        }
+                        #temp2 #text{
+                            padding-left: 120px;
+                            font-weight: bolder;
+                        }
+
+                        #temp2 #ico {
+                            vertical-align: middle;
+                        }
+                        hr.head{
+                            margin: 1px 0 1px 0;
+                        }
+                        .market_name{
+                            padding: 9px 0;
+                            text-align: center;
+                            font-weight: 500;
+                            font-size: 18px;
+                            letter-spacing: 1px;
+                            color: white;
+                            background: #46b6ac;
+                        }
+
+                        .card_border{
+                            border: 1px solid grey;
+                            margin: 0;
+                        }
+                        .mdl-card{
+                            width: auto;
+                        }
+                        .market_price{
+                            padding: 9px 0;
+                            position: absolute;
+                            bottom: 0;
+                            width: 100%;
+                            text-align: center;
+                            font-weight: 500;
+                            font-size: 18px;
+                            letter-spacing: 1px;
+                            color: white;
+                            background: #46b6ac;
+                        }
+                        .pl{
+                            overflow-y: scroll;
+                            height: 74%;
+                        }
+                    </style>
+
 <script type="text/javascript">
     var x, y, z;
 
@@ -23,11 +90,17 @@
             if (y == 'MARKET SPECIFIC') {
                 document.getElementById('temp1').style.display = "block";
                 document.getElementById('temp2').style.display = "none";
-                // document.getElementById("te1").disabled = false;
+
+                document.getElementById('temp4').style.display = "block";
+                document.getElementById('temp3').style.display = "none";
+                
             } else if (y == 'SCRIPT SPECIFIC') {
                 document.getElementById('temp2').style.display = "block";
                 document.getElementById('temp1').style.display = "none";
-                // document.getElementById("te1").disabled = false;
+
+                document.getElementById('temp3').style.display = "block";
+                document.getElementById('temp4').style.display = "none";
+                
             } else {
 //                // document.getElementById("te1").disabled = true;
 //                // window.location.href = "#";
@@ -37,6 +110,8 @@
                 document.getElementById('temp2').style.display = "none";
             }
         });
+
+
     });
 
     function type_card() {
@@ -97,6 +172,17 @@
 
     });
 
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".cs").click(function(){
+            var favorite = [];
+            $.each($("input[name='ppp']:checked"), function(){            
+                favorite.push($(this).val());
+            });
+            alert("Value: " + favorite.join(", "));
+        });
+    });
 </script>
 <style type="text/css">
     #log
@@ -250,7 +336,7 @@
                         <button data-toggle="tab" id="not_back" onclick="menu1()" class="pull-left mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
                             <i class="material-icons">arrow_back</i> <!-- class="material-icons"-->
                         </button>
-                        <button id="nxtbtn" data-toggle="tab" onclick="menu3()" class="pull-right mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                        <button id="nxtbtn" data-toggle="tab" onclick="menu3()" class=" cs pull-right mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
                             <i class="material-icons">arrow_forward</i> <!-- class="material-icons"-->
                         </button>
                     </div>
@@ -295,74 +381,6 @@
                     </div>
                     <div id="log"></div>
 
-
-                    <style type="text/css">
-                        #temp2 .panel-default>.panel-heading {
-                            color: #e7eaec;
-                            background-color: #2b9c92/*#9de1fe*/;
-                            border-color: #ddd;
-                        }
-
-                        #temp2 .material-icons {
-                            display: inline-flex;
-                            align-items: center;
-                            justify-content: center;
-                            vertical-align: middle;
-                        }
-                        #temp2 table {
-                            border-collapse: collapse;
-                            width: 100%;
-                        }
-
-                        #temp2 #text, #temp2 #ico {
-                            line-height: 50px;
-                        }
-                        #temp2 #text{
-                            padding-left: 120px;
-                            font-weight: bolder;
-                        }
-
-                        #temp2 #ico {
-                            vertical-align: middle;
-                        }
-                        hr.head{
-                            margin: 1px 0 1px 0;
-                        }
-                        .market_name{
-                            padding: 9px 0;
-                            text-align: center;
-                            font-weight: 500;
-                            font-size: 18px;
-                            letter-spacing: 1px;
-                            color: white;
-                            background: #46b6ac;
-                        }
-
-                        .card_border{
-                            border: 1px solid grey;
-                            margin: 0;
-                        }
-                        .mdl-card{
-                            width: auto;
-                        }
-                        .market_price{
-                            padding: 9px 0;
-                            position: absolute;
-                            bottom: 0;
-                            width: 100%;
-                            text-align: center;
-                            font-weight: 500;
-                            font-size: 18px;
-                            letter-spacing: 1px;
-                            color: white;
-                            background: #46b6ac;
-                        }
-                        .pl{
-                            overflow-y: scroll;
-                            height: 74%;
-                        }
-                    </style>
-
                     <div id="temp1">
                         <div class="row"><!-- <h1>Market Specific</h1> -->
                             <?php
@@ -389,7 +407,7 @@
                                                 <!-- mar<?php echo $market['id']; ?> -->
                                             </div>
                                             <div class="market_price">
-                                                <input type="checkbox" id="mar<?php echo $market['id']; ?>" value="<?php echo $market["name"]; ?>" class="mdl-checkbox__input">
+                                                <input type="checkbox" id="mar<?php echo $market['id']; ?>" value="<?php echo $market["name"]; ?>" name="ppp" class="mdl-checkbox__input">
                                                 <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 400</span>
                                             </div>
                                         </div>
@@ -407,6 +425,7 @@
                 <div id="menu3" class="tab-pane fade">
 
                     <div class="row">&nbsp;</div>
+                    <div id="temp3">
                     <div class="row">
                         <table id="finaltable" class="tb1 mdl-data-table mdl-js-data-table mdl-data-table__cell--non-numeric mdl-shadow--2dp">
                             <thead>
@@ -434,9 +453,9 @@
                                         cell2.className = "full-width mdl-data-table__cell--non-numeric";
                                         cell3.className = "full-width mdl-data-table__cell--non-numeric";
 
-<?php
-foreach ($symbols->result_array() as $symbol) {
-    ?>
+                                    <?php
+                                    foreach ($symbols->result_array() as $symbol) {
+                                        ?>
                                             //                                            alert("<?php echo $symbol['code']; ?>");
                                             var code = "<?php echo $symbol['code']; ?>";
                                             if (selectable[i] === code) {
@@ -447,7 +466,7 @@ foreach ($symbols->result_array() as $symbol) {
                                                 cell4.innerHTML = "<button onclick='delete_row(" + selectable[i] + ")' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
 
                                             }
-<?php } ?>
+                                    <?php } ?>
 
                                     }
                                 }
@@ -468,6 +487,45 @@ foreach ($symbols->result_array() as $symbol) {
                             </tbody>
                         </table>
                         <br>
+                    </div>
+                    </div>
+
+                    <div id="temp4">
+                        <div class="row"><!-- <h1>Market Specific</h1> -->
+                            <?php
+                            foreach ($markets->result_array() as $market) {
+                                ?>
+
+                                <div class="col-sm-4">
+                                    <label for="mar<?php echo $market['id']; ?>" class="mdl-card__supporting-text mdl-checkbox__label">
+                                        <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
+                                            <div class="market_name"><?php echo $market["name"]; ?></div>
+                                            <div class="pl">
+                                                <?php
+                                                foreach ($symbols->result_array() as $symbol) {
+
+                                                    if ($symbol['market_id'] == $market['id']) {
+                                                        ?>
+                                                        <div class="mdl-card__actions mdl-card--border">
+                                                            <span class="mdl-card__supporting-text mdl-checkbox__label"><?php echo $symbol['name']; ?></span>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                                <!-- mar<?php echo $market['id']; ?> -->
+                                            </div>
+                                            <div class="market_price">
+                                                <input type="checkbox" id="mar<?php echo $market['id']; ?>" value="<?php echo $market["name"]; ?>" name="ppp" class="mdl-checkbox__input">
+                                                <span class="mdl-card__supporting-text mdl-checkbox__label">Rs. 400</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
                     </div>
                     <div class="row">
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right" onclick="phpfun()">
