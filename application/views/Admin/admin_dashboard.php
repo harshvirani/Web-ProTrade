@@ -110,7 +110,7 @@ $(function() {
                 parseInt(temp['low']),
                 parseInt(temp['close'])
               ], true, true);
-            }, 1000)
+            },100)
             }
         }
     },
@@ -128,8 +128,7 @@ $(function() {
                 type: 'all',
                 text: 'All'
             }],
-        inputEnabled: false,
-        selected: 0
+        inputEnabled: false
     },
 
     title: {
@@ -151,7 +150,7 @@ $(function() {
 
           for (i = -999; i <= 0; i++) {
             data.push([
-              time + i * 1000,
+              time + i * 10000,
               Math.round(Math.random() * 100),
               Math.round(Math.random() * 100),
               Math.round(Math.random() * 100),
@@ -167,103 +166,6 @@ $(function() {
 
 
 </script>
-                    <!-- <script language="JavaScript">
-                        window.onload = function () {
-                            chart();
-                            myfun();
-                        };
-                        function chart() {
-                            $(function () {
-
-                                Highcharts.setOptions({
-                                    global: {
-                                        useUTC: false
-                                    }
-                                });
-
-                                Highcharts.stockChart('container', {
-                                    chart: {
-                                        events: {
-                                            load: function () {
-
-                                                var temp;
-                                                var gp = "gold";
-                                                var series = this.series[0];
-                                                setInterval(function () {
-                                                    $.getJSON("http://localhost/rethinkDB/lineCurrentData_API.php?code=" + symb, function (data, status) {
-                                                        temp = data["data"]["current_price"];
-                                                    });
-                                                    var x = (new Date()).getTime(), // current time
-                                                            y = parseInt(temp);
-                                                    series.addPoint([x, y], true, true);
-                                                }, 1000);
-                                            }
-                                        }
-                                    },
-
-                                    rangeSelector: {
-                                        buttons: [{
-                                                count: 1,
-                                                type: 'minute',
-                                                text: '1M'
-                                            }, {
-                                                count: 5,
-                                                type: 'minute',
-                                                text: '5M'
-                                            }, {
-                                                type: 'all',
-                                                text: 'All'
-                                            }],
-                                        inputEnabled: false,
-                                        selected: 0
-                                    },
-
-                                    title: {
-                                        text: 'Live Chart:' + symb
-                                    },
-
-                                    exporting: {
-                                        enabled: false
-                                    },
-
-                                    series: [{
-                                            name: 'Random data',
-                                            data: (function () {
-                                                // generate an array of random data
-                                                var data = [],
-                                                        time = (new Date()).getTime(),
-                                                        i;
-
-                                                for (i = -999; i <= 0; i += 1) {
-                                                    data.push([
-                                                        time + i * 1000,
-                                                        Math.round(Math.random() * 100)
-                                                    ]);
-                                                }
-                                                return data;
-                                            }())
-                                        }]
-                                });
-
-                            });
-                        }
-
-                    </script>
-                    <script type="text/javascript">
-                        $('.scripts').click(function () {
-                            var btnid = this.id;
-                            alert(btnid);
-                        });
-                    </script>
-                    <script>
-                        function getPaging(str) {
-                            alert(str);
-                            symb = str;
-                            chart();
-                        }
-
-
-                    </script> -->
 
 
 
