@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="row">
-            
+
             <script>
                 var symb = "gold";
             </script>
@@ -17,7 +17,7 @@
                 <button><i class="material-icons">settings_input_component</i></button>
                 <button><i class="material-icons">multiline_chart</i></button>
                 <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-                
+
                     <div id="cono" ></div>
                     <script language="JavaScript">
                         window.onload = function () {
@@ -96,20 +96,17 @@
 
 
 
-                                                //                                    $.getJSON("http://192.168.0.100/rethinkDB/all_API.php?req=trade_all", function (apidata, status) {
-                                                ////            alert("Data: " + data["count"]);
-                                                //                                        var k = 0;
-                                                //                                        var cnt = apidata["count"];
-                                                //                                        var mi = cnt - (2 * cnt);
-                                                //                                        for (i = mi; i <= 0; i += 1) {
-                                                //                                            
-                                                //                                            data.push([
-                                                //                                                time + i * 1000,
-                                                //                                                apidata["data"][k]["price"];
-                                                //                                            ]);
-                                                //                                            k += 1;
-                                                //                                        }
-                                                //                                    });
+//                                                $.getJSON("http://localhost/rethinkDB/all_API.php?req=trade_all", function (apidata, status) {
+//                                                                alert("Data: " + data["count"]);
+//                                                    var cnt = apidata["count"];
+//                                                    for (i = cnt; i >= 0; i -= 1) {
+//
+//                                                        data.push([
+//                                                            apidata["data"][i]["time_stamp"],
+//                                                            apidata["data"][i]["price"]
+//                                                        ]);
+//                                                    }
+//                                                });
 
 
                                                 return data;
@@ -144,8 +141,8 @@
             <div class="col-md-4" >
                 <div class="mdl-card" style="width: 90%; background: transparent;">
 
-        
-                <div id="mdl-table"  style="width: 100%; height: 100%;">
+
+                    <div id="mdl-table"  style="width: 100%; height: 100%;">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused" data-upgraded=",MaterialTextfield">
 
                             <div class="mdl-textfield__expandable-holder">
@@ -160,62 +157,62 @@
                             tr:hover { cursor: pointer;}
                         </style>
                         <div style="height:340px;overflow-x: hidden;overflow-y: scroll; border: 1px solid black;" >
-                        <table id='mdl-table' class="mdl-js-data-table mdl-data-table mdl-shadow--2dp">
-                            <thead>
-                                <tr>
-                                    <th class="mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
-                                    <th class="mdl-data-table__cell--non-numeric sort full-width">Current</th>
-                                </tr>
-                            </thead>
-                            <script>
-                                function myfun() {
-                                    var table = document.getElementsByTagName("table")[0];
-                                    var tbody = table.getElementsByTagName("tbody")[0];
-                                    tbody.onclick = function (e) {
-                                        e = e || window.event;
-                                        var data = [];
-                                        var target = e.srcElement || e.target;
-                                        while (target && target.nodeName !== "TR") {
-                                            target = target.parentNode;
-                                        }
-                                        if (target) {
-                                            var cells = target.getElementsByTagName("td");
-                                            for (var i = 0; i < cells.length; i++) {
-                                                data.push(cells[i].innerHTML);
-                                            }
-                                        }
-                                        symb = data[0];
-                                        //                                    alert(symb);
-                                        chart();
-                                        //                                    $( "#container" ).load(window.location.href + " #container" );
-                                    };
-                                }
-
-                            </script>
-                            <tbody class="list">
-                                <?php
-                                foreach ($symbols->result_array() as $symbol) {
-                                    ?>
-                                    <tr >
-                                        <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['code']; ?></td>
-                                        <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['price_quote']; ?></td>
+                            <table id='mdl-table' class="mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
+                                        <th class="mdl-data-table__cell--non-numeric sort full-width">Current</th>
                                     </tr>
-                                    <?php
-                                }
-                                ?>
+                                </thead>
+                                <script>
+                                    function myfun() {
+                                        var table = document.getElementsByTagName("table")[0];
+                                        var tbody = table.getElementsByTagName("tbody")[0];
+                                        tbody.onclick = function (e) {
+                                            e = e || window.event;
+                                            var data = [];
+                                            var target = e.srcElement || e.target;
+                                            while (target && target.nodeName !== "TR") {
+                                                target = target.parentNode;
+                                            }
+                                            if (target) {
+                                                var cells = target.getElementsByTagName("td");
+                                                for (var i = 0; i < cells.length; i++) {
+                                                    data.push(cells[i].innerHTML);
+                                                }
+                                            }
+                                            symb = data[0];
+                                            //                                    alert(symb);
+                                            chart();
+                                            //                                    $( "#container" ).load(window.location.href + " #container" );
+                                        };
+                                    }
 
-                            </tbody>
-                        </table>
+                                </script>
+                                <tbody class="list">
+                                    <?php
+                                    foreach ($symbols->result_array() as $symbol) {
+                                        ?>
+                                        <tr >
+                                            <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['code']; ?></td>
+                                            <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['price_quote']; ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!--</div>-->
 
                 </div> 
             </div>
-            </div>
         </div>
-    
+    </div>
 
-    
+
+
     <script src="<?php echo base_url() . NAV_ASSETS; ?>js/index_side.js"></script> 
 </main>

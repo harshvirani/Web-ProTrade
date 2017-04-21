@@ -7,6 +7,7 @@ class User extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('user_m');
+        $this->load->model('subscriber_m');
         $this->load->model('market_m');
         $this->load->model('symbol_m');
     }
@@ -120,6 +121,7 @@ class User extends CI_Controller {
                 $this->load->view('Admin/admin_sidebar');
                 $this->load->view('User/sub_profile_v');
             } else if ($_SESSION['type'] == 'SUBSCRIBER') {
+                $data['profile']=$this->subscriber_m->subData($_SESSION['subscriber_id']);
                 $this->load->view('Default/header_v', $data);
                 $this->load->view('Default/sidebar_v');
                 $this->load->view('User/sub_profile_v');
@@ -161,7 +163,7 @@ class User extends CI_Controller {
         list($type, $data) = explode(';', $data);
         list(, $data) = explode(',', $data);
         $data = base64_decode($data);
-        $dir = 'asstes/profile/' . $fname;
+        $dir = base_url() .'assets/profile/' . $fname;
         echo $dir;
         file_put_contents($dir, $data);
         die;

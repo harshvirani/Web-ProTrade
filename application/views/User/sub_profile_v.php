@@ -26,7 +26,7 @@
         <div class="form-group">
           <label class="col-lg-3 control-label">Name:</label>
           <div class="col-lg-8">
-            <input class="form-control" value="Jane" type="text">
+              <input class="form-control" value="<?php echo $profile->name;?>" type="text">
           </div>
         </div>
 <!--        <div class="form-group">
@@ -38,13 +38,13 @@
         <div class="form-group">
           <label class="col-lg-3 control-label">Contact</label>
           <div class="col-lg-8">
-              <input class="form-control" value="<?php echo $_SESSION['contactNo'];?>" type="text">
+              <input class="form-control" value="<?php echo $profile->contactNo;?>" type="text">
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
           <div class="col-lg-8">
-            <input class="form-control" value="<?php echo $_SESSION['email'];?>" type="text">
+            <input class="form-control" value="<?php echo $profile->email;?>" type="text">
           </div>
         </div>
 <!--        <div class="form-group">

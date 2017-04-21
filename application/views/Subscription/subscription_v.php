@@ -480,7 +480,7 @@
                             <tr>
                                 <th class="full-width mdl-data-table__cell--non-numeric"></th>
                                 <th class="full-width  mdl-data-table__cell--non-numeric">Amount Payable</th>
-                                <th class="full-width mdl-data-table__cell--non-numeric">0/- Rs</th>
+                                <th class="full-width mdl-data-table__cell--non-numeric"></th>
                                 <th class="full-width  mdl-data-table__cell--non-numeric"></th>
                             </tr>
 

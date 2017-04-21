@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
         parent::__construct();
         $this->load->model('user_m');
         $this->load->model('market_m');
-        $this->load->model('plan_m');
+        $this->load->model('symbol_m');
     }
 
     public function index() {
@@ -21,7 +21,7 @@ class Dashboard extends CI_Controller {
                 'active_cnt'=> $this->user_m->countUser('ACTIVE')
             );
             
-            $data['symbols']=$this->plan_m->all_symbols();
+            $data['symbols']=$this->symbol_m->allSymbols();
             $this->load->view('Admin/admin_header', $data);
            
             $this->load->view('Admin/admin_sidebar');

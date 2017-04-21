@@ -76,7 +76,7 @@
                         $('#result-data').text(formValue);
 
                         // Prevent the form from actually submitting
-                        return false;
+//                        return false;
                     });
                 });
             </script>

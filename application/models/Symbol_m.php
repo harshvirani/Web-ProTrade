@@ -20,7 +20,17 @@ class Symbol_m extends CI_Model {
         $query = $this->db->query('select * from symbol where market_id=' . $sid);
         return $query;
     }
-
+    
+    public function getSymbolbySId($sid) {
+        $query = $this->db->query('SELECT * FROM symbol WHERE id IN ( SELECT id FROM subscriptionsymbol WHERE subscription_id=(SELECT id FROM subscription WHERE subscriber_id='.$sid.'))');
+        return $query;
+    }
+    
+    public function allSymbols(){
+        $query=$this->db->query('select * from symbol;');
+        return $query;
+    }
+    
     public function getSymbolDetail($code) {
         $this->db->where('code', $code);
         $query = $this->db->get('symbol');

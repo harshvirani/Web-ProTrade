@@ -110,7 +110,7 @@ $(function() {
                 parseInt(temp['low']),
                 parseInt(temp['close'])
               ], true, true);
-            }, 1000)
+            }, 100)
             }
         }
     },
@@ -510,7 +510,7 @@ $(function() {
             </div>
         </div>
 
-        <div class="row">
+<!--        <div class="row">
             <div class="tab_wid col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading tab_had">
@@ -524,7 +524,7 @@ $(function() {
                         location.href="<?php echo base_url();?>/Admin/Dashboard/updateMinMax/"+id1+"/"+min+"/"+max;
                     }
                     </script>
-                    <!-- /.panel-heading -->
+                     /.panel-heading 
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-striped">
@@ -551,7 +551,7 @@ $(function() {
                                                 <span class="input-group-btn">
                                                     <button class="btn btn-red btn-pluss" type="button">+</button>
                                                 </span>
-                                            </div><!-- /input-group --></td>
+                                            </div> /input-group </td>
                                         <td><div class="input-group">
                                                 <span class="input-group-btn">
                                                     <button class="btn btn-white btn-minuse" type="button">-</button>
@@ -560,7 +560,7 @@ $(function() {
                                                 <span class="input-group-btn">
                                                     <button class="btn btn-red btn-pluss" type="button">+</button>
                                                 </span>
-                                            </div><!-- /input-group --></td>
+                                            </div> /input-group </td>
                                         <td><button id="<?php echo $symbol['id'];?>" onclick="updateMinMax(this.id)" class="mdl-button mdl-js-button mdl-button--raised">Apply</button></td>
                                     </tr>
                                     <?php
@@ -569,13 +569,13 @@ $(function() {
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.table-responsive -->
+                         /.table-responsive 
                     </div>
-                    <!-- /.panel-body -->
+                     /.panel-body 
                 </div>
-                <!-- /.panel -->
+                 /.panel 
             </div>
-        </div>
+        </div>-->
 
         <div class="row">
             <div class="col-lg-4">
