@@ -13,11 +13,25 @@
                     position:relative;
                 }
             </style>
+            <script>//
+//                function Line(id1) {
+//                    var h1 = document.getElementsById(id1);   // Get the first <h1> element in the document
+//                    var att = document.createAttribute("disabled");
+//                }
+//                function CandleStick(id1) {
+//                    var h1 = document.getElementsById(id1);   // Get the first <h1> element in the document
+//                    var att = document.createAttribute("disabled");
+//                    
+//                }
+//            </script>
             <div class="col-md-8">
-                <button><i class="material-icons">settings_input_component</i></button>
-                <button><i class="material-icons">multiline_chart</i></button>
+                <button id="line" onclick="Line(this.id)" class="mdl-button mdl-js-button mdl-button--raised">
+                    Line
+                </button>
+                <button id="candlestick" onclick="CandleStick(this.id)" class="mdl-button mdl-js-button mdl-button--raised">
+                    CandleStick
+                </button>
                 <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-
                     <div id="cono" ></div>
                     <script language="JavaScript">
                         window.onload = function () {
@@ -25,25 +39,18 @@
                             myfun();
                         };
                         function chart() {
-                            $(function () {
-
-                                Highcharts.setOptions({
-                                    global: {
-                                        useUTC: false
-                                    }
-                                });
-
+                            $.getJSON('http://localhost/rethinkDB/lineAllData_API.php?code=ALUMINI 1', function (data) {
+                                // Create the chart
                                 Highcharts.stockChart('cono', {
 
                                     chart: {
                                         events: {
                                             load: function () {
-
                                                 var temp;
                                                 var gp = "gold";
                                                 var series = this.series[0];
                                                 setInterval(function () {
-                                                    $.getJSON("http://172.20.10.2/rethinkDB/lineCurrentData_API.php?code=" + symb, function (data, status) {
+                                                    $.getJSON("http://localhost/rethinkDB/lineCurrentData_API.php?code=ALUMINI 1", function (data, status) {
                                                         temp = data["data"]["current_price"];
                                                     });
                                                     var x = (new Date()).getTime(), // current time
@@ -55,69 +62,53 @@
                                     },
 
                                     rangeSelector: {
-                                        buttons: [{
-                                                count: 1,
-                                                type: 'minute',
-                                                text: '1M'
-                                            }, {
-                                                count: 5,
-                                                type: 'minute',
-                                                text: '5M'
-                                            }, {
-                                                type: 'all',
-                                                text: 'All'
-                                            }],
-                                        inputEnabled: false,
-                                        selected: 0
+                                        selected: 1
                                     },
 
                                     title: {
-                                        text: 'Live Chart:' + symb
+                                        text: 'AAPL Stock Price'
                                     },
-
-                                    exporting: {
-                                        enabled: false
+                                    scrollbar: {
+                                        height: 10,
+                                        barBackgroundColor: '#7cb5ec',
+                                        barBorderRadius: 7,
+                                        barBorderWidth: 0,
+                                        buttonBackgroundColor: '#7cb5ec',
+                                        buttonBorderWidth: 0,
+                                        buttonBorderRadius: 7,
+                                        trackBackgroundColor: 'none',
+                                        trackBorderWidth: 1,
+                                        trackBorderRadius: 0,
+                                        trackBorderColor: '#CCC'
                                     },
-
+                                    yAxis: {
+                                        showFirstLabel: false,
+                                        showLastLabel: true
+                                    },
                                     series: [{
-                                            name: 'Live Data',
-                                            data: (function () {
-                                                // generate an array of random data
-                                                var data = [],
-                                                        time = (new Date()).getTime(),
-                                                        i;
-
-                                                for (i = -999; i <= 0; i += 1) {
-                                                    data.push([
-                                                        time + i * 1000,
-                                                        Math.round(Math.random() * 100)
-                                                    ]);
-                                                }
-
-
-
-//                                                $.getJSON("http://localhost/rethinkDB/all_API.php?req=trade_all", function (apidata, status) {
-//                                                                alert("Data: " + data["count"]);
-//                                                    var cnt = apidata["count"];
-//                                                    for (i = cnt; i >= 0; i -= 1) {
-//
-//                                                        data.push([
-//                                                            apidata["data"][i]["time_stamp"],
-//                                                            apidata["data"][i]["price"]
-//                                                        ]);
-//                                                    }
-//                                                });
-
-
-                                                return data;
-                                            }())
-                                        }]
+                                            type: 'line',
+                                            name: 'AAPL',
+                                            data: data,
+                                            tooltip: {
+                                                valueDecimals: 2
+                                            }
+                                        }
+//                                        ,
+//                                        {
+//                                            type:'column',
+//                                            name: 'AAPL',
+//                                            data: data,
+//                                            tooltip: {
+//                                                valueDecimals: 2
+//                                            }
+//                                        }
+                                    ]
                                 });
-
                             });
                         }
 
                     </script>
+
                     <script type="text/javascript">
                         $('.scripts').click(function () {
                             var btnid = this.id;

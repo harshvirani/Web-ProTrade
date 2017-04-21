@@ -23,9 +23,9 @@
 
 
         <!--Charts Script from HighChart-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="https://code.highcharts.com/stock/highstock.js"></script>
-        <!-- <script src="https://code.highcharts.com/highcharts.js"></script>   -->
+       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://code.highcharts.com/stock/highstock.js"></script>
+	<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
         <!-- <script src="<?php echo base_url() . NAV_ASSETS; ?>js/high.js"></script>   -->
         <link rel="shortcut icon" href="<?php echo base_url() . NAV_ASSETS; ?>images/favicon.png">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
