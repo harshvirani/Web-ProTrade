@@ -78,95 +78,57 @@
                 <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" style="width: 100%; height: 400px;">
                     <div id="container" ></div>
                     <script type="text/javascript">
-                        $(function() {
-                        $(document).ready(function() {
-                        Highcharts.setOptions({
-                        global: {
-                        useUTC: false
-                        }
-                        });
-// Create the chart
-                        Highcharts.stockChart('container', {
-                        chart: {
-                        type: 'candlestick',
-                                events: {
-                                load: function () {
+                       $.getJSON('http://localhost/rethinkDB/candleStickAllData_API.php?code=ALUMINI 1&cycle=10', function (data) {
 
-                                // set up the updating of the chart each second
-                                var series = this.series[0];
-                                setInterval(function() {
-                                $.getJSON("http://172.20.10.2/rethinkDB/candleStickCurrentData_API.php?code=CRUDEOIL 1&cycle=10", function (data, status) {
-                                temp = data;
-//                                                        alert(temp['high']);
+		    // create the chart
+		    Highcharts.stockChart('container', {
+
+    	    	chart: {
+			        events: {
+			            load: function () {
+			            	// set up the updating of the chart each second
+			            	var temp;
+                            var series = this.series[0];
+                            setInterval(function() {
+                            	
+                                $.getJSON("http://localhost/rethinkDB/candleStickCurrentData_API.php?code=ALUMINI 1&cycle=10", function (data, status) {
+                                	temp = data;
                                 });
-//                                                    var x = (new Date()).getTime(), // current time
-//                                                            y = parseInt(temp);
-                                var x = (new Date()).getTime();
-                                series.addPoint([
-                                        x,
-                                        parseInt(temp['open']),
-                                        parseInt(temp['high']),
-                                        parseInt(temp['low']),
-                                        parseInt(temp['close'])
-                                ], true, true);
-            << << << < HEAD
-                    }, 100)
-                    =======
-                    },100)
-                        >>>>>>> 270b4571b6f2d5195cd7e90f05dac35325d06bfb
-                            }
-                            }
-                                },
-
-                                    rangeSelector: {
-                                buttons: [{
-                                count: 1,
-                                        type: 'minute',
-                                        text: '1M'
-                                        }, {
-                                        count: 5,
-                                        type: 'minute',
-                                        text: '5M'
-                        }, {
-                                        type: 'all',
-                                        text: 'All'
-                        }],
-                        inputEnabled: false
-                            },
-
-                                title: {
-                                        text: 'Live random data'
-                                        },
-                                        
-                                    exporting: {
-                                        enabled: false
-                                        },
-
-                                        series: [{
-            name: 'Random data',
-                                        type: 'candlestick',
-                                        data: (function() {
-                                        // generate an array of random data
-                                        var data = [],
-                                                time = (new Date()).getTime(),
-                                                i;
-                                        for (i = - 999; i <= 0; i++) {
-                                        data.push([
-                                                time + i * 10000,
-                                                Math.round(Math.random() * 100),
-                                                Math.round(Math.random() * 100),
-                                                Math.round(Math.random() * 100),
-                                                Math.round(Math.random() * 100)
-                                        ]);
+                                series.addPoint(temp, true, true);
+                            }, 10000);
                         }
-                        return data;
-                        })()
-                                    }]
-                                   });
-                                                    });
-                                });
-                                                    
-                                
+			        }
+			    },
+
+		        rangeSelector: {
+		            selected: 1
+		        },
+                        scrollbar: {
+                                        height: 10,
+                                        barBackgroundColor: '#7cb5ec',
+                                        barBorderRadius: 7,
+                                        barBorderWidth: 0,
+                                        buttonBackgroundColor: '#7cb5ec',
+                                        buttonBorderWidth: 0,
+                                        buttonBorderRadius: 7,
+                                        trackBackgroundColor: 'none',
+                                        trackBorderWidth: 1,
+                                        trackBorderRadius: 0,
+                                        trackBorderColor: '#CCC'
+                                    },
+
+		        title: {
+		            text: 'ALUMINI Stock Price'
+		        },
+
+		        series: [{
+		            type: 'candlestick',
+		            name: 'ALUMINI Stock Price',
+		            data: data
+		        }]
+		    });
+		});
+
 </script>
 
 
@@ -174,7 +136,7 @@
                 </div>
             </div>
             <div class="col-md-4" >
-                <divclass="mdl-card" style="width: 85%;background: transparent;">
+                <div class="mdl-card" style="width: 85%;background: transparent;">
 
 
                     <div id="mdl-table"  style="width: 100%; height: 100%;">

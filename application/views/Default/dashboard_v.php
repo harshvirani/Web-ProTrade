@@ -51,17 +51,16 @@
                                                 var series = this.series[0];
                                                 setInterval(function () {
                                                     $.getJSON("http://localhost/rethinkDB/lineCurrentData_API.php?code=ALUMINI 1", function (data, status) {
-                                                        temp = data["data"]["current_price"];
+                                                        temp = data;
                                                     });
-                                                    var x = (new Date()).getTime(), // current time
-                                                            y = parseInt(temp);
-                                                    series.addPoint([x, y], true, true);
+                                                    series.addPoint(temp, true, true);
                                                 }, 1000);
                                             }
                                         }
                                     },
 
                                     rangeSelector: {
+                                        allButtonsEnabled:true,
                                         selected: 1
                                     },
 
@@ -69,17 +68,7 @@
                                         text: 'AAPL Stock Price'
                                     },
                                     scrollbar: {
-                                        height: 10,
-                                        barBackgroundColor: '#7cb5ec',
-                                        barBorderRadius: 7,
-                                        barBorderWidth: 0,
-                                        buttonBackgroundColor: '#7cb5ec',
-                                        buttonBorderWidth: 0,
-                                        buttonBorderRadius: 7,
-                                        trackBackgroundColor: 'none',
-                                        trackBorderWidth: 1,
-                                        trackBorderRadius: 0,
-                                        trackBorderColor: '#CCC'
+                                        enabled:false
                                     },
                                     yAxis: {
                                         showFirstLabel: false,
