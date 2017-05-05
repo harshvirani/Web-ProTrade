@@ -153,13 +153,16 @@
                 <style>
                     tr:hover { cursor: pointer;}
                 </style>
-                <div style="height:340px;overflow-x: hidden;overflow-y: scroll;" >
-                    <table id='mdl-table' class="mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                
+                    <table class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                         <thead>
                             <tr>
                                 <th class="mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
                             </tr>
                         </thead>
+                    </table>
+                <div style="height:290px;overflow-x: hidden;overflow-y: scroll;" >
+                    <table id='mdl-table' class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                                 <script>
                                                         function myfun() {
                                                                         var table = document.getElementsByTagName("table")[0];
@@ -185,12 +188,12 @@
                                                                 }
 
                     </script>
-                    <tbody class="list">
+                    <tbody class="list" style="height:340px;overflow-x: hidden;overflow-y: scroll;">
                         <?php
                         foreach ($symbols->result_array() as $symbol) {
                             ?>
                                 <tr >
-                                    <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['code']; ?></td>
+                                    <td class="full-width mdl-data-table__cell--non-numeric material"><?php echo $symbol['code']; ?></td>
                                 </tr>
                                 <?php
                             }

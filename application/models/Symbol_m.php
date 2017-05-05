@@ -22,7 +22,7 @@ class Symbol_m extends CI_Model {
     }
     
     public function getSymbolbySId($sid) {
-        $query = $this->db->query('SELECT * FROM symbol WHERE id IN ( SELECT id FROM subscriptionsymbol WHERE subscription_id=(SELECT id FROM subscription WHERE subscriber_id='.$sid.'))');
+        $query = $this->db->query('SELECT * FROM symbol WHERE id IN ( SELECT symbol_id FROM subscriptionsymbol WHERE subscription_id=(SELECT id FROM subscription WHERE subscriber_id='.$sid.'))');
         return $query;
     }
     

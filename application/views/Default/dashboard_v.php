@@ -2,121 +2,147 @@
 
     <div class="container">
         <div class="row">
-
-            <script>
-                var symb = "gold";
-            </script>
             <style type="text/css">
-                #cono {
+                #container {
                     height:360px;
                     width:750px;
                     position:relative;
                 }
             </style>
-            <script>//
-//                function Line(id1) {
-//                    var h1 = document.getElementsById(id1);   // Get the first <h1> element in the document
-//                    var att = document.createAttribute("disabled");
-//                }
-//                function CandleStick(id1) {
-//                    var h1 = document.getElementsById(id1);   // Get the first <h1> element in the document
-//                    var att = document.createAttribute("disabled");
-//                    
-//                }
-//            </script>
+            <script>
+                $('#line').click(function () {
+                    $(this).attr('disabled');
+                });
+                function line() {
+                    document.getElementById('candlestick').disabled = false;
+                    document.getElementById('line').disabled = true;
+                    data["type"] = "line";
+                    chart();
+                }
+                function candle() {
+                    document.getElementById('candlestick').disabled = true;
+                    document.getElementById('line').disabled = false;
+                    data["type"] = "candlestick";
+                    chart();
+                }
+            </script>
             <div class="col-md-8">
-                <button id="line" onclick="Line(this.id)" class="mdl-button mdl-js-button mdl-button--raised">
+                <button id="line" onclick="line()" class="mdl-button mdl-js-button mdl-button--raised" disabled="true">
                     Line
                 </button>
-                <button id="candlestick" onclick="CandleStick(this.id)" class="mdl-button mdl-js-button mdl-button--raised">
+                <button id="candlestick" onclick="candle()" class="mdl-button mdl-js-button mdl-button--raised" >
                     CandleStick
                 </button>
-                <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-                    <div id="cono" ></div>
-                    <script language="JavaScript">
-                        window.onload = function () {
-                            chart();
-                            myfun();
-                        };
-                        function chart() {
-                            $.getJSON('http://localhost/rethinkDB/lineAllData_API.php?code=ALUMINI 1', function (data) {
-                                // Create the chart
-                                Highcharts.stockChart('cono', {
+                <div id="container" class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col"></div>
+                <script language="JavaScript">
+                    window.onload = function () {
+                        chart();
+                        myfun();
+                    };
+                    var data = {
+                        type: 'line',
+                        code: 'SILVERM 1'
+                    }
+                    function chart() {
+                        if (data["type"] == 'line') {
+                            lineChart();
+                        } else if (data["type"] == 'candlestick') {
+                            candlestickChart();
+                        }
+                    }
+                    function candlestickChart() {
+                        $.getJSON('http://localhost/rethinkDB/candleStickAllData_API.php?code=ALUMINI 1&cycle=10', function (data) {
 
-                                    chart: {
-                                        events: {
-                                            load: function () {
-                                                var temp;
-                                                var gp = "gold";
-                                                var series = this.series[0];
-                                                setInterval(function () {
-                                                    $.getJSON("http://localhost/rethinkDB/lineCurrentData_API.php?code=ALUMINI 1", function (data, status) {
-                                                        temp = data;
-                                                    });
-                                                    series.addPoint(temp, true, true);
-                                                }, 1000);
-                                            }
+                            // create the chart
+                            Highcharts.stockChart('container', {
+
+                                chart: {
+                                    events: {
+                                        load: function () {
+                                            // set up the updating of the chart each second
+                                            var temp;
+                                            var series = this.series[0];
+                                            setInterval(function () {
+
+                                                $.getJSON("http://localhost/rethinkDB/candleStickCurrentData_API.php?code=ALUMINI 1&cycle=10", function (data, status) {
+                                                    temp = data;
+                                                });
+                                                series.addPoint(temp, true, true);
+                                            }, 10000);
                                         }
-                                    },
+                                    }
+                                },
 
-                                    rangeSelector: {
-                                        allButtonsEnabled:true,
-                                        selected: 1
-                                    },
+                                rangeSelector: {
+                                    selected: 1
+                                },
+                                scrollbar: {
+                                    height: 10,
+                                    barBackgroundColor: '#7cb5ec',
+                                    barBorderRadius: 7,
+                                    barBorderWidth: 0,
+                                    buttonBackgroundColor: '#7cb5ec',
+                                    buttonBorderWidth: 0,
+                                    buttonBorderRadius: 7,
+                                    trackBackgroundColor: 'none',
+                                    trackBorderWidth: 1,
+                                    trackBorderRadius: 0,
+                                    trackBorderColor: '#CCC'
+                                },
 
-                                    title: {
-                                        text: 'AAPL Stock Price'
-                                    },
-                                    scrollbar: {
-                                        enabled:false
-                                    },
-                                    yAxis: {
-                                        showFirstLabel: false,
-                                        showLastLabel: true
-                                    },
-                                    series: [{
-                                            type: 'line',
-                                            name: 'AAPL',
-                                            data: data,
-                                            tooltip: {
-                                                valueDecimals: 2
-                                            }
-                                        }
-//                                        ,
-//                                        {
-//                                            type:'column',
-//                                            name: 'AAPL',
-//                                            data: data,
-//                                            tooltip: {
-//                                                valueDecimals: 2
-//                                            }
-//                                        }
-                                    ]
-                                });
+                                title: {
+                                    text: 'ALUMINI Stock Price'
+                                },
+
+                                series: [{
+                                        type: 'candlestick',
+                                        name: 'ALUMINI Stock Price',
+                                        data: data
+                                    }]
                             });
-                        }
-
-                    </script>
-
-                    <script type="text/javascript">
-                        $('.scripts').click(function () {
-                            var btnid = this.id;
-                            alert(btnid);
                         });
-                    </script>
-                    <script>
-                        function getPaging(str) {
-                            alert(str);
-                            symb = str;
-                            chart();
-                        }
+                    }
 
+                    function lineChart() {
+                        socket.emit("request", JSON.stringify(data));
 
-                    </script>
+                        $.getJSON('http://localhost/rethinkDB/lineAllData_API.php?code=' + data["code"], function (data) {
 
+                            // create the chart
+                            Highcharts.stockChart('container', {
 
+                                chart: {
+                                    events: {
+                                        load: function () {
+                                            // set up the updating of the chart each second
+                                            var series = this.series[0];
+                                            socket.on('upDateData', function (data) {
 
-                </div>
+                                                var d = (new Date(data['time_stamp'])).getTime();
+                                                //alert(d);
+                                                series.addPoint([d, parseFloat(data['current_price'])], true, true);
+                                            });
+                                        }
+                                    }
+                                },
+
+                                rangeSelector: {
+                                    selected: 1
+                                },
+
+                                title: {
+                                    text: 'AAPL Stock Price'
+                                },
+
+                                series: [{
+                                        type: 'line',
+                                        name: 'AAPL Stock Price',
+                                        data: data
+                                    }]
+                            });
+                        });
+                    }
+                </script>
             </div>
             <div class="col-md-4" >
                 <div class="mdl-card" style="width: 90%; background: transparent;">
@@ -136,21 +162,23 @@
                         <style>
                             tr:hover { cursor: pointer;}
                         </style>
-                        <div style="height:340px;overflow-x: hidden;overflow-y: scroll; border: 1px solid black;" >
-                            <table id='mdl-table' class="mdl-js-data-table mdl-data-table mdl-shadow--2dp">
-                                <thead>
-                                    <tr>
-                                        <th class="mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
-                                        <th class="mdl-data-table__cell--non-numeric sort full-width">Current</th>
-                                    </tr>
-                                </thead>
+                        <div  >
+                             <table class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                        <thead>
+                            <tr>
+                                <th class="full-width mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
+                            </tr>
+                        </thead>
+                    </table>
+                <div style="height:290px;overflow-x: hidden;overflow-y: scroll;" >
+                    <table id='mdl-table' class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                                 <script>
                                     function myfun() {
                                         var table = document.getElementsByTagName("table")[0];
                                         var tbody = table.getElementsByTagName("tbody")[0];
                                         tbody.onclick = function (e) {
                                             e = e || window.event;
-                                            var data = [];
+                                            var data1 = [];
                                             var target = e.srcElement || e.target;
                                             while (target && target.nodeName !== "TR") {
                                                 target = target.parentNode;
@@ -158,10 +186,10 @@
                                             if (target) {
                                                 var cells = target.getElementsByTagName("td");
                                                 for (var i = 0; i < cells.length; i++) {
-                                                    data.push(cells[i].innerHTML);
+                                                    data1.push(cells[i].innerHTML);
                                                 }
                                             }
-                                            symb = data[0];
+                                            data["code"] = data1[0];
                                             //                                    alert(symb);
                                             chart();
                                             //                                    $( "#container" ).load(window.location.href + " #container" );
@@ -169,13 +197,12 @@
                                     }
 
                                 </script>
-                                <tbody class="list">
+                                <tbody class="list" style="height:340px;overflow-x: hidden;overflow-y: scroll;">
                                     <?php
                                     foreach ($symbols->result_array() as $symbol) {
                                         ?>
-                                        <tr >
-                                            <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['code']; ?></td>
-                                            <td class="mdl-data-table__cell--non-numeric material"><?php echo $symbol['price_quote']; ?></td>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric material full-width"><?php echo $symbol['code']; ?></td>
                                         </tr>
                                         <?php
                                     }
@@ -191,8 +218,4 @@
             </div>
         </div>
     </div>
-
-
-
-    <script src="<?php echo base_url() . NAV_ASSETS; ?>js/index_side.js"></script> 
 </main>

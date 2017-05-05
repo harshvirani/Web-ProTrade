@@ -230,9 +230,9 @@
                     $('.cb').prop('checked', false);
                 }
             });
-            document.querySelector('#progressbar1').addEventListener('mdl-componentupgraded', function () {
-                this.MaterialProgress.setProgress(25);
-            });
+//            document.querySelector('#progressbar1').addEventListener('mdl-componentupgraded', function () {
+//                this.MaterialProgress.setProgress(25);
+//            });
 
             $('#header').click(function () {
                 $(this).nextUntil('tr.header').slideToggle(1000);
@@ -284,7 +284,7 @@
                     </script>
 
                     <script type="text/javascript">
-                        var socket = io.connect('http://172.20.10.2:8088');
+                        var socket = io.connect('http://localhost:8088');
 
                         socket.on('message', function (data1) {
 

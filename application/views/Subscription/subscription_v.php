@@ -125,7 +125,7 @@
 // {
 //   $('#te1').removeAttr("disabled");
 // });
-
+    var obj;
 
     $(document).ready(function () {
 
@@ -148,8 +148,8 @@
             if (contains(selectable, getscriptID)) {
                 selectable.push(getscriptID.toString());
             }
-            var obj = {"PLAN": x, "TYPE": y, "SELECTION": selectable};
-            var myJSON = JSON.stringify(obj, null, ' ');
+            obj = {"PLAN": x, "TYPE": y, "SELECTION": selectable};
+//            var myJSON = JSON.stringify(obj, null, ' ');
 //            alert(myJSON);
         });
         //END
@@ -164,7 +164,8 @@
             z = mark;
             // alert("PRINT: "+ x +' '+ y +' '+ z);
 
-            var obj = {"PLAN": x, "TYPE": y, "SELECTION": z};
+            obj = {"PLAN": x, "TYPE": y, "SELECTION": z};
+            
 //            var myJSON = JSON.stringify(obj, null, ' ');
 //            alert(myJSON["PLAN"]);
         });
@@ -180,7 +181,9 @@
             $.each($("input[name='ppp']:checked"), function(){            
                 favorite.push($(this).val());
             });
-            alert("Value: " + favorite.join(", "));
+//            alert("Value: " + favorite.join(", "));
+            alert("Selection:"+selectable);
+//            alert(obj["TYPE"]);
         });
     });
 </script>
@@ -527,11 +530,14 @@
                             ?>
                         </div>
                     </div>
+                    <form id="final" action="<?php echo base_url();?>" method="post">
+                        <input type="hidden" name="data">
                     <div class="row">
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right" onclick="phpfun()">
                             Pay Now
                         </button>
                     </div>
+                    </form>
                 </div>
                 <script>
                     function phpfun() {
@@ -545,6 +551,12 @@
                         return false;
 //                        location.href="<?php echo base_url(); ?>plan/insertSubSymbol/"+data+"/"+x+"/"+y;
                        
+                    }
+                    
+                    $('#final').submit(function () {
+                        alert(row);
+                        return false;
+//                        $('.hidden-image-data').val(imageData);
                     }
                 </script>
             </div>
