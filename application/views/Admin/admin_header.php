@@ -55,7 +55,13 @@
 <!--Popup Dialogue Box-->
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/mdl-jquery-modal-dialog.css">
     <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
+        <!--Notification of Call-->
+        <script src="https://cdn-orig.socket.io/socket.io-1.2.0.js"></script>
+        <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/toastr.min.css">
+        <script src="<?php echo base_url() . NAV_ASSETS; ?>js/toastr.min.js"></script>
+        <script src="<?php echo base_url() . NAV_ASSETS; ?>js/toastr.js"></script>
 
+        <!--End of Notification of Call-->
 
         <style type="text/css">
             .mainbody{
@@ -355,6 +361,25 @@
 
             </header>
 
-            
+             <script type="text/javascript">
+                        var socket = io.connect('http://localhost:8088');
+
+                        socket.on('message', function (data1) {
+
+                            var badge = $("#menudemo").attr("data-badge");
+                            $("#menudemo").attr("data-badge", ++badge);
+                            $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data1.code + "   " + data1.type + "</li>");
+                            playSound();
+                            if (data1.type === "Sell") {
+                                toastr.warning('Code : ' + data1.code, data1.type, {timeOut: 5000});
+                            }else{
+                                toastr.success('Code : ' + data1.code, data1.type, {timeOut: 5000});
+                           
+                            }
+                        });
+
+
+
+                    </script>
             
             

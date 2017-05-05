@@ -10,19 +10,17 @@
                 }
             </style>
             <script>
-                $('#line').click(function () {
-                    $(this).attr('disabled');
-                });
+                
                 function line() {
                     document.getElementById('candlestick').disabled = false;
                     document.getElementById('line').disabled = true;
-                    data["type"] = "line";
+                    chartData["type"] = "line";
                     chart();
                 }
                 function candle() {
                     document.getElementById('candlestick').disabled = true;
                     document.getElementById('line').disabled = false;
-                    data["type"] = "candlestick";
+                    chartData["type"] = "candlestick";
                     chart();
                 }
             </script>
@@ -39,36 +37,34 @@
                         chart();
                         myfun();
                     };
-                    var data = {
+                    var chartData = {
                         type: 'line',
-                        code: 'SILVERM 1'
+                        code: 'SILVERM 1',
+                        cycle:'10'
                     }
                     function chart() {
-                        if (data["type"] == 'line') {
+                        if (chartData["type"] == 'line') {
                             lineChart();
-                        } else if (data["type"] == 'candlestick') {
+                        } else if (chartData["type"] == 'candlestick') {
                             candlestickChart();
                         }
                     }
                     function candlestickChart() {
-                        $.getJSON('http://localhost/rethinkDB/candleStickAllData_API.php?code=ALUMINI 1&cycle=10', function (data) {
+                        socket.emit("request", JSON.stringify(chartData));
+
+                        $.getJSON('http://localhost/rethinkDB/candleStickAllData_API.php?code='+chartData["code"]+'&cycle='+chartData["cycle"], function (data) {
 
                             // create the chart
-                            Highcharts.stockChart('container', {
+                            var chartView = Highcharts.stockChart('container', {
 
                                 chart: {
                                     events: {
                                         load: function () {
-                                            // set up the updating of the chart each second
-                                            var temp;
                                             var series = this.series[0];
-                                            setInterval(function () {
-
-                                                $.getJSON("http://localhost/rethinkDB/candleStickCurrentData_API.php?code=ALUMINI 1&cycle=10", function (data, status) {
-                                                    temp = data;
-                                                });
-                                                series.addPoint(temp, true, true);
-                                            }, 10000);
+                                            socket.on('newPoint', function (data) {
+                                                var d = (new Date(data['time_stamp'])).getTime();
+                                                series.addPoint([d, parseFloat(data['open']), parseFloat(data['high']), parseFloat(data['low']), parseFloat(data['close'])], true, true);
+                                            });
                                         }
                                     }
                                 },
@@ -100,13 +96,20 @@
                                         data: data
                                     }]
                             });
+
+                            socket.on('updatePoint', function (data1) {
+                                var d = (new Date(data1['time_stamp'])).getTime();
+                                var updateData = [d, parseFloat(data1['open']), parseFloat(data1['high']), parseFloat(data1['low']), parseFloat(data1['close'])];
+                                var length = chartView.series[0].data.length;
+                                chartView.series[0].data[length - 1].update(updateData);
+                            });
                         });
                     }
 
                     function lineChart() {
-                        socket.emit("request", JSON.stringify(data));
+                        socket.emit("request", JSON.stringify(chartData));
 
-                        $.getJSON('http://localhost/rethinkDB/lineAllData_API.php?code=' + data["code"], function (data) {
+                        $.getJSON('http://localhost/rethinkDB/lineAllData_API.php?code=' + chartData["code"], function (data) {
 
                             // create the chart
                             Highcharts.stockChart('container', {
@@ -131,12 +134,12 @@
                                 },
 
                                 title: {
-                                    text: 'AAPL Stock Price'
+                                    text: chartData["code"]
                                 },
 
                                 series: [{
                                         type: 'line',
-                                        name: 'AAPL Stock Price',
+                                        name: chartData["code"] + 'Price',
                                         data: data
                                     }]
                             });
@@ -161,61 +164,82 @@
                         </div>
                         <style>
                             tr:hover { cursor: pointer;}
+                            #style-4::-webkit-scrollbar-track
+                            {
+                                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                                background-color: #F5F5F5;
+                            }
+
+                            #style-4::-webkit-scrollbar
+                            {
+                                width: 5px;
+                                background-color: #F5F5F5;
+                            }
+
+                            #style-4::-webkit-scrollbar-thumb
+                            {
+                                background-color: #7cb5ec;
+
+                            }
+                            .scrollbar
+                            {
+                                overflow-y: scroll;
+                            }
                         </style>
                         <div  >
-                             <table class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
-                        <thead>
-                            <tr>
-                                <th class="full-width mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
-                            </tr>
-                        </thead>
-                    </table>
-                <div style="height:290px;overflow-x: hidden;overflow-y: scroll;" >
-                    <table id='mdl-table' class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
-                                <script>
-                                    function myfun() {
-                                        var table = document.getElementsByTagName("table")[0];
-                                        var tbody = table.getElementsByTagName("tbody")[0];
-                                        tbody.onclick = function (e) {
-                                            e = e || window.event;
-                                            var data1 = [];
-                                            var target = e.srcElement || e.target;
-                                            while (target && target.nodeName !== "TR") {
-                                                target = target.parentNode;
-                                            }
-                                            if (target) {
-                                                var cells = target.getElementsByTagName("td");
-                                                for (var i = 0; i < cells.length; i++) {
-                                                    data1.push(cells[i].innerHTML);
-                                                }
-                                            }
-                                            data["code"] = data1[0];
-                                            //                                    alert(symb);
-                                            chart();
-                                            //                                    $( "#container" ).load(window.location.href + " #container" );
-                                        };
-                                    }
-
-                                </script>
-                                <tbody class="list" style="height:340px;overflow-x: hidden;overflow-y: scroll;">
-                                    <?php
-                                    foreach ($symbols->result_array() as $symbol) {
-                                        ?>
-                                        <tr>
-                                            <td class="mdl-data-table__cell--non-numeric material full-width"><?php echo $symbol['code']; ?></td>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-
-                                </tbody>
+                            <table class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="full-width mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
+                                    </tr>
+                                </thead>
                             </table>
-                        </div>
-                    </div>
-                    <!--</div>-->
+                            <div style="height:290px;overflow-x: hidden;overflow-y: scroll;" id="style-4" class="scrollbar">
+                                <table id='mdl-table' class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                                    <script>
+                                        function myfun() {
+                                            var table = document.getElementById("mdl-table");
+                                            var tbody = table.getElementsByTagName("tbody")[0];
+                                            tbody.onclick = function (e) {
+                                                e = e || window.event;
+                                                var data1 = [];
+                                                var target = e.srcElement || e.target;
+                                                while (target && target.nodeName !== "TR") {
+                                                    target = target.parentNode;
+                                                }
+                                                if (target) {
+                                                    var cells = target.getElementsByTagName("td");
+                                                    for (var i = 0; i < cells.length; i++) {
+                                                        data1.push(cells[i].innerHTML);
+                                                    }
+                                                }
+                                                chartData["code"] = data1[0];
+                                                //                                    alert(symb);
+                                                chart();
+                                                //                                    $( "#container" ).load(window.location.href + " #container" );
+                                            };
+                                        }
 
-                </div> 
+                                    </script>
+                                    <tbody class="list" style="height:340px;overflow-x: hidden;overflow-y: scroll;">
+                                        <?php
+                                        foreach ($symbols->result_array() as $symbol) {
+                                            ?>
+                                            <tr>
+                                                <td class="mdl-data-table__cell--non-numeric material full-width"><?php echo $symbol['code']; ?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--</div>-->
+
+                    </div> 
+                </div>
             </div>
         </div>
-    </div>
 </main>
