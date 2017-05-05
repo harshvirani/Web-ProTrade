@@ -32,9 +32,15 @@
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/helpers.css">
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/login.css">
 
+        <script src="<?php echo base_url() . NAV_ASSETS; ?>js/material.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            .mdl-textfield__label:after {
+                bottom: 15px;
+            }
+        </style>
     </head>
     <body>
 
@@ -95,7 +101,6 @@
             </main>
         </div>
 
-        <script src="<?php echo base_url() . NAV_ASSETS; ?>js/material.min.js"></script>
 
     </body>
 </html>

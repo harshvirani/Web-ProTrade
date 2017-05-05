@@ -16,13 +16,17 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-title" content="Material Design Lite">
         <link rel="apple-touch-icon-precomposed" href="<?php echo base_url() . NAV_ASSETS; ?>images/ios-desktop.png">
-
+        <style>
+            .mdl-textfield__label:after {
+                bottom: 15px;
+            }
+        </style>
         <!-- Tile icon for Win8 (144x144 + tile color) -->
         <meta name="msapplication-TileImage" content="<?php echo base_url() . NAV_ASSETS; ?>images/touch/ms-touch-icon-144x144-precomposed.png">
         <meta name="msapplication-TileColor" content="#3372DF">
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <!--Charts Script from HighChart-->
         <script src="https://code.highcharts.com/stock/highstock.js"></script>
         <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
@@ -50,11 +54,11 @@
 
         <!--Popup-->
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/mdl-jquery-modal-dialog.css">
-    <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
-    
-<!--Popup Dialogue Box-->
+        <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
+
+        <!--Popup Dialogue Box-->
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/mdl-jquery-modal-dialog.css">
-    <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
+        <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
         <!--Notification of Call-->
         <script src="https://cdn-orig.socket.io/socket.io-1.2.0.js"></script>
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/toastr.min.css">
@@ -123,7 +127,7 @@
                 border: 1px black red;
                 /* border-bottom: 1px solid #ddd;*/
             }
-            
+
             tr:hover {
                 background-color: #f5f5f5;
                 color: #006666;
@@ -341,8 +345,8 @@
         </script>
     </head>
     <body>
-        
-        
+
+
 
         <div class=" mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header mdl-layout--fixed-tabs">
             <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600 ">
@@ -361,25 +365,25 @@
 
             </header>
 
-             <script type="text/javascript">
-                        var socket = io.connect('http://localhost:8088');
+            <script type="text/javascript">
+                var socket = io.connect('http://localhost:8088');
 
-                        socket.on('message', function (data1) {
+                socket.on('message', function (data1) {
 
-                            var badge = $("#menudemo").attr("data-badge");
-                            $("#menudemo").attr("data-badge", ++badge);
-                            $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data1.code + "   " + data1.type + "</li>");
-                            playSound();
-                            if (data1.type === "Sell") {
-                                toastr.warning('Code : ' + data1.code, data1.type, {timeOut: 5000});
-                            }else{
-                                toastr.success('Code : ' + data1.code, data1.type, {timeOut: 5000});
-                           
-                            }
-                        });
+                    var badge = $("#menudemo").attr("data-badge");
+                    $("#menudemo").attr("data-badge", ++badge);
+                    $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data1.code + "   " + data1.type + "</li>");
+                    playSound();
+                    if (data1.type === "Sell") {
+                        toastr.warning('Code : ' + data1.code, data1.type, {timeOut: 5000});
+                    } else {
+                        toastr.success('Code : ' + data1.code, data1.type, {timeOut: 5000});
+
+                    }
+                });
 
 
 
-                    </script>
-            
-            
+            </script>
+
+

@@ -6,7 +6,11 @@
         <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <title><?php echo $title; ?></title>
-
+        <style>
+            .mdl-textfield__label:after {
+                bottom: 15px;
+            }
+        </style>
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
         <link rel="icon" sizes="192x192" href="">
@@ -23,9 +27,9 @@
 
 
         <!--Charts Script from HighChart-->
-       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://code.highcharts.com/stock/highstock.js"></script>
-	<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
         <!-- <script src="<?php echo base_url() . NAV_ASSETS; ?>js/high.js"></script>   -->
         <link rel="shortcut icon" href="<?php echo base_url() . NAV_ASSETS; ?>images/favicon.png">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -294,9 +298,9 @@
                             playSound();
                             if (data1.type === "Sell") {
                                 toastr.warning('Code : ' + data1.code, data1.type, {timeOut: 5000});
-                            }else{
+                            } else {
                                 toastr.success('Code : ' + data1.code, data1.type, {timeOut: 5000});
-                           
+
                             }
                         });
 

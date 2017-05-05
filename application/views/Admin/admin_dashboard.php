@@ -148,12 +148,12 @@
                                     },
 
                                     title: {
-                                        text: 'ALUMINI Stock Price'
+                                        text: chartData["code"]
                                     },
 
                                     series: [{
                                             type: 'candlestick',
-                                            name: 'ALUMINI Stock Price',
+                                            name: chartData["code"] + ' Candle'
                                             data: data
                                         }]
                                 });
@@ -200,52 +200,14 @@
 
                                     series: [{
                                             type: 'line',
-                                            name: chartData["code"] + 'Price',
+                                            name: chartData["code"] + ' Price',
                                             data: data
                                         }]
                                 });
                             });
                         }
 
-                        function lineChart() {
-                            socket.emit("request", JSON.stringify(chartData));
-
-                            $.getJSON('http://localhost/rethinkDB/lineAllData_API.php?code=' + chartData["code"], function (data) {
-
-                                // create the chart
-                                Highcharts.stockChart('container', {
-
-                                    chart: {
-                                        events: {
-                                            load: function () {
-                                                // set up the updating of the chart each second
-                                                var series = this.series[0];
-                                                socket.on('upDateData', function (data) {
-
-                                                    var d = (new Date(data['time_stamp'])).getTime();
-                                                    //alert(d);
-                                                    series.addPoint([d, parseFloat(data['current_price'])], true, true);
-                                                });
-                                            }
-                                        }
-                                    },
-
-                                    rangeSelector: {
-                                        selected: 1
-                                    },
-
-                                    title: {
-                                        text: chartData["code"]
-                                    },
-
-                                    series: [{
-                                            type: 'line',
-                                            name: chartData["code"] + 'Price',
-                                            data: data
-                                        }]
-                                });
-                            });
-                        }
+                       
                     </script>
                 </div>
             </div>

@@ -87,12 +87,12 @@
                                 },
 
                                 title: {
-                                    text: 'ALUMINI Stock Price'
+                                    text: chartData["code"]
                                 },
 
                                 series: [{
                                         type: 'candlestick',
-                                        name: 'ALUMINI Stock Price',
+                                        name: chartData["code"] + ' Candle',
                                         data: data
                                     }]
                             });
@@ -139,7 +139,7 @@
 
                                 series: [{
                                         type: 'line',
-                                        name: chartData["code"] + 'Price',
+                                        name: chartData["code"] + ' Price',
                                         data: data
                                     }]
                             });
