@@ -1,69 +1,69 @@
 <style type="text/css">
-                        #temp2 .panel-default>.panel-heading {
-                            color: #e7eaec;
-                            background-color: #2b9c92/*#9de1fe*/;
-                            border-color: #ddd;
-                        }
+    #temp2 .panel-default>.panel-heading {
+        color: #e7eaec;
+        background-color: #2b9c92/*#9de1fe*/;
+        border-color: #ddd;
+    }
 
-                        #temp2 .material-icons {
-                            display: inline-flex;
-                            align-items: center;
-                            justify-content: center;
-                            vertical-align: middle;
-                        }
-                        #temp2 table {
-                            border-collapse: collapse;
-                            width: 100%;
-                        }
+    #temp2 .material-icons {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+    }
+    #temp2 table {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-                        #temp2 #text, #temp2 #ico {
-                            line-height: 50px;
-                        }
-                        #temp2 #text{
-                            padding-left: 120px;
-                            font-weight: bolder;
-                        }
+    #temp2 #text, #temp2 #ico {
+        line-height: 50px;
+    }
+    #temp2 #text{
+        padding-left: 120px;
+        font-weight: bolder;
+    }
 
-                        #temp2 #ico {
-                            vertical-align: middle;
-                        }
-                        hr.head{
-                            margin: 1px 0 1px 0;
-                        }
-                        .market_name{
-                            padding: 9px 0;
-                            text-align: center;
-                            font-weight: 500;
-                            font-size: 18px;
-                            letter-spacing: 1px;
-                            color: white;
-                            background: #46b6ac;
-                        }
+    #temp2 #ico {
+        vertical-align: middle;
+    }
+    hr.head{
+        margin: 1px 0 1px 0;
+    }
+    .market_name{
+        padding: 9px 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 1px;
+        color: white;
+        background: #46b6ac;
+    }
 
-                        .card_border{
-                            border: 1px solid grey;
-                            margin: 0;
-                        }
-                        .mdl-card{
-                            width: auto;
-                        }
-                        .market_price{
-                            padding: 9px 0;
-                            position: absolute;
-                            bottom: 0;
-                            width: 100%;
-                            text-align: center;
-                            font-weight: 500;
-                            font-size: 18px;
-                            letter-spacing: 1px;
-                            color: white;
-                            background: #46b6ac;
-                        }
-                        .pl{
-                            overflow-y: scroll;
-                            height: 74%;
-                        }
-                    </style>
+    .card_border{
+        border: 1px solid grey;
+        margin: 0;
+    }
+    .mdl-card{
+        width: auto;
+    }
+    .market_price{
+        padding: 9px 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 1px;
+        color: white;
+        background: #46b6ac;
+    }
+    .pl{
+        overflow-y: scroll;
+        height: 74%;
+    }
+</style>
 
 <script type="text/javascript">
     var x, y, z;
@@ -76,13 +76,16 @@
             var favorite = [];
             $.each($("input[name='plan']:checked"), function () {
                 favorite.push($(this).id);
+                
             });
+            
             x = favorite.join(", ");
 
 
             var favorite = [];
             $.each($("input[name='checker']:checked"), function () {
                 favorite.push($(this).val());
+                alert("Je");
             });
             y = favorite.join(", ");
             // alert('TYPE: '+ x +' '+ y);
@@ -93,14 +96,14 @@
 
                 document.getElementById('temp4').style.display = "block";
                 document.getElementById('temp3').style.display = "none";
-                
+
             } else if (y == 'SCRIPT SPECIFIC') {
                 document.getElementById('temp2').style.display = "block";
                 document.getElementById('temp1').style.display = "none";
 
                 document.getElementById('temp3').style.display = "block";
                 document.getElementById('temp4').style.display = "none";
-                
+
             } else {
 //                // document.getElementById("te1").disabled = true;
 //                // window.location.href = "#";
@@ -153,6 +156,7 @@
 //            alert(myJSON);
         });
         //END
+        //
         //MARKET SELECTION START
         $("input:checkbox").change(function () {
             var mark = [];
@@ -162,12 +166,8 @@
                 }
             });
             z = mark;
-            // alert("PRINT: "+ x +' '+ y +' '+ z);
-
             obj = {"PLAN": x, "TYPE": y, "SELECTION": z};
-            
-//            var myJSON = JSON.stringify(obj, null, ' ');
-//            alert(myJSON["PLAN"]);
+
         });
         //MARKET SELECTION END
 
@@ -175,14 +175,15 @@
 
 </script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(".cs").click(function(){
+    $(document).ready(function () {
+        $(".cs").click(function () {
             var favorite = [];
-            $.each($("input[name='ppp']:checked"), function(){            
+            $.each($("input[name='ppp']:checked"), function () {
                 favorite.push($(this).val());
             });
 //            alert("Value: " + favorite.join(", "));
-            alert("Selection:"+selectable);
+            alert("Selection:" + x);
+            
 //            alert(obj["TYPE"]);
         });
     });
@@ -372,7 +373,7 @@
                                                 <tr>
                                                     <td class="full-width mdl-data-table__cell--non-numeric material"><?php echo $symbol['name']; ?></td>
                                                     <td class="full-width mdl-data-table__cell--non-numeric material quantity"><?php echo $symbol['code']; ?></td>
-                                                    <td class="full-width mdl-data-table__cell--non-numeric material price"><?php echo $symbol['price_quote']; ?></td>
+                                                    <td class="full-width mdl-data-table__cell--non-numeric material"><?php echo $symbol['price_quote']; ?></td>
                                                 </tr>
                                             <?php }
                                             ?>
@@ -429,77 +430,87 @@
 
                     <div class="row">&nbsp;</div>
                     <div id="temp3">
-                    <div class="row">
-                        <table id="finaltable" class="tb1 mdl-data-table mdl-js-data-table mdl-data-table__cell--non-numeric mdl-shadow--2dp">
-                            <thead>
+                        <div class="row">
+                            <table id="finaltable" class="tb1 mdl-data-table mdl-js-data-table mdl-data-table__cell--non-numeric mdl-shadow--2dp">
+                                <thead>
 
-                                <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
-                                    <th class="full-width mdl-data-table__cell--non-numeric">Material</th>
-                                    <th class="full-width mdl-data-table__cell--non-numeric">Code</th>
-                                    <th class="full-width mdl-data-table__cell--non-numeric">Unit price</th>
-                                    <th class="full-width mdl-data-table__cell--non-numeric"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <script type="text/javascript">
+                                    <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
+                                        <th class="full-width mdl-data-table__cell--non-numeric">Material</th>
+                                        <th class="full-width mdl-data-table__cell--non-numeric">Code</th>
+                                        <th class="full-width mdl-data-table__cell--non-numeric">Unit price</th>
+                                        <th class="full-width mdl-data-table__cell--non-numeric"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <script type="text/javascript">
+                                    var multiplyer = 0;
+                                    function abc() {
+                                        for (var i = selectable.length - 1; i >= 0; i--) {
+                                            var table = document.getElementById("finaltable");
+                                            var row = table.insertRow(1);
+                                            //                                        row.id = selectable[i];
+                                            var cell1 = row.insertCell(0);
+                                            var cell2 = row.insertCell(1);
+                                            var cell3 = row.insertCell(2);
+                                            var cell4 = row.insertCell(3);
+                                            cell1.className = "full-width mdl-data-table__cell--non-numeric";
+                                            cell2.className = "full-width mdl-data-table__cell--non-numeric";
+                                            cell3.className = "price full-width mdl-data-table__cell--non-numeric";
 
-                                function abc() {
-                                    for (var i = selectable.length - 1; i >= 0; i--) {
-                                        var table = document.getElementById("finaltable");
-                                        var row = table.insertRow(1);
-//                                        row.id = selectable[i];
-                                        var cell1 = row.insertCell(0);
-                                        var cell2 = row.insertCell(1);
-                                        var cell3 = row.insertCell(2);
-                                        var cell4 = row.insertCell(3);
-                                        cell1.className = "full-width mdl-data-table__cell--non-numeric";
-                                        cell2.className = "full-width mdl-data-table__cell--non-numeric";
-                                        cell3.className = "full-width mdl-data-table__cell--non-numeric";
+<?php
+foreach ($symbols->result_array() as $symbol) {
+    ?>
+                                                //                                            alert("<?php echo $symbol['code']; ?>");
+                                                var code = "<?php echo $symbol['code']; ?>";
+                                                if (selectable[i] === code) {
 
-                                    <?php
-                                    foreach ($symbols->result_array() as $symbol) {
-                                        ?>
-                                            //                                            alert("<?php echo $symbol['code']; ?>");
-                                            var code = "<?php echo $symbol['code']; ?>";
-                                            if (selectable[i] === code) {
-                                                row.id = "<?php echo $symbol['id']; ?>";
-                                                cell1.innerHTML = "<?php echo $symbol['name']; ?>";
-                                                cell2.innerHTML = selectable[i];
-                                                cell3.innerHTML = "<?php echo $symbol['price_quote']; ?>";
-                                                cell4.innerHTML = "<button onclick='delete_row(" + selectable[i] + ")' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
+                                                    row.id = "<?php echo $symbol['id']; ?>";
+                                                    cell1.innerHTML = "<?php echo $symbol['name']; ?>";
+                                                    cell2.innerHTML = selectable[i];
+                                                    cell3.innerHTML = "<?php echo $symbol['price_quote']; ?>";
 
-                                            }
-                                    <?php } ?>
+                                                    cell4.innerHTML = "<button onclick='delete_row(<?php echo $symbol['id']; ?>)' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
 
+                                                }
+<?php } ?>
+
+                                        }
+                                        colSum();
                                     }
-                                }
 
-                                function delete_row(rowid) {
-                                    var row = document.getElementById(rowid);
-                                    row.parentNode.removeChild(row);
-                                }
+                                    function delete_row(rowid) {
+                                        var row = document.getElementById(rowid);
+                                        row.parentNode.removeChild(row);
+                                        colSum();
+                                    }
 
-                            </script>
-                            <tr>
-                                <th class="full-width mdl-data-table__cell--non-numeric"></th>
-                                <th class="full-width  mdl-data-table__cell--non-numeric">Amount Payable</th>
-                                <th class="full-width mdl-data-table__cell--non-numeric"></th>
-                                <th class="full-width  mdl-data-table__cell--non-numeric"></th>
-                            </tr>
+                                </script>
+                                <tr>
+                                    <th class="full-width mdl-data-table__cell--non-numeric"></th>
+                                    <th class="full-width  mdl-data-table__cell--non-numeric">Amount Payable</th>
+                                    <th id="mySum" class="full-width mdl-data-table__cell--non-numeric"></th>
+                                    <th class="full-width  mdl-data-table__cell--non-numeric"></th>
+                                </tr>
 
-                            </tbody>
-                        </table>
-                        <br>
+                                </tbody>
+                            </table>
+                            <br>
+                        </div>
                     </div>
-                    </div>
+                    <script>
+                        function market() {
+                            for (var i = selectable.length - 1; i >= 0; i--) {
+                            }
+                        }
 
+                    </script>
                     <div id="temp4">
                         <div class="row"><!-- <h1>Market Specific</h1> -->
                             <?php
                             foreach ($markets->result_array() as $market) {
                                 ?>
 
-                                <div class="col-sm-4">
+                                <div id="mark_<?php echo $market['id']; ?>" style="display:none" class="col-sm-4">
                                     <label for="mar<?php echo $market['id']; ?>" class="mdl-card__supporting-text mdl-checkbox__label">
                                         <div class="demo-card-square mdl-card mdl-shadow--2dp card_border ">
                                             <div class="market_name"><?php echo $market["name"]; ?></div>
@@ -516,7 +527,6 @@
                                                     }
                                                 }
                                                 ?>
-                                                <!-- mar<?php echo $market['id']; ?> -->
                                             </div>
                                             <div class="market_price">
                                                 <input type="checkbox" id="mar<?php echo $market['id']; ?>" value="<?php echo $market["name"]; ?>" name="ppp" class="mdl-checkbox__input">
@@ -530,16 +540,31 @@
                             ?>
                         </div>
                     </div>
-                    <form id="final" action="<?php echo base_url();?>" method="post">
+                    <form id="final" action="<?php echo base_url(); ?>" method="post">
                         <input type="hidden" name="data">
-                    <div class="row">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right" onclick="phpfun()">
-                            Pay Now
-                        </button>
-                    </div>
+                        <div class="row">
+                            <button id="pay" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right" onclick="phpfun()">
+                                Pay Now
+                            </button>
+                        </div>
                     </form>
                 </div>
                 <script>
+                    $(document).ready(function () {
+//                        colSum();
+                    });
+
+                    function colSum() {
+                        var sum = 0;
+                        //iterate through each input and add to sum
+                        $('.price').each(function () {
+                            sum += parseInt($(this).text());
+                        });
+                        //change value of total
+                        $('#mySum').html(sum);
+                        $('#pay').html("Pay Now (" + sum + ")");
+
+                    }
                     function phpfun() {
                         var data = [];
                         var len = document.getElementById("finaltable").rows.length;
@@ -550,14 +575,14 @@
                         alert(x);
                         return false;
 //                        location.href="<?php echo base_url(); ?>plan/insertSubSymbol/"+data+"/"+x+"/"+y;
-                       
+
                     }
-                    
+
                     $('#final').submit(function () {
                         alert(row);
                         return false;
 //                        $('.hidden-image-data').val(imageData);
-                    }
+                    });
                 </script>
             </div>
         </div>

@@ -71,17 +71,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-8">
-                <button id="line" onclick="line()" class="mdl-button mdl-js-button mdl-button--raised" disabled="true">
-                    Line
-                </button>
-                <button id="candlestick" onclick="candle()" class="mdl-button mdl-js-button mdl-button--raised" >
-                    CandleStick
-                </button>
-                <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" style="width: 100%; height: 400px;">
-                    <div id="container" ></div>
-                    <script>
+ <script>
                         function line() {
                             document.getElementById('candlestick').disabled = false;
                             document.getElementById('line').disabled = true;
@@ -94,15 +84,27 @@
                             chartData["type"] = "candlestick";
                             chart();
                         }
-                        window.onload = function () {
-                            chart();
-                            myfun();
-                        };
-                        var chartData = {
+                        </script>
+            <div class="col-md-8">
+                <button id="line" onclick="line()" class="mdl-button mdl-js-button mdl-button--raised" disabled="true">
+                    Line
+                </button>
+                <button id="candlestick" onclick="candle()" class="mdl-button mdl-js-button mdl-button--raised" >
+                    CandleStick
+                </button>
+                <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" style="width: 100%; height: 400px;">
+                    <div id="container" ></div>
+                    <script>
+                       var chartData = {
                             type: 'line',
                             code: 'SILVERM 1',
                             cycle:'10'
                         }
+                        window.onload = function () {
+                            chart();
+                            myfun();
+                        };
+                       
                         function chart() {
                             if (chartData["type"] == 'line') {
                                 lineChart();
@@ -153,7 +155,7 @@
 
                                     series: [{
                                             type: 'candlestick',
-                                            name: chartData["code"] + ' Candle'
+                                            name: chartData["code"] + ' Candle',
                                             data: data
                                         }]
                                 });

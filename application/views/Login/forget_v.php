@@ -79,6 +79,9 @@
                                     <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--black">
                                         Reset Password
                                     </button>
+                                    <button onclick="location.href = '<?php echo base_url(); ?>'" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                                        LogIn
+                                    </button>
 
                                 </div>
 

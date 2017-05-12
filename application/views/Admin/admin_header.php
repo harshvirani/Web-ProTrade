@@ -52,10 +52,6 @@
 
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/style.css">          
 
-        <!--Popup-->
-        <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/mdl-jquery-modal-dialog.css">
-        <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
-
         <!--Popup Dialogue Box-->
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/mdl-jquery-modal-dialog.css">
         <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
@@ -66,7 +62,7 @@
         <script src="<?php echo base_url() . NAV_ASSETS; ?>js/toastr.js"></script>
 
         <!--End of Notification of Call-->
-
+        <script src="<?php echo base_url() . NAV_ASSETS; ?>js/list.min.js"></script>
         <style type="text/css">
             .mainbody{
                 position: fixed; 
@@ -161,7 +157,7 @@
         <!--Dropdown in add symbol Form-->
 
         <style>
-            .mdl-select {
+/*            .mdl-select {
                 position: relative;
                 font-size: 16px;
                 display: inline-block;
@@ -293,7 +289,7 @@
 
             .mdl-select__expandable-holder .mdl-select__label:after {
                 bottom: 0;
-            }
+            }*/
         </style>
 
 
@@ -326,9 +322,8 @@
         <script type="text/javascript">
             var options = {
                 valueNames: ['material', 'price']
-            }
-            , documentTable = new List('mdl-table', options)
-                    ;
+            };
+            var documenstTable = new List('mdl-table', options);
 
 
             $($('th.sort')[0]).trigger('click', function () {
@@ -346,7 +341,11 @@
     </head>
     <body>
 
-
+<style>
+            .mdl-textfield__label:after {
+                bottom: 15px;
+            }
+        </style>
 
         <div class=" mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header mdl-layout--fixed-tabs">
             <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600 ">
