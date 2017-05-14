@@ -41,12 +41,17 @@
                 bottom: 15px;
             }
         </style>
+        <script>
+            function show(){
+                document.getElementById("progressbar2").style.display = 'block';
+            }
+        </script>
     </head>
     <body>
 
         <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
-            <div class="demo-ribbon " style=" background-image: url(<?php echo base_url() . NAV_ASSETS; ?>images/12.jpg); background-size: 100%; background-repeat:no-repeat;"></div>
 
+            <div class="demo-ribbon " style=" background-image: url(<?php echo base_url() . NAV_ASSETS; ?>images/12.jpg); background-size: 100%; background-repeat:no-repeat;"></div>
             <main class="demo-main mdl-layout__content">
                 <h2 class="t-center mdl-color-text--white text-shadow">Pro-Trade</h2>
                 <!--<h4><?php if (isset($error)) echo $error; ?></h4>-->
@@ -55,8 +60,11 @@
                 <div class="demo-container mdl-grid">
                     <div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
                     <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
+                        <div id="progressbar2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%;display: none;"></div>
+
 
                         <div class="mdl-card__title ">
+
                             <h2 class="mdl-card__title-text">
                                 <i class="material-icons mdl-color-text--grey  m-r-5 lh-13">account_circle</i>
                                 Login
@@ -84,7 +92,7 @@
                                     <a href="<?php echo base_url(); ?>User/forgetPassword">Forget Password</a>
                                 </div>
                                 <div class="m-t-20">
-                                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--black">
+                                    <button type="submit" onclick="show()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-color--black">
                                         Login
                                     </button>
                                     <button onclick="location.href = '<?php echo base_url(); ?>User/registerView'" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect">

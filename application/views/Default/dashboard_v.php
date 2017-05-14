@@ -223,6 +223,7 @@
                                     </script>
                                     <tbody class="list" style="height:340px;overflow-x: hidden;overflow-y: scroll;">
                                         <?php
+                                        
                                         foreach ($symbols->result_array() as $symbol) {
                                             ?>
                                             <tr>

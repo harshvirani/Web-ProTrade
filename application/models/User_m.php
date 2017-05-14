@@ -13,6 +13,10 @@ class User_m extends CI_Model {
         return $query->row();
     }
 
+    public function updateUser($data,$id) {
+        $this->db->where('id',$id);
+    }
+
     public function user_data($type) {
         $query = $this->db->query('select * from user where type="' . $type . '";');
         return $query;
@@ -36,7 +40,8 @@ class User_m extends CI_Model {
         $res = $this->db->insert('user', $data);
         return $res;
     }
-    public function countUser($status){
+
+    public function countUser($status) {
         $this->db->where('status', $status);
         $this->db->from('user');
         return $this->db->count_all_results();
@@ -61,25 +66,26 @@ class User_m extends CI_Model {
         $res = $this->db->update('user', $data);
         return $res;
     }
-    
-    public function checkEmail($email){
-        $this->db->where('email',$email);
+
+    public function checkEmail($email) {
+        $this->db->where('email', $email);
         $this->db->from('user');
-        $res= $this->db->count_all_results();
+        $res = $this->db->count_all_results();
 //        print_r($res); die;
-        if($res==0){
+        if ($res == 0) {
             return FALSE;
-        }else{
+        } else {
             return TRUE;
         }
     }
 
-    public function resetPass($data){
-        $this->db->where('email',$data['email']);
-        $pass=array(
-            'password'=>$data['pass']
-            );
+    public function resetPass($data) {
+        $this->db->where('email', $data['email']);
+        $pass = array(
+            'password' => $data['pass']
+        );
         $res = $this->db->update('user', $pass);
         return $res;
     }
+
 }

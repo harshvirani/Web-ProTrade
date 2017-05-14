@@ -24,4 +24,9 @@ class Subscriber_m extends CI_Model{
         $query = $this->db->get('subscriber');
         return $query->row();
     }
+    
+    public function updateSub($data,$id){
+        $this->db->where('id',$id);
+        $this->db->update('subscriber',$data);
+    }
 }

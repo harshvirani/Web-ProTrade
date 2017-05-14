@@ -52,13 +52,14 @@
                     Home
                 </a>
             </li>
+            <?php if ($_SESSION['type'] == 'SUBSCRIBER'){?>
             <li>
                 <a href="<?php echo base_url() . NAV_PLAN; ?>">
                     <i class="sidebar-icon md-star"></i>
                     Plan
                 </a>
             </li>
-
+            <?php }?>
             <li class="divider"></li>
             <li class="dropdown">
                 <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">

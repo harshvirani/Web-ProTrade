@@ -17,11 +17,14 @@ class Home extends CI_Controller {
                 'title' => 'PRO-TRADE'
             );
             
-            if ($_SESSION['type'] == 'SUBSCRIBER') {
-                
+            if ($_SESSION['type'] == 'SUBSCRIBER' ||$_SESSION['type'] == 'STAFF' ) {
+                if ($_SESSION['type'] == 'SUBSCRIBER'){
                 $id= $this->subscriber_m->subId($_SESSION['id']);
                 $_SESSION['subscriber_id']=$id->id;
                 $data['symbols']=$this->symbol_m->getSymbolbySId($_SESSION['subscriber_id']);
+                }else{
+                    $data['symbols']=$this->symbol_m->allSymbols();
+                }
                 $this->load->view('Default/header_v', $data);
                 $this->load->view('Default/sidebar_v');
                 $this->load->view('Default/dashboard_v');

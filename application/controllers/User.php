@@ -108,6 +108,16 @@ class User extends CI_Controller {
         redirect(base_url());
     }
 
+    public function updateProfile(){
+        $data=array(
+            'name' => $_POST["name"],
+            'contactNo'=>$_POST["contactNo"],
+            'email'=>$_POST["email"]
+        );
+        $this->subscriber_m->updateSub($data,$_SESSION['subscriber_id']);
+        redirect(base_url()."profile");
+    }
+    
     public function profile() {
         if (isset($_SESSION['type'])) {
             $data = array(
