@@ -224,6 +224,7 @@
 
                 $('.nav-tabs a[href="#menu3"]').tab('show');
                 abc();
+                market();
             }
 
             $('#A').click(function () {

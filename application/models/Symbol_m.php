@@ -22,10 +22,13 @@ class Symbol_m extends CI_Model {
     }
     
     public function getSymbolbySId($sid) {
-        $query = $this->db->query('SELECT * FROM symbol WHERE id IN ( SELECT symbol_id FROM subscriptionsymbol WHERE subscription_id=(SELECT id FROM subscription WHERE subscriber_id='.$sid.'))');
+        $query = $this->db->query('SELECT * FROM symbol WHERE id IN ( SELECT symbol_id FROM subscriptionsymbol WHERE subscription_id IN (SELECT id FROM subscription WHERE subscriber_id='.$sid.'))');
         return $query;
     }
-    
+    public function getSymbolbyMId($mid) {
+        $query = $this->db->query('SELECT id FROM `symbol` WHERE market_id='.(int)$mid);
+        return $query;
+    }
     public function allSymbols(){
         $query=$this->db->query('select * from symbol;');
         return $query;
