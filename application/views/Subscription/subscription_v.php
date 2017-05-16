@@ -136,17 +136,32 @@
                 var i = a.length;
                 while (i--) {
                     if (a[i] === b) {
+                        scriptId.splice(i, 1);
+                        return false;
+                    }
+                }
+                return true;
+            }
+            
+            function having(a, b) {
+                var i = a.length;
+                while (i--) {
+                    if (a[i] === b) {
                         selectable.splice(i, 1);
                         return false;
                     }
                 }
                 return true;
             }
-            if (contains(selectable, getscriptID)) {
-                selectable.push(getscriptID.toString());
+            
+            if (contains(scriptId, parentID)) {
                 scriptId.push(parentID);
             }
-            alert(scriptId);
+            if(having(selectable,getscriptID)){
+                selectable.push(getscriptID.toString());
+            }
+            //alert(scriptId);
+            //alert(selectable);
             z = scriptId;
             obj = {"PLAN": x, "TYPE": y, "SELECTION": z};
         });
