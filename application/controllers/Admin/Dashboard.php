@@ -18,7 +18,9 @@ class Dashboard extends CI_Controller {
                 'sub_cnt' => $this->user_m->count('SUBSCRIBER'),
                 'staff_cnt' => $this->user_m->count('STAFF'),
                 'blocked_cnt' => $this->user_m->countUser('BLOCKED'),
-                'active_cnt' => $this->user_m->countUser('ACTIVE')
+                'active_cnt' => $this->user_m->countUser('ACTIVE'),
+                'market_cnt'=> $this->market_m->countAllMarkets(),
+                'script_cnt'=> $this->symbol_m->countAllSymbols(),
             );
 
             $data['symbols'] = $this->symbol_m->allSymbols();

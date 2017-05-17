@@ -12,7 +12,7 @@
                                         <i class="fa fa-map-o fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">132</div>
+                                        <div class="huge"><?php echo $market_cnt;?></div>
                                         <div>Total Market</div>
                                     </div>
                                 </div>
@@ -28,7 +28,7 @@
                                         <i class="fa fa-credit-card fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">544</div>
+                                        <div class="huge"><?php echo $script_cnt;?></div>
                                         <div>Total Script</div>
                                     </div>
                                 </div>
@@ -71,20 +71,20 @@
                     </div>
                 </div>
             </div>
- <script>
-                        function line() {
-                            document.getElementById('candlestick').disabled = false;
-                            document.getElementById('line').disabled = true;
-                            chartData["type"] = "line";
-                            chart();
-                        }
-                        function candle() {
-                            document.getElementById('candlestick').disabled = true;
-                            document.getElementById('line').disabled = false;
-                            chartData["type"] = "candlestick";
-                            chart();
-                        }
-                        </script>
+            <script>
+                function line() {
+                    document.getElementById('candlestick').disabled = false;
+                    document.getElementById('line').disabled = true;
+                    chartData["type"] = "line";
+                    chart();
+                }
+                function candle() {
+                    document.getElementById('candlestick').disabled = true;
+                    document.getElementById('line').disabled = false;
+                    chartData["type"] = "candlestick";
+                    chart();
+                }
+            </script>
             <div class="col-md-8">
                 <button id="line" onclick="line()" class="mdl-button mdl-js-button mdl-button--raised" disabled="true">
                     Line
@@ -95,16 +95,16 @@
                 <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" style="width: 100%; height: 400px;">
                     <div id="container" ></div>
                     <script>
-                       var chartData = {
+                        var chartData = {
                             type: 'line',
                             code: 'SILVERM 1',
-                            cycle:'10'
+                            cycle: '10'
                         }
                         window.onload = function () {
                             chart();
                             myfun();
                         };
-                       
+
                         function chart() {
                             if (chartData["type"] == 'line') {
                                 lineChart();
@@ -132,9 +132,9 @@
                                         }
                                     },
 
-                                    rangeSelector : {
-                                        inputEnabled:false
-                                     },
+                                    rangeSelector: {
+                                        inputEnabled: false
+                                    },
                                     scrollbar: {
                                         height: 10,
                                         barBackgroundColor: '#7cb5ec',
@@ -192,8 +192,8 @@
                                         }
                                     },
 
-                                    rangeSelector : {
-                                        inputEnabled:false
+                                    rangeSelector: {
+                                        inputEnabled: false
                                     },
 
                                     title: {
@@ -209,7 +209,7 @@
                             });
                         }
 
-                       
+
                     </script>
                 </div>
             </div>
@@ -311,8 +311,8 @@
         <style type="text/css">
             input[type=number]::-webkit-inner-spin-button, 
             input[type=number]::-webkit-outer-spin-button { 
-              -webkit-appearance: none; 
-              margin: 0; 
+                -webkit-appearance: none; 
+                margin: 0; 
             }
             #style-4::-webkit-scrollbar-track
             {
@@ -423,24 +423,24 @@
             $(document).ready(function () {
 
                 $('.btn-minuse').on('click', function () {
-                    if(parseInt($(this).parent().siblings('input').val()) > 1){
+                    if (parseInt($(this).parent().siblings('input').val()) > 1) {
                         $(this).parent().siblings('input').val(parseInt($(this).parent().siblings('input').val()) - 1)
-                    }else{
+                    } else {
                         $(this).parent().siblings('input').val(0)
                     }
-                    
-                    if(parseInt($(this).parent().siblings('input').val()) > 60){
+
+                    if (parseInt($(this).parent().siblings('input').val()) > 60) {
                         $(this).parent().siblings('input').val(60)
                     }
                 })
 
                 $('.btn-pluss').on('click', function () {
-                    if(parseInt($(this).parent().siblings('input').val()) < 60){
+                    if (parseInt($(this).parent().siblings('input').val()) < 60) {
                         $(this).parent().siblings('input').val(parseInt($(this).parent().siblings('input').val()) + 1)
-                    }else{
+                    } else {
                         $(this).parent().siblings('input').val(60)
                     }
-                    if(parseInt($(this).parent().siblings('input').val()) < 0){
+                    if (parseInt($(this).parent().siblings('input').val()) < 0) {
                         $(this).parent().siblings('input').val(0)
                     }
                 })
@@ -477,7 +477,7 @@
                                     <i class="fa  fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $active_cnt-1; ?></div>
+                                    <div class="huge"><?php echo $active_cnt - 1; ?></div>
                                     <div>Active User</div>
                                 </div>
                             </div>
@@ -530,23 +530,46 @@
                     <div class="panel-heading">
                         Candlestick Cycle (between 1 to 60)
                     </div>
-                    <form action="http://localhost/rethinkDB/trade_Algo_API.php" method="POST">
-                        <div class="panel-body">
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-white btn-minuse" type="button">-</button>
-                                </span>
-                                <input id="cycle" name="cycle" type="number" class="form-control no-padding add-color text-center height-25" min="1" max="60"  value="10" maxlength="2">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-red btn-pluss" type="button">+</button>
-                                </span>
-                            </div>
+
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-white btn-minuse" type="button">-</button>
+                            </span>
+                            <input id="cycle" name="cycle" type="number" class="form-control no-padding add-color text-center height-25" min="1" max="60"  value="10" maxlength="2">
+                            <span class="input-group-btn">
+                                <button class="btn btn-red btn-pluss" type="button">+</button>
+                            </span>
                         </div>
-                        <div class="panel-footer">
-                            <button type="submit" id="" class="mdl-button mdl-js-button mdl-button--raised">Apply</button>
-                        </div>
-                    </form>
-                    
+                    </div>
+                    <div class="panel-footer">
+                        <button onclick="sendData()" id="" class="mdl-button mdl-js-button mdl-button--raised">Apply</button>
+                    </div>
+
+                    <script>
+                        function sendData() {
+
+                            var cycle = document.getElementById("cycle").value;
+                            alert(cycle);
+                            $.ajax({
+                                type: 'POST',
+//                                    http://localhost/rethinkDB/trade_Algo_API.php
+                                url: 'http://localhost/rethinkDB/trade_Algo_API.php',
+                                data: {cycle: cycle},
+                                cache: false,
+                                success: AjaxSucceeded,
+                                error: AjaxFailed
+                            });
+                        }
+                        function AjaxSucceeded(result) {
+//                            alert("Success");
+                            alert(result);
+                        }
+                        function AjaxFailed(result) {
+                            alert("Failed");
+                            alert(result.status + ': ' + result.statusText);
+                        }   
+                    </script>
                 </div>
                 <!-- /.col-lg-4 -->
             </div>

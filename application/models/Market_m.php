@@ -22,6 +22,12 @@ class Market_m extends CI_Model{
         return $query;
     }
     
+    public function countAllMarkets(){
+        $this->db->from('market');
+        return $this->db->count_all_results();
+    }
+
+
     public function removeMarket($id){
         $query=$this->db->delete('market', array('id' => $id));
         return $query;
