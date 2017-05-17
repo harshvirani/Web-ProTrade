@@ -133,7 +133,7 @@
                                     },
 
                                     rangeSelector: {
-                                        inputEnabled: false
+                                        selected : 1
                                     },
                                     scrollbar: {
                                         height: 10,
@@ -156,7 +156,24 @@
                                     series: [{
                                             type: 'candlestick',
                                             name: chartData["code"] + ' Candle',
-                                            data: data
+                                            data: data,
+                                            fillColor: {
+                                                linearGradient: {
+                                                    x1: 0,
+                                                    y1: 0,
+                                                    x2: 0,
+                                                    y2: 1
+                                                },
+                                                stops: [
+                                                    [0, Highcharts.getOptions().colors[0]],
+                                                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                                ]
+                                            },
+                                             marker: {
+                                                enabled: true,
+                                                radius: 3
+                                            },
+                                            shadow: true
                                         }]
                                 });
 
@@ -193,17 +210,48 @@
                                     },
 
                                     rangeSelector: {
-                                        inputEnabled: false
+                                        selected : 1
                                     },
 
                                     title: {
                                         text: chartData["code"]
                                     },
+                                    
+                                    scrollbar: {
+                                        height: 10,
+                                        barBackgroundColor: '#7cb5ec',
+                                        barBorderRadius: 7,
+                                        barBorderWidth: 0,
+                                        buttonBackgroundColor: '#7cb5ec',
+                                        buttonBorderWidth: 0,
+                                        buttonBorderRadius: 7,
+                                        trackBackgroundColor: 'none',
+                                        trackBorderWidth: 1,
+                                        trackBorderRadius: 0,
+                                        trackBorderColor: '#CCC'
+                                    },
 
                                     series: [{
                                             type: 'line',
                                             name: chartData["code"] + ' Price',
-                                            data: data
+                                            data: data,
+                                            fillColor: {
+                                                linearGradient: {
+                                                    x1: 0,
+                                                    y1: 0,
+                                                    x2: 0,
+                                                    y2: 1
+                                                },
+                                                stops: [
+                                                    [0, Highcharts.getOptions().colors[0]],
+                                                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                                ]
+                                            },
+                                             marker: {
+                                                enabled: true,
+                                                radius: 3
+                                            },
+                                            shadow: true
                                         }]
                                 });
                             });
