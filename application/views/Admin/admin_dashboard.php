@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class=" col-lg-3 col-md-6">
                         <div class="panel panel-lightgreen">
-                            <div class="panel-heading">
+                            <div class="panel-heading" style="cursor: pointer; cursor: hand">
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <i class="fa fa-map-o fa-5x"></i>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-lightgrey">
-                            <div class="panel-heading">
+                            <div class="panel-heading" style="cursor: pointer; cursor: hand">
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <i class="fa fa-credit-card fa-5x"></i>
@@ -37,15 +37,15 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6">
+                    <div  class="col-lg-3 col-md-6" >
                         <div class="panel panel-lightblue">
-                            <div class="panel-heading">
+                            <div onclick="trendChart()" class="panel-heading" style="cursor: pointer; cursor: hand">
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <i class="fa fa-line-chart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">Top 10</div>
+                                        <div class="huge"><?php echo $trending_script[0]["code"];?></div>
                                         <div>Trending Script</div>
                                     </div>
                                 </div>
@@ -53,7 +53,8 @@
 
                         </div>
                     </div>
-                    <div class=" col-lg-3 col-md-6">
+                    <a href="<?php echo base_url() ."marketview/".$trending_market[0]["id"]; ?>">
+                    <div  class=" col-lg-3 col-md-6">
                         <div class="panel panel-lightpink">
                             <div class="panel-heading">
                                 <div class="row">
@@ -61,7 +62,7 @@
                                         <i class="fa fa-level-up fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">Top 10</div>
+                                        <div class="huge"><?php echo $trending_market[0]["name"];?></div>
                                         <div>Trending Market</div>
                                     </div>
                                 </div>
@@ -69,6 +70,7 @@
 
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
             <script>
@@ -95,10 +97,15 @@
                 <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" style="width: 100%; height: 400px;">
                     <div id="container" ></div>
                     <script>
+                        
                         var chartData = {
                             type: 'line',
                             code: 'SILVERM 1',
                             cycle: '10'
+                        }
+                        function trendChart(){
+                            chartData["code"]="<?php echo $trending_script[0]["code"];?>";
+                            chart();
                         }
                         window.onload = function () {
                             chart();

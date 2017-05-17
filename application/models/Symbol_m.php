@@ -36,6 +36,13 @@ class Symbol_m extends CI_Model {
         return $query;
     }
 
+    public function trendingSymbol(){
+        $q='SELECT code FROM `symbol` WHERE id=(SELECT symbol_id FROM subscriptionsymbol GROUP BY symbol_id ORDER BY COUNT(*) DESC LIMIT 1)';
+        $query = $this->db->query($q);
+        return $query->result_array();
+    }
+
+    
     public function countAllSymbols() {
         $this->db->from('symbol');
         return $this->db->count_all_results();

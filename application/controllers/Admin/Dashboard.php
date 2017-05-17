@@ -12,7 +12,7 @@ class Dashboard extends CI_Controller {
     public function index() {
         if ($_SESSION['type'] == 'ADMIN') {
             $data = array(
-                'title' => 'Users',
+                'title' => 'Dashboard',
                 'markets' => $this->market_m->getMarket(),
                 'count' => $this->market_m->getCount(),
                 'sub_cnt' => $this->user_m->count('SUBSCRIBER'),
@@ -21,6 +21,8 @@ class Dashboard extends CI_Controller {
                 'active_cnt' => $this->user_m->countUser('ACTIVE'),
                 'market_cnt'=> $this->market_m->countAllMarkets(),
                 'script_cnt'=> $this->symbol_m->countAllSymbols(),
+                'trending_script'=>$this->symbol_m->trendingSymbol(),
+                'trending_market'=>$this->market_m->trendingMarket()
             );
 
             $data['symbols'] = $this->symbol_m->allSymbols();
