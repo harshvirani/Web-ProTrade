@@ -132,9 +132,9 @@
                                         }
                                     },
 
-                                    rangeSelector: {
-                                        selected: 1
-                                    },
+                                    rangeSelector : {
+                                        inputEnabled:false
+                                     },
                                     scrollbar: {
                                         height: 10,
                                         barBackgroundColor: '#7cb5ec',
@@ -192,8 +192,8 @@
                                         }
                                     },
 
-                                    rangeSelector: {
-                                        selected: 1
+                                    rangeSelector : {
+                                        inputEnabled:false
                                     },
 
                                     title: {
@@ -309,6 +309,11 @@
             </div>
         </div>
         <style type="text/css">
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button { 
+              -webkit-appearance: none; 
+              margin: 0; 
+            }
             #style-4::-webkit-scrollbar-track
             {
                 -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -418,11 +423,26 @@
             $(document).ready(function () {
 
                 $('.btn-minuse').on('click', function () {
-                    $(this).parent().siblings('input').val(parseInt($(this).parent().siblings('input').val()) - 1)
+                    if(parseInt($(this).parent().siblings('input').val()) > 1){
+                        $(this).parent().siblings('input').val(parseInt($(this).parent().siblings('input').val()) - 1)
+                    }else{
+                        $(this).parent().siblings('input').val(0)
+                    }
+                    
+                    if(parseInt($(this).parent().siblings('input').val()) > 60){
+                        $(this).parent().siblings('input').val(60)
+                    }
                 })
 
                 $('.btn-pluss').on('click', function () {
-                    $(this).parent().siblings('input').val(parseInt($(this).parent().siblings('input').val()) + 1)
+                    if(parseInt($(this).parent().siblings('input').val()) < 60){
+                        $(this).parent().siblings('input').val(parseInt($(this).parent().siblings('input').val()) + 1)
+                    }else{
+                        $(this).parent().siblings('input').val(60)
+                    }
+                    if(parseInt($(this).parent().siblings('input').val()) < 0){
+                        $(this).parent().siblings('input').val(0)
+                    }
                 })
 
             });
@@ -457,7 +477,7 @@
                                     <i class="fa  fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $active_cnt; ?></div>
+                                    <div class="huge"><?php echo $active_cnt-1; ?></div>
                                     <div>Active User</div>
                                 </div>
                             </div>
@@ -510,20 +530,23 @@
                     <div class="panel-heading">
                         Candlestick Cycle (between 1 to 60)
                     </div>
-                    <div class="panel-body">
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <button class="btn btn-white btn-minuse" type="button">-</button>
-                            </span>
-                            <input id=""  type="text" class="form-control no-padding add-color text-center height-25" min="1" max="60"  value="0" maxlength="2">
-                            <span class="input-group-btn">
-                                <button class="btn btn-red btn-pluss" type="button">+</button>
-                            </span>
+                    <form action="http://localhost/rethinkDB/trade_Algo_API.php" method="POST">
+                        <div class="panel-body">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-white btn-minuse" type="button">-</button>
+                                </span>
+                                <input id="cycle" name="cycle" type="number" class="form-control no-padding add-color text-center height-25" min="1" max="60"  value="10" maxlength="2">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-red btn-pluss" type="button">+</button>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="panel-footer">
-                        <button id="" class="mdl-button mdl-js-button mdl-button--raised">Apply</button>
-                    </div>
+                        <div class="panel-footer">
+                            <button type="submit" id="" class="mdl-button mdl-js-button mdl-button--raised">Apply</button>
+                        </div>
+                    </form>
+                    
                 </div>
                 <!-- /.col-lg-4 -->
             </div>
