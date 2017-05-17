@@ -70,7 +70,7 @@
 
                         <?php } ?>
                         <div class="p-l-20 p-r-20 p-b-20">
-                            <form action="<?php echo base_url(); ?>User/validateUser" method="post">
+                            <form action="<?php echo base_url(); ?>User/Register" method="post">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
                                     <input class="mdl-textfield__input" name="uname" type="text" id="sample3" autocomplete="off"/>
                                     <label class="mdl-textfield__label" for="sample3">Username</label>

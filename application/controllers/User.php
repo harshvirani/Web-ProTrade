@@ -183,10 +183,10 @@ class User extends CI_Controller {
     public function Register() {
 
         $data = array(
-            'uname' => $this->input->post('name'),
-            'password' => $this->input->post('pass'),
+            'uname' => $this->input->post('uname'),
+            'password' => $this->input->post('password'),
             'email' => $this->input->post('email'),
-            'contactNo' => $this->input->post('mob'),
+            'contactNo' => $this->input->post('mobileno'),
             'type' => 'SUBSCRIBER',
             'status' => 'ACTIVE',
             'is_deleted' => 0
@@ -194,8 +194,8 @@ class User extends CI_Controller {
         $res = $this->user_m->addUser($data);
         if ($res) {
             $data = array(
-                'uname' => $this->input->post('name'),
-                'pass' => $this->input->post('pass')
+                'uname' => $this->input->post('uname'),
+                'pass' => $this->input->post('password')
             );
             $result = $this->user_m->user_details($data);
             if (isset($result)) {
