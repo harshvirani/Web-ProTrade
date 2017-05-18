@@ -483,7 +483,20 @@ foreach ($symbols->result_array() as $symbol) {
                                     function delete_row(rowid) {
                                     var row = document.getElementById(rowid);
                                             row.parentNode.removeChild(row);
+//                                            alert(selectable);
+//                                            alert(obj["SELECTION"]);
+                                            actualDelete(rowid);
                                             colSum();
+                                    }
+                                    
+                                    function actualDelete(rowID){
+                                        var i = obj["SELECTION"].length;
+                                        while (i--) {
+                                            if (obj["SELECTION"][i] == rowID) {
+                                                obj["SELECTION"].splice(i, 1);
+                                                alert(obj["SELECTION"]);
+                                            }
+                                        }
                                     }
 
 
@@ -508,7 +521,9 @@ foreach ($symbols->result_array() as $symbol) {
                         calculate();
                         }
                         function deleteFinalMarket(myid) {
-                        document.getElementById(myid).style.display = "none";
+                            alert(obj["SELECTION"] + " Row : " + myid);
+                            actualDelete(myid);
+                            document.getElementById(myid).style.display = "none";
                         }
                         function calculate() {
                         var sum = 0;
@@ -544,7 +559,7 @@ foreach ($symbols->result_array() as $symbol) {
                                                 ?>
                                             </div>
                                             <div class="market_price">
-                                                <button id="mark_<?php echo $market['name']; ?>" onclick='deleteFinalMarket(this.id)' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>
+                                                <button id="mar<?php echo $market['id']; ?>" onclick='deleteFinalMarket(this.id)' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>
                                                 <span id="val_<?php echo $market['name']; ?>" class="mdl-card__supporting-text mdl-checkbox__label">400</span>
                                             </div>
                                         </div>
