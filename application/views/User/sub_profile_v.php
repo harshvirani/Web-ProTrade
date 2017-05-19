@@ -7,7 +7,7 @@
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center">
-        <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+          <img src="<?php echo base_url().'upload_pic/'.$_SESSION["profile"];?>" class="avatar img-circle img-thumbnail" alt="avatar">
        
 
         <h6><a href="<?php echo base_url();?>user/upload_picture">Upload a different photo...</a></h6>

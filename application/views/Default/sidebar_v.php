@@ -20,7 +20,7 @@
             </button>
             <!-- Sidebar brand image -->
             <div class="sidebar-image">
-                <img src="<?php echo base_url() . NAV_ASSETS; ?>images/user.jpg" class="demo-avatar">
+                <img src="<?php echo base_url().'upload_pic/'.$_SESSION["profile"];?>" class="demo-avatar">
             </div>
             <!-- Sidebar brand name -->
             <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">

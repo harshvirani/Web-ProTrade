@@ -142,7 +142,7 @@
                 }
                 return true;
             }
-            
+
             function having(a, b) {
                 var i = a.length;
                 while (i--) {
@@ -153,11 +153,11 @@
                 }
                 return true;
             }
-            
+
             if (contains(scriptId, parentID)) {
                 scriptId.push(parentID);
             }
-            if(having(selectable,getscriptID)){
+            if (having(selectable, getscriptID)) {
                 selectable.push(getscriptID.toString());
             }
             //alert(scriptId);
@@ -169,7 +169,7 @@
         //
         //MARKET SELECTION START
         $("input[name=ppp]:checkbox").change(function () {
-            var mark = [],markId=[];
+            var mark = [], markId = [];
             $("input[name=ppp]:checkbox").each(function () {
                 if ($(this).is(":checked")) {
                     mark.push($(this).attr("value"));
@@ -472,7 +472,8 @@ foreach ($symbols->result_array() as $symbol) {
                                                         cell2.innerHTML = selectable[i];
                                                         var price =<?php echo $symbol['price_quote']; ?> * Plan;
                                                         cell3.innerHTML = price;
-                                                        cell4.innerHTML = "<button onclick='delete_row(<?php echo $symbol['id']; ?>)' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
+                                                        cell4.innerHTML = '<i style="cursor: pointer; cursor: hand;" id="<?php echo $symbol['id']; ?>" onclick="delete_row(<?php echo $symbol['id']; ?>)" class="material-icons mdl-color-text--red">remove_circle_outline</i>'
+                                                        //                                                        cell4.innerHTML = "<button onclick='delete_row(<?php echo $symbol['id']; ?>)' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Delete</button>";
                                                 }
 <?php } ?>
 
@@ -482,21 +483,24 @@ foreach ($symbols->result_array() as $symbol) {
 
                                     function delete_row(rowid) {
                                     var row = document.getElementById(rowid);
+//                                            row.parentNode.removeChild(row);                                    
+                                            row.parentNode.removeChild(row);
+                                            var row = document.getElementById(rowid);
+//                                            row.parentNode.removeChild(row);                                    
                                             row.parentNode.removeChild(row);
 //                                            alert(selectable);
-//                                            alert(obj["SELECTION"]);
                                             actualDelete(rowid);
                                             colSum();
                                     }
-                                    
+
                                     function actualDelete(rowID){
-                                        var i = obj["SELECTION"].length;
-                                        while (i--) {
-                                            if (obj["SELECTION"][i] == rowID) {
-                                                obj["SELECTION"].splice(i, 1);
-                                                alert(obj["SELECTION"]);
-                                            }
-                                        }
+                                    var i = obj["SELECTION"].length;
+                                            while (i--) {
+                                    if (obj["SELECTION"][i] == rowID) {
+                                    obj["SELECTION"].splice(i, 1);
+                                            alert(obj["SELECTION"]);
+                                    }
+                                    }
                                     }
 
 
@@ -521,9 +525,9 @@ foreach ($symbols->result_array() as $symbol) {
                         calculate();
                         }
                         function deleteFinalMarket(myid) {
-                            alert(obj["SELECTION"] + " Row : " + myid);
-                            actualDelete(myid);
-                            document.getElementById(myid).style.display = "none";
+                        alert(obj["SELECTION"] + " Row : " + myid);
+                                actualDelete(myid);
+                                document.getElementById(myid).style.display = "none";
                         }
                         function calculate() {
                         var sum = 0;

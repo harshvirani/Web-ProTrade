@@ -10,7 +10,7 @@
             </button>
             <!-- Sidebar brand image -->
             <div class="sidebar-image">
-                <img src="<?php echo base_url() . NAV_ASSETS; ?>images/user.jpg" class="demo-avatar">
+                <img src="<?php echo base_url().'upload_pic/'.$_SESSION["profile"];?>" class="demo-avatar">
             </div>
             <!-- Sidebar brand name -->
             <a data-toggle="dropdown" class="sidebar-brand " href="#settings-dropdown">
@@ -68,7 +68,7 @@
 
                     <hr>
                     <li>
-                        <a data-toggle="modal" data-target="#addMarket" tabindex="-1">
+                        <a id="addMemberButton" >
                             &nbsp;&nbsp;<i class="sidebar-icon material-icons">person_add</i>
                             Add Member
                         </a>
@@ -208,6 +208,24 @@
             showButton.addEventListener('click', showClickHandler);
             closeButton.addEventListener('click', closeClickHandler);
         });
+        
+        $(document).ready(function () {
+            'use strict';
+            var dialog = document.querySelector('#addMember');
+            var closeButton = dialog.querySelector('.buttonMemberClose');
+            var showButton = document.querySelector('#addMemberButton');
+            if (!dialog.showModal) {
+                dialogPolyfill.registerDialog(dialog);
+            }
+            var closeClickHandler = function (event) {
+                dialog.close();
+            };
+            var showClickHandler = function (event) {
+                dialog.showModal();
+            };
+            showButton.addEventListener('click', showClickHandler);
+            closeButton.addEventListener('click', closeClickHandler);
+        });
     </script>
 
 </div>
@@ -230,6 +248,29 @@
     </form>
 </dialog>
 
+
+<dialog class="mdl-dialog" id="addMember">
+    <form action="<?php echo base_url(); ?>user/addStaff" method="post">
+        <div class="mdl-dialog__content">
+            <!--<h1 class="mdl-dialog__title">Add Market</h1>-->
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" name="name" type="text" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">Username</label>
+            </div>
+            
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" name="pass" type="password" id="sample4">
+                <label class="mdl-textfield__label" for="sample4">Password</label>
+            </div>
+
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="submit" class="mdl-button">Add</button>
+            <button type="reset" class="buttonMemberClose mdl-button">Cancel</button>
+        </div>
+    </form>
+</dialog>
 
 
 

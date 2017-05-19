@@ -100,7 +100,7 @@
                         
                         var chartData = {
                             type: 'line',
-                            code: 'SILVERM 1',
+                            code: '<?php echo $trending_script[0]["code"];?>',
                             cycle: '10'
                         }
                         function trendChart(){
@@ -391,7 +391,7 @@
                 overflow-y: scroll;
             }
             .huge {
-                font-size: 40px;
+                font-size: 20px;
             }
             .panel-green {
                 border-color: #5cb85c;
@@ -529,7 +529,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa  fa-5x"></i>
+                                    <i class="fa fa-ban fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><?php echo $active_cnt - 1; ?></div>

@@ -173,10 +173,10 @@ class User extends CI_Controller {
         list($type, $data) = explode(';', $data);
         list(, $data) = explode(',', $data);
         $data = base64_decode($data);
-        $dir = base_url() .'assets/profile/' . $fname;
+        $dir = 'upload_pic/' . $fname;
         echo $dir;
         file_put_contents($dir, $data);
-        die;
+//        die;
         redirect(base_url() . NAV_PROFILE);
     }
 
@@ -189,7 +189,8 @@ class User extends CI_Controller {
             'contactNo' => $this->input->post('mobileno'),
             'type' => 'SUBSCRIBER',
             'status' => 'ACTIVE',
-            'is_deleted' => 0
+            'is_deleted' => 0,
+            'profile'=>$_SESSION["id"] . 'profile.png'
         );
         $res = $this->user_m->addUser($data);
         if ($res) {
