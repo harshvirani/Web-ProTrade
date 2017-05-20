@@ -1,5 +1,5 @@
 <main class="mdl-layout__content mdl-color--grey-100">
-
+<br/>
     <div class="container">
         <div class="row">
             <style type="text/css">
@@ -14,13 +14,20 @@
                 function line() {
                     document.getElementById('candlestick').disabled = false;
                     document.getElementById('line').disabled = true;
+                    document.getElementById('sample1').disabled = true;
                     chartData["type"] = "line";
                     chart();
                 }
                 function candle() {
                     document.getElementById('candlestick').disabled = true;
                     document.getElementById('line').disabled = false;
+                    document.getElementById('sample1').disabled = false;
                     chartData["type"] = "candlestick";
+                    chart();
+                }
+                function candleVal(cycle) {
+                    chartData["cycle"] =(cycle);
+                    document.getElementById("sample1").value=cycle;
                     chart();
                 }
             </script>
@@ -30,7 +37,21 @@
                 </button>
                 <button id="candlestick" onclick="candle()" class="mdl-button mdl-js-button mdl-button--raised" >
                     CandleStick
-                </button>
+                </button>&nbsp;&nbsp;&nbsp;
+                
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                    <input class="mdl-textfield__input" type="text" id="sample1" style="width: 100px" value="10" readonly tabIndex="-1" disabled="true">
+                    <label for="sample1" class="mdl-textfield__label">Cycle</label>
+                    <ul for="sample1" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        <?php
+                        $response = file_get_contents('http://'.SERVER_IP.'/rethinkDB/cycleArray.php');
+                        $cycle = json_decode($response);
+                        for ($i = 0; $i < sizeof($cycle); $i++) {
+                            ?>
+                        <li onclick="candleVal(<?php echo $cycle[$i];?>)" class="mdl-menu__item"><?php echo $cycle[$i]; ?></li>
+                        <?php } ?>
+                    </ul>
+                </div>
                 <div id="container" class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col"></div>
                 <script language="JavaScript">
                     window.onload = function () {

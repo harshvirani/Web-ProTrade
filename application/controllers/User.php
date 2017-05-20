@@ -66,9 +66,9 @@ class User extends CI_Controller {
         }
     }
 
-    public function forgetPassword($data="") {
-       
-        $this->load->view('Login/forget_v',$data);
+    public function forgetPassword($data = "") {
+
+        $this->load->view('Login/forget_v', $data);
     }
 
     public function resetPassword() {
@@ -82,8 +82,8 @@ class User extends CI_Controller {
             $this->user_m->resetPass($data);
             $this->sendMail($data);
             $this->login();
-        }else{
-            $data['error']='Invalid Email Address';
+        } else {
+            $data['error'] = 'Invalid Email Address';
             $this->forgetPassword($data);
         }
     }
@@ -108,30 +108,40 @@ class User extends CI_Controller {
         redirect(base_url());
     }
 
-    public function updateProfile(){
-        $data=array(
+    public function updateProfile() {
+        $data = array(
             'name' => $_POST["name"],
-            'contactNo'=>$_POST["contactNo"],
-            'email'=>$_POST["email"]
+            'contactNo' => $_POST["contactNo"],
+            'email' => $_POST["email"]
         );
-        $this->subscriber_m->updateSub($data,$_SESSION['subscriber_id']);
-        redirect(base_url()."profile");
+        $this->subscriber_m->updateSub($data, $_SESSION['subscriber_id']);
+        unset($data["name"]);
+        $this->user_m->updateUser($data,$_SESSION["id"]);
+        redirect(base_url() . "profile");
     }
-    
+
     public function profile() {
         if (isset($_SESSION['type'])) {
             $data = array(
                 'title' => 'Profile',
                 'markets' => $this->market_m->getMarket(),
-                'count' => $this->market_m->getCount()
+                'count' => $this->market_m->getCount(),
+               
             );
-//
+//  
+//            $my=$this->user_m->user_profile($_SESSION["id"]);
+//            echo 'Hi';
+//            print_r($my);die;
             if ($_SESSION['type'] == 'ADMIN') {
                 $this->load->view('Admin/admin_header', $data);
                 $this->load->view('Admin/admin_sidebar');
                 $this->load->view('User/sub_profile_v');
             } else if ($_SESSION['type'] == 'SUBSCRIBER') {
-                $data['profile']=$this->subscriber_m->subData($_SESSION['subscriber_id']);
+                $data['profile'] = $this->subscriber_m->subData($_SESSION['subscriber_id']);
+                $this->load->view('Default/header_v', $data);
+                $this->load->view('Default/sidebar_v');
+                $this->load->view('User/sub_profile_v');
+            }else if($_SESSION['type'] == 'STAFF'){
                 $this->load->view('Default/header_v', $data);
                 $this->load->view('Default/sidebar_v');
                 $this->load->view('User/sub_profile_v');
@@ -155,6 +165,10 @@ class User extends CI_Controller {
                 $this->load->view('Admin/admin_sidebar');
                 $this->load->view('User/uploader');
             } else if ($_SESSION['type'] == 'SUBSCRIBER') {
+                $this->load->view('Default/header_v', $data);
+                $this->load->view('Default/sidebar_v');
+                $this->load->view('User/uploader');
+            }else if ($_SESSION['type'] == 'STAFF') {
                 $this->load->view('Default/header_v', $data);
                 $this->load->view('Default/sidebar_v');
                 $this->load->view('User/uploader');
@@ -190,7 +204,7 @@ class User extends CI_Controller {
             'type' => 'SUBSCRIBER',
             'status' => 'ACTIVE',
             'is_deleted' => 0,
-            'profile'=>$_SESSION["id"] . 'profile.png'
+            'profile' => $_SESSION["id"] . 'profile.png'
         );
         $res = $this->user_m->addUser($data);
         if ($res) {
@@ -208,8 +222,8 @@ class User extends CI_Controller {
             redirect(base_url() . NAV_LOGIN);
         }
     }
-    
-    public function registerView(){
+
+    public function registerView() {
         if ($this->session->has_userdata('uname')) {
             if ($_SESSION['status'] == 'BLOCKED') {
                 $this->session->sess_destroy();

@@ -35,15 +35,4 @@ class Dashboard extends CI_Controller {
             redirect(base_url());
         }
     }
-
-    public function updateMinMax($id, $min, $max) {
-        $this->load->model('symbol_m');
-        $data = array(
-            'call_min' => $min,
-            'call_max' => $max
-        );
-        $this->symbol_m->updateMinMax($data, $id);
-        $this->index();
-    }
-
 }

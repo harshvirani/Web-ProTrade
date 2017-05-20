@@ -12,9 +12,17 @@ class User_m extends CI_Model {
         $query = $this->db->get('user');
         return $query->row();
     }
+    
+    public function user_profile($data) {
+        $this->db->where('id',$id);
+        $query = $this->db->get('user');
+        return $query->row();
+    }
 
     public function updateUser($data,$id) {
         $this->db->where('id',$id);
+        $q=$this->db->update('user',$data);
+        return $q;
     }
 
     public function user_data($type) {

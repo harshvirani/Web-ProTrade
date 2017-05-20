@@ -60,28 +60,7 @@
                 </a>
             </li>
             <?php }?>
-            <li class="divider"></li>
-            <li class="dropdown">
-                <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
-                    All Mail
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="#" tabindex="-1">
-                            Social
-                            <span class="sidebar-badge">12</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" tabindex="-1">
-                            Promo
-                            <span class="sidebar-badge">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
+            
         </ul>
     </aside>
     

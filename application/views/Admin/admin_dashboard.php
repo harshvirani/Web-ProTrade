@@ -12,7 +12,7 @@
                                         <i class="fa fa-map-o fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $market_cnt;?></div>
+                                        <div class="huge"><?php echo $market_cnt; ?></div>
                                         <div>Total Market</div>
                                     </div>
                                 </div>
@@ -28,7 +28,7 @@
                                         <i class="fa fa-credit-card fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $script_cnt;?></div>
+                                        <div class="huge"><?php echo $script_cnt; ?></div>
                                         <div>Total Script</div>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                                         <i class="fa fa-line-chart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $trending_script[0]["code"];?></div>
+                                        <div class="huge"><?php echo $trending_script[0]["code"]; ?></div>
                                         <div>Trending Script</div>
                                     </div>
                                 </div>
@@ -53,23 +53,23 @@
 
                         </div>
                     </div>
-                    <a href="<?php echo base_url() ."marketview/".$trending_market[0]["id"]; ?>">
-                    <div  class=" col-lg-3 col-md-6">
-                        <div class="panel panel-lightpink">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-level-up fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $trending_market[0]["name"];?></div>
-                                        <div>Trending Market</div>
+                    <a href="<?php echo base_url() . "marketview/" . $trending_market[0]["id"]; ?>">
+                        <div  class=" col-lg-3 col-md-6">
+                            <div class="panel panel-lightpink">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-level-up fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge"><?php echo $trending_market[0]["name"]; ?></div>
+                                            <div>Trending Market</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
-                    </div>
                     </a>
                 </div>
             </div>
@@ -77,13 +77,20 @@
                 function line() {
                     document.getElementById('candlestick').disabled = false;
                     document.getElementById('line').disabled = true;
+                    document.getElementById('sample1').disabled = true;
                     chartData["type"] = "line";
                     chart();
                 }
                 function candle() {
                     document.getElementById('candlestick').disabled = true;
                     document.getElementById('line').disabled = false;
+                    document.getElementById('sample1').disabled = false;
                     chartData["type"] = "candlestick";
+                    chart();
+                }
+                function candleVal(cycle) {
+                    chartData["cycle"] =(cycle);
+                    document.getElementById("sample1").value=cycle;
                     chart();
                 }
             </script>
@@ -93,22 +100,36 @@
                 </button>
                 <button id="candlestick" onclick="candle()" class="mdl-button mdl-js-button mdl-button--raised" >
                     CandleStick
-                </button>
+                </button>&nbsp;&nbsp;&nbsp;
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                    <input class="mdl-textfield__input" type="text" id="sample1" style="width: 100px" value="10" readonly tabIndex="-1" disabled="true">
+                    <label for="sample1" class="mdl-textfield__label">Cycle</label>
+                    <ul for="sample1" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        <?php
+                        $response = file_get_contents('http://'.SERVER_IP.'/rethinkDB/cycleArray.php');
+                        $cycle = json_decode($response);
+                        for ($i = 0; $i < sizeof($cycle); $i++) {
+                            ?>
+                        <li onclick="candleVal(<?php echo $cycle[$i];?>)" class="mdl-menu__item"><?php echo $cycle[$i]; ?></li>
+                        <?php } ?>
+                    </ul>
+                </div>
                 <div  class="try demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col" style="width: 100%; height: 400px;">
                     <div id="container" ></div>
                     <script>
-                        
+
                         var chartData = {
                             type: 'line',
-                            code: '<?php echo $trending_script[0]["code"];?>',
+                            code: '<?php echo $trending_script[0]["code"]; ?>',
                             cycle: '10'
                         }
-                        function trendChart(){
-                            chartData["code"]="<?php echo $trending_script[0]["code"];?>";
+                        function trendChart() {
+                            chartData["code"] = "<?php echo $trending_script[0]["code"]; ?>";
                             chart();
                         }
                         window.onload = function () {
-                            chart();
+//                            chart();
                             myfun();
                         };
 
@@ -122,7 +143,7 @@
                         function candlestickChart() {
                             socket.emit("request", JSON.stringify(chartData));
 
-                            $.getJSON('http://localhost/rethinkDB/candleStickAllData_API.php?code=' + chartData["code"] + '&cycle=' + chartData["cycle"], function (data) {
+                            $.getJSON('http://<?php echo SERVER_IP; ?>/rethinkDB/candleStickAllData_API.php?code=' + chartData["code"] + '&cycle=' + chartData["cycle"], function (data) {
 
                                 // create the chart
                                 var chartView = Highcharts.stockChart('container', {
@@ -140,7 +161,7 @@
                                     },
 
                                     rangeSelector: {
-                                        selected : 1
+                                        selected: 1
                                     },
                                     scrollbar: {
                                         height: 10,
@@ -176,7 +197,7 @@
                                                     [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
                                                 ]
                                             },
-                                             marker: {
+                                            marker: {
                                                 enabled: true,
                                                 radius: 3
                                             },
@@ -196,7 +217,7 @@
                         function lineChart() {
                             socket.emit("request", JSON.stringify(chartData));
 
-                            $.getJSON('http://localhost/rethinkDB/lineAllData_API.php?code=' + chartData["code"], function (data) {
+                            $.getJSON('http://<?php echo SERVER_IP; ?>/rethinkDB/lineAllData_API.php?code=' + chartData["code"], function (data) {
 
                                 // create the chart
                                 Highcharts.stockChart('container', {
@@ -217,13 +238,13 @@
                                     },
 
                                     rangeSelector: {
-                                        selected : 1
+                                        selected: 1
                                     },
 
                                     title: {
                                         text: chartData["code"]
                                     },
-                                    
+
                                     scrollbar: {
                                         height: 10,
                                         barBackgroundColor: '#7cb5ec',
@@ -254,7 +275,7 @@
                                                     [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
                                                 ]
                                             },
-                                             marker: {
+                                            marker: {
                                                 enabled: true,
                                                 radius: 3
                                             },
@@ -269,7 +290,7 @@
                 </div>
             </div>
             <div class="col-md-4" >
-                <div class="mdl-card" style="width: 90%; background: transparent;">
+                <div class="mdl-card" style="width: 85%; background: transparent;">
 
 
                     <div id="mdl-table"  style="width: 100%; height: 100%;">
@@ -311,11 +332,11 @@
                             <table class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                                 <thead>
                                     <tr>
-                                        <th class="full-width mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
+                                        <th class="full-width mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Symbol</th>
                                     </tr>
                                 </thead>
                             </table>
-                            <div style="height:290px;overflow-x: hidden;overflow-y: scroll;" id="style-4" class="scrollbar">
+                            <div style="height:326px;overflow-x: hidden;overflow-y: scroll;" id="style-4" class="scrollbar">
                                 <table id='mdl-table' class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                                     <script>
                                         function myfun() {
@@ -605,7 +626,7 @@
                         function sendData() {
 
                             var cycle = document.getElementById("cycle").value;
-                            alert(cycle);
+//                            alert(cycle);
                             $.ajax({
                                 type: 'POST',
 //                                    http://localhost/rethinkDB/trade_Algo_API.php
@@ -623,30 +644,12 @@
                         function AjaxFailed(result) {
                             alert("Failed");
                             alert(result.status + ': ' + result.statusText);
-                        }   
+                        }
                     </script>
                 </div>
                 <!-- /.col-lg-4 -->
             </div>
-            <div class="col-lg-4">
-                <div class="panel panel-green">
-                    <div class="panel-heading">
-                        Broadcast Message
-                    </div>
-                    <form>
-                        <div class="panel-body">
-                            <div class="input-group">
-                                <input id="text" name="mail"  type="text" class="form-control no-padding add-color text-center height-25" min="1" max="60"  value="0" maxlength="2">
-                            </div>
-                        </div>
-                        <div class="panel-footer">
-                            <button type="submit" id="submit" name="submit" value="Submit" class="mdl-button mdl-js-button mdl-button--raised">Send</button>
-                        </div>
-                    </form>
 
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
         </div>
     </div>
 

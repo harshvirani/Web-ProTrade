@@ -6,6 +6,11 @@ class Market_m extends CI_Model {
         parent::__construct();
     }
 
+    public function getMarketName($id){
+        $query=$this->db->query("SELECT name FROM `market` WHERE id=".$id);
+        return $query->result_array();
+    }
+    
     public function addMarket($mar) {
         $query = $this->db->insert('market', $mar);
 

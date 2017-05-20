@@ -135,41 +135,40 @@
     </script>
   <main class="mdl-layout__content">
   <div class="row mdl-grid">
-    <div class="col-md-4">
+    
        <?php
               foreach ($users->result_array() as $row) {
   //                if ($row['type'] == 'STAFF') {
                       ?>
-
+<div class="col-md-4">
   <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal-2">
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text"><?php echo $row['uname']; ?></h2><br/>
       <div class="mdl-card__subtitle-text">Status :-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['status']; ?><br>Contact :-&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['contactNo']; ?></div>
     </div>
-    <div class="mdl-card__media">
-      <img src="http://placehold.it/112x112/DC143C/FFFFFF" alt="img">
+    <div class="mdl-card__media" >
+        <img src="<?php echo base_url().'upload_pic/'.$row["profile"]; ?>" alt="img" width="112px" height="112px">
     </div>
     <div class="mdl-card__actions">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">More Info</a>
+      <!--<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">More Info</a>-->
    <div class="three-btn">
-      <i id="<?php echo $row['id']; ?>" class="material-icons">mode_edit</i>
+      <!--<i id="<?php echo $row['id']; ?>" class="material-icons">mode_edit</i>-->
       <?php if($row['status']=='BLOCKED'){?>
       <i id="<?php echo $row['id']; ?>" onclick="unblockUser(this.id,'<?php echo $row['type']; ?>')" class="unblockUser material-icons">block</i>
       <?php }else{?>
       <i id="<?php echo $row['id']; ?>" onclick="blockUser(this.id,'<?php echo $row['type']; ?>')" class="blockUser material-icons">block</i>
       <?php }?>
       <i id="<?php echo $row['id']; ?>" onclick="deleteUser(this.id,'<?php echo $row['type']; ?>')" class="material-icons">delete_forever</i>
-        <div class="mdl-tooltip" data-mdl-for="tt1">Edit</div>
         <div class="mdl-tooltip" data-mdl-for="tt2">Block</div>
         <div class="mdl-tooltip" data-mdl-for="tt3">Delete</div>
     </div>
     </div>
   </div>
-      
+</div>
       <?php
               }
       ?>
-  </div>
+ 
   </div>
   </main>
 

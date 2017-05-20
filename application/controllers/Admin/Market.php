@@ -19,6 +19,7 @@ class Market extends CI_Controller {
                 'staff_cnt' => $this->user_m->count('STAFF')
             );
             $data['market_id'] = $mid;
+            $data["market_name"]=$this->market_m->getMarketName($mid);
             $data['symbols'] = $this->symbol_m->getSymbol($data['market_id']);
 
             $this->load->view('Admin/admin_header', $data);
