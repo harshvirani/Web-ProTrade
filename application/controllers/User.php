@@ -116,7 +116,7 @@ class User extends CI_Controller {
         );
         $this->subscriber_m->updateSub($data, $_SESSION['subscriber_id']);
         unset($data["name"]);
-        $this->user_m->updateUser($data,$_SESSION["id"]);
+        $this->user_m->updateUser($data, $_SESSION["id"]);
         redirect(base_url() . "profile");
     }
 
@@ -126,7 +126,6 @@ class User extends CI_Controller {
                 'title' => 'Profile',
                 'markets' => $this->market_m->getMarket(),
                 'count' => $this->market_m->getCount(),
-               
             );
 //  
 //            $my=$this->user_m->user_profile($_SESSION["id"]);
@@ -141,7 +140,7 @@ class User extends CI_Controller {
                 $this->load->view('Default/header_v', $data);
                 $this->load->view('Default/sidebar_v');
                 $this->load->view('User/sub_profile_v');
-            }else if($_SESSION['type'] == 'STAFF'){
+            } else if ($_SESSION['type'] == 'STAFF') {
                 $this->load->view('Default/header_v', $data);
                 $this->load->view('Default/sidebar_v');
                 $this->load->view('User/sub_profile_v');
@@ -168,7 +167,7 @@ class User extends CI_Controller {
                 $this->load->view('Default/header_v', $data);
                 $this->load->view('Default/sidebar_v');
                 $this->load->view('User/uploader');
-            }else if ($_SESSION['type'] == 'STAFF') {
+            } else if ($_SESSION['type'] == 'STAFF') {
                 $this->load->view('Default/header_v', $data);
                 $this->load->view('Default/sidebar_v');
                 $this->load->view('User/uploader');
@@ -245,6 +244,38 @@ class User extends CI_Controller {
         $res = $this->user_m->addUser($data);
         print_r($res);
         redirect(base_url() . NAV_ADMIN);
+    }
+
+    public function changePassword() {
+        if (isset($_SESSION['type'])) {
+            $data = array(
+                'title' => 'Profile',
+                'markets' => $this->market_m->getMarket(),
+                'count' => $this->market_m->getCount(),
+            );
+            if ($_SESSION['type'] == 'ADMIN') {
+                $this->load->view('Admin/admin_header', $data);
+                $this->load->view('Admin/admin_sidebar');
+                $this->load->view('User/resetPassword_v.php');
+            } else {
+                $this->load->view('Default/header_v', $data);
+                $this->load->view('Default/sidebar_v');
+                $this->load->view('User/resetPassword_v.php');
+            }
+            
+                $this->load->view('Default/footer_v.php');
+        }
+    }
+    
+    public function updatePassword(){
+        $old=$_POST["oldPass"];
+        $new=$_POST["newPass"];
+        $res=$this->user_m->getPass($_SESSION["id"]);
+        if($old==$res[0]["password"]){
+            $this->user_m->updatePass($_SESSION["id"],$new);
+            $this->logout();
+            
+        }
     }
 
 }

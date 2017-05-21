@@ -95,5 +95,15 @@ class User_m extends CI_Model {
         $res = $this->db->update('user', $pass);
         return $res;
     }
+    
+    public function getPass($id){
+        $res=$this->db->query("select password from user where id=".$id);
+        return $res->result_array();
+    }
+    
+    public function updatePass($id,$pass){
+        $res= $this->db->query("UPDATE `user` SET `password` ='".$pass."' WHERE `user`.`id` = ".$id.";");
+        return $res;
+    }
 
 }

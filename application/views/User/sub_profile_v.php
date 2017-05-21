@@ -23,12 +23,14 @@
       </div>-->
       <h3>Personal info</h3>
       <form class="form-horizontal" role="form" method="post" action="<?php echo base_url()?>/User/updateProfile">
-        <div class="form-group">
+        <?php if($_SESSION["type"]!="ADMIN"){?>
+          <div class="form-group">
           <label class="col-lg-3 control-label">Name:</label>
           <div class="col-lg-8">
               <input class="form-control" name="name" value="<?php echo $profile->name;?>" type="text">
           </div>
         </div>
+        <?php } ?>
 <!--        <div class="form-group">
           <label class="col-lg-3 control-label">Last name:</label>
           <div class="col-lg-8">
@@ -64,7 +66,7 @@
           <div class="col-md-8">
             <input class="btn btn-primary" value="Save Changes" type="submit">
             <span></span>
-            <input class="btn btn-default" value="Cancel" type="reset">
+            <input onclick="location.href='<?php echo base_url().'user/changePassword';?>';" class="btn btn-default" value="Change Password" type="">
           </div>
         </div>
       </form>
