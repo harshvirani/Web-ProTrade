@@ -290,21 +290,30 @@
                     </script>
 
                     <script type="text/javascript">
+                        
+                        $.getJSON('http://localhost/rethinkDB/callAllData_API.php', function (data) {
+                            for (var i = data.length-1; i >= 0; i--) {
+                                $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data[i]['type'] + " " + data[i]['code'] +  " on rate " +data[i]['rate'] + "</li>");
+                            }
+                            $("#menudemo").attr("data-badge", "0");
+                        });
                         var socket = io.connect('http://localhost:8088');
 
                         socket.on('message', function (data1) {
 
                             var badge = $("#menudemo").attr("data-badge");
                             $("#menudemo").attr("data-badge", ++badge);
-                            $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data1.code + "   " + data1.type + "</li>");
+                            $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data1.type + " " + data1.code +  " on rate " +data1.rate + "</li>");
                             playSound();
-                            if (data1.type === "Sell") {
-                                toastr.warning('Code : ' + data1.code, data1.type, {timeOut: 5000});
+                            if (data1.type === "SELL") {
+                                toastr.warning('Code : ' + data1.code + ' Price : '+ data1.rate, data1.type , {timeOut: 5000});
                             } else {
-                                toastr.success('Code : ' + data1.code, data1.type, {timeOut: 5000});
+                                toastr.success('Code : ' + data1.code + ' Price : '+ data1.rate, data1.type, {timeOut: 5000});
 
                             }
                         });
+                        
+                        
 
 
 

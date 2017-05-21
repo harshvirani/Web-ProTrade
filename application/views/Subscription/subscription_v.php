@@ -366,7 +366,7 @@
                                     <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                                         <thead>
                                             <tr class="mdl-color" id="head" style="background-color: #46b6ac;">
-                                                <th class="full-width mdl-data-table__cell--non-numeric sort" data-sort="material">Name</th>
+                                                <th class="full-width mdl-data-table__cell--non-numeric sort" data-sort="material">Symbol Code</th>
                                                 <th class="full-width mdl-data-table__cell--non-numeric material sort" data-sort="quantity">Code</th>
                                                 <th class="full-width mdl-data-table__cell--non-numeric material sort" data-sort="price">Price Quote</th>
                                             </tr>

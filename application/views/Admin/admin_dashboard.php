@@ -302,7 +302,7 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused" data-upgraded=",MaterialTextfield">
 
                             <div class="mdl-textfield__expandable-holder">
-                                <input class="mdl-textfield__input search" type="text" id="sample6">
+                                <input class="mdl-textfield__input search " style="width: 270px"  type="text" id="sample6">
                                 <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
                             </div>
                             <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
@@ -341,7 +341,7 @@
                                     </tr>
                                 </thead>
                             </table>
-                            <div style="height:326px;overflow-x: hidden;overflow-y: scroll;" id="style-4" class="scrollbar">
+                            <div style="height:355px;overflow-x: hidden;overflow-y: scroll;" id="style-4" class="scrollbar">
                                 <table id='mdl-table' class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                                     <script>
                                         function myfun() {

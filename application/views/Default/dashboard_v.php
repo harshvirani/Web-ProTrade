@@ -55,7 +55,7 @@
                 <div id="container" class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col"></div>
                 <script language="JavaScript">
                     window.onload = function () {
-                        chart();
+//                        chart();
                         myfun();
                     };
                     var chartData = {
