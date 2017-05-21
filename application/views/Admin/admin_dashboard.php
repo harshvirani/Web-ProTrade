@@ -4,6 +4,7 @@
         <div class="row">
             <div class="four_task" style="padding: 10px 15px 0 15px;">
                 <div class="row">
+                    <a>
                     <div class=" col-lg-3 col-md-6">
                         <div class="panel panel-lightgreen">
                             <div class="panel-heading" style="cursor: pointer; cursor: hand">
@@ -20,6 +21,8 @@
 
                         </div>
                     </div>
+                </a>
+                    <a>
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-lightgrey">
                             <div class="panel-heading" style="cursor: pointer; cursor: hand">
@@ -36,7 +39,8 @@
 
                         </div>
                     </div>
-
+                </a>
+                    <a>
                     <div  class="col-lg-3 col-md-6" >
                         <div class="panel panel-lightblue">
                             <div onclick="trendChart()" class="panel-heading" style="cursor: pointer; cursor: hand">
@@ -53,7 +57,8 @@
 
                         </div>
                     </div>
-                    <a href="<?php echo base_url() . "marketview/" . $trending_market[0]["id"]; ?>">
+                    </a>
+                        <a href="<?php echo base_url() . "marketview/" . $trending_market[0]["id"]; ?>">
                         <div  class=" col-lg-3 col-md-6">
                             <div class="panel panel-lightpink">
                                 <div class="panel-heading">
@@ -545,6 +550,7 @@
                         </div>
                     </div>
                 </a>
+                <a>
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -561,7 +567,8 @@
 
                     </div>
                 </div>
-
+                </a>
+                <a>
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-red">
                         <div class="panel-heading">
@@ -578,6 +585,7 @@
 
                     </div>
                 </div>
+                </a>
                 <a href="<?php echo base_url() . NAV_USERS; ?>STAFF">
                     <div class=" col-lg-3 col-md-6">
                         <div class="panel panel-yellow">
