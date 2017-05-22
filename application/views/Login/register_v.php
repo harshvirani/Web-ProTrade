@@ -58,7 +58,7 @@
                         <div class="mdl-card__title ">
                             <h2 class="mdl-card__title-text">
                                 <i class="material-icons mdl-color-text--grey  m-r-5 lh-13">account_circle</i>
-                                Login
+                                Register
                             </h2>
                         </div>
                         <?php if (isset($error)) { ?>

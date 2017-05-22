@@ -58,7 +58,7 @@
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/mdl-jquery-modal-dialog.css">
         <script src="<?php echo base_url() . NAV_ASSETS; ?>js/mdl-jquery-modal-dialog.js"></script>
         <!--Notification of Call-->
-        <script src="https://cdn-orig.socket.io/socket.io-1.2.0.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
         <link rel="stylesheet" href="<?php echo base_url() . NAV_ASSETS; ?>css/toastr.min.css">
         <script src="<?php echo base_url() . NAV_ASSETS; ?>js/toastr.min.js"></script>
         <script src="<?php echo base_url() . NAV_ASSETS; ?>js/toastr.js"></script>

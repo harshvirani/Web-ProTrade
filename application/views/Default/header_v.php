@@ -264,7 +264,7 @@
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
                 <div class="mdl-layout__header-row">
-                    <span class="mdl-layout-title">Home</span>
+                    <span class="mdl-layout-title"></span>
 
                     <div class="mdl-layout-spacer"></div>
                     <i id="menudemo" class="material-icons mdl-badge mdl-badge--overlap" data-badge="">add_alert</i>
@@ -291,13 +291,13 @@
 
                     <script type="text/javascript">
                         
-                        $.getJSON('http://localhost/rethinkDB/callAllData_API.php', function (data) {
+                        $.getJSON('http://<?php echo SERVER_IP;?>/rethinkDB/callAllData_API.php', function (data) {
                             for (var i = data.length-1; i >= 0; i--) {
                                 $("#noti_ul").prepend("<li class='mymenuitem mdl-menu__item'>" + data[i]['type'] + " " + data[i]['code'] +  " on rate " +data[i]['rate'] + "</li>");
                             }
                             $("#menudemo").attr("data-badge", "0");
                         });
-                        var socket = io.connect('http://localhost:8088');
+                        var socket = io.connect('http://<?php echo SERVER_IP;?>:8088');
 
                         socket.on('message', function (data1) {
 

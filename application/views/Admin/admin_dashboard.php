@@ -637,8 +637,8 @@
 //                            alert(cycle);
                             $.ajax({
                                 type: 'POST',
-//                                    http://localhost/rethinkDB/trade_Algo_API.php
-                                url: 'http://localhost/rethinkDB/trade_Algo_API.php',
+//                                    http://<?php echo SERVER_IP;?>/rethinkDB/trade_Algo_API.php
+                                url: 'http://<?php echo SERVER_IP;?>/rethinkDB/trade_Algo_API.php',
                                 data: {cycle: cycle},
                                 cache: false,
                                 success: AjaxSucceeded,

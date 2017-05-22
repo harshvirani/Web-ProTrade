@@ -21,6 +21,7 @@ class Plan extends CI_Controller {
             $data['markets'] = $this->plan_m->all_markets();
             $data['symbols'] = $this->plan_m->all_symbols();
             $data['plans'] = $this->plan_m->all_plans();
+            $data["price"]=$this->market_m->countPrice();
             $this->load->view('Default/header_v', $data);
             $this->load->view('Default/sidebar_v');
             $this->load->view('Subscription/subscription_v');

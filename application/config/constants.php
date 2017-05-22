@@ -97,5 +97,5 @@ define('NAV_ADMIN', "Admin/dashboard");
 define('NAV_USERS', "usersview/");
 define('NAV_MARKETS', "marketview/");
 define('NAV_PROFILE', "profile/");
-define('SERVER_IP', 'localhost');
+define('SERVER_IP', '192.168.222.108');
 define('NAV_DASHBOARD', "Admin/Dashboard");

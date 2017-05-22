@@ -60,7 +60,7 @@
                     };
                     var chartData = {
                         type: 'line',
-                        code: 'SILVERM 1',
+                        code: '<?php echo $symbols->result_array()[0]["code"]?>',
                         cycle:'10'
                     }
                     function chart() {
@@ -73,7 +73,7 @@
                     function candlestickChart() {
                         socket.emit("request", JSON.stringify(chartData));
 
-                        $.getJSON('http://localhost/rethinkDB/candleStickAllData_API.php?code='+chartData["code"]+'&cycle='+chartData["cycle"], function (data) {
+                        $.getJSON('http://<?php echo SERVER_IP;?>/rethinkDB/candleStickAllData_API.php?code='+chartData["code"]+'&cycle='+chartData["cycle"], function (data) {
 
                             // create the chart
                             var chartView = Highcharts.stockChart('container', {
@@ -147,7 +147,7 @@
                     function lineChart() {
                         socket.emit("request", JSON.stringify(chartData));
 
-                        $.getJSON('http://localhost/rethinkDB/lineAllData_API.php?code=' + chartData["code"], function (data) {
+                        $.getJSON('http://<?php echo SERVER_IP;?>/rethinkDB/lineAllData_API.php?code=' + chartData["code"], function (data) {
 
                             // create the chart
                             Highcharts.stockChart('container', {
@@ -160,7 +160,7 @@
                                             socket.on('upDateData', function (data) {
 
                                                 var d = (new Date(data['time_stamp'])).getTime();
-                                                //alert(d);
+                                                alert(d);
                                                 series.addPoint([d, parseFloat(data['current_price'])], true, true);
                                             });
                                         }
@@ -210,7 +210,7 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused" data-upgraded=",MaterialTextfield">
 
                             <div class="mdl-textfield__expandable-holder">
-                                <input class="mdl-textfield__input search" type="text" id="sample6">
+                                <input class="mdl-textfield__input search" style="width: 300px" type="text" id="sample6">
                                 <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
                             </div>
                             <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
@@ -245,11 +245,11 @@
                             <table class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                                 <thead>
                                     <tr>
-                                        <th class="full-width mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Material</th>
+                                        <th class="full-width mdl-data-table__cell--non-numeric sort full-width" data-sort="material">Symbol</th>
                                     </tr>
                                 </thead>
                             </table>
-                            <div style="height:290px;overflow-x: hidden;overflow-y: scroll;" id="style-4" class="scrollbar">
+                            <div style="height:320px;overflow-x: hidden;overflow-y: scroll;" id="style-4" class="scrollbar">
                                 <table id='mdl-table' class="full-width mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                                     <script>
                                         function myfun() {

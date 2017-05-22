@@ -23,7 +23,7 @@
       </div>-->
       <h3>Personal info</h3>
       <form class="form-horizontal" role="form" method="post" action="<?php echo base_url()?>/User/updateProfile">
-        <?php if($_SESSION["type"]!="ADMIN"){?>
+        <?php if($_SESSION["type"]=="SUBSCRIBER"){?>
           <div class="form-group">
           <label class="col-lg-3 control-label">Name:</label>
           <div class="col-lg-8">

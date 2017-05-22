@@ -44,4 +44,8 @@ class Market_m extends CI_Model {
         return $query;
     }
 
+    public function countPrice(){
+        $query=$this->db->query("SELECT market_id,SUM(price_quote) as price FROM `symbol` GROUP BY market_id");
+        return $query;
+    }
 }
