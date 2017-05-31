@@ -507,7 +507,7 @@ foreach ($symbols->result_array() as $symbol) {
                                         while (i--) {
                                             if (obj["SELECTION"][i] == rowID) {
                                                 obj["SELECTION"].splice(i, 1);
-                                                alert(obj["SELECTION"]);
+//                                                alert(obj["SELECTION"]);
                                             }
                                         }
                                     }
@@ -534,7 +534,7 @@ foreach ($symbols->result_array() as $symbol) {
                             calculate();
                         }
                         function deleteFinalMarket(myid) {
-                            alert(obj["SELECTION"] + " Row : " + myid);
+//                            alert(obj["SELECTION"] + " Row : " + myid);
                             actualDelete(myid);
                             document.getElementById(myid).style.display = "none";
                         }

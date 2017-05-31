@@ -134,7 +134,7 @@
                             chart();
                         }
                         window.onload = function () {
-//                            chart();
+                            chart();
                             myfun();
                         };
 
@@ -646,12 +646,12 @@
                             });
                         }
                         function AjaxSucceeded(result) {
-//                            alert("Success");
-                            alert(result);
+                            alert("Success");
+//                            alert(result);
                         }
                         function AjaxFailed(result) {
                             alert("Failed");
-                            alert(result.status + ': ' + result.statusText);
+//                            alert(result.status + ': ' + result.statusText);
                         }
                     </script>
                 </div>

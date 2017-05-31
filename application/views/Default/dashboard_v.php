@@ -55,7 +55,7 @@
                 <div id="container" class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col"></div>
                 <script language="JavaScript">
                     window.onload = function () {
-//                        chart();
+                        chart();
                         myfun();
                     };
                     var chartData = {
@@ -160,7 +160,7 @@
                                             socket.on('upDateData', function (data) {
 
                                                 var d = (new Date(data['time_stamp'])).getTime();
-                                                alert(d);
+//                                                alert(d);
                                                 series.addPoint([d, parseFloat(data['current_price'])], true, true);
                                             });
                                         }

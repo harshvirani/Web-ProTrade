@@ -276,6 +276,7 @@ class User extends CI_Controller {
             $this->logout();
             
         }
+        redirect(base_url()."profile");
     }
 
 }

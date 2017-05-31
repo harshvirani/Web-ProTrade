@@ -4,6 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/WebProTrade/application/views/Default/dashboard_v.php</file>
+            <file>file:/C:/xampp/htdocs/WebProTrade/application/config/constants.php</file>
+            <file>file:/C:/xampp/htdocs/WebProTrade/application/views/Admin/admin_dashboard.php</file>
+            <file>file:/C:/xampp/htdocs/WebProTrade/application/views/Admin/admin_user_v.php</file>
+            <file>file:/C:/xampp/htdocs/WebProTrade/application/config/autoload.php</file>
+            <file>file:/C:/xampp/htdocs/WebProTrade/application/views/Subscription/subscription_v.php</file>
+            <file>file:/C:/xampp/htdocs/WebProTrade/application/controllers/User.php</file>
         </group>
     </open-files>
 </project-private>
