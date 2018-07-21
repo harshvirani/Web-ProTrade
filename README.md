@@ -12,10 +12,10 @@ You will require rethinkdb, mysql, and working internet connection.
 
 ### Contribution guidelines ###
 
-Sharad Paghadal
 Harsh Virani
+Sharad Paghadal
 Gaurang Ribadiya
 
 ### Who do I talk to? ###
 
-sharad.appdeveloper@gmail.com
+harshvirani33@gmail.com
